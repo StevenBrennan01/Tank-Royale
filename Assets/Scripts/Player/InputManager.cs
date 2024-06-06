@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour
     {
         while (isMoving)
         {
-            playerMove_SCR.tempMovement();
+            playerMove_SCR.MoveTank();
             yield return null;
         }
     }

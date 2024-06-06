@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float verticalDir;
 
-    public Vector2 moveDir;
+    [HideInInspector] public Vector2 moveDir;
 
     [SerializeField] private float moveSpeed = 100f;
 
@@ -16,17 +15,12 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void TankVertical()
-    {
-        rb.AddForce(transform.up * verticalDir * moveSpeed, ForceMode2D.Force);
-    }
-
-    public void tempMovement()
+    public void MoveTank()
     {
         rb.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
     }
 
-    public void stopMovement()
+    public void StopTank()
     {
         
     }
