@@ -24,7 +24,7 @@ public class RotateTower : MonoBehaviour
 
         float targetPoint = Mathf.Atan2(gunRot.y, gunRot.x) * Mathf.Rad2Deg - 90f;
 
-        //QUATERNION STUFF THAT IS TRICKY BUT LERPS THE TOWER TO FEEL BETTER
+        //QUATERNION STUFF THAT SLERPS THE TOWER POINT TO THE MOUSE DIRECTION
         Quaternion targetRotation = Quaternion.Euler(0, 0, targetPoint);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, towerLerpSpeed * Time.deltaTime);
     }

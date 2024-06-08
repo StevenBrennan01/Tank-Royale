@@ -24,10 +24,7 @@ public class PlayerMove : MonoBehaviour
     public void MoveTank()
     {
         rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force);
-        if (moveDir.x > 0)
-        {
-            //SOMETHING LIKE THIS?
-        }
+        
     }
 
     public void TankShoot()
