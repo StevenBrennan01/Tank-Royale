@@ -6,9 +6,15 @@ public class PlayerMove : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [HideInInspector] public Vector2 moveDir;
+    public Vector2 moveDir;
 
-    [SerializeField] private float moveSpeed = 100f;
+    #region Inspector Header and Spacing
+    [Header("                                                -= Movement Attributes =-")]
+    [Space(15)]
+    #endregion
+
+    [SerializeField] private float tankMoveSpeed;
+    [SerializeField] private float tankRotateSpeed;
 
     private void Awake()
     {
@@ -17,11 +23,15 @@ public class PlayerMove : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
+        rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force);
+        if (moveDir.x > 0)
+        {
+            //SOMETHING LIKE THIS?
+        }
     }
 
-    public void StopTank()
+    public void TankShoot()
     {
-        
+
     }
 }

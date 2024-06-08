@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     private Coroutine shootingCR;
 
     private bool isMoving;
+    private bool canShoot;
 
     private void Awake()
     {
@@ -25,8 +26,8 @@ public class InputManager : MonoBehaviour
         inputActions_SCR.Player.Move.performed += MovePerformed;
         inputActions_SCR.Player.Move.canceled += MoveCancelled;
 
-        //inputActions_SCR.Player.Shoot.Enable();
-        //inputActions_SCR.Player.Shoot.performed += TankShooting;
+        inputActions_SCR.Player.Shoot.Enable();
+        inputActions_SCR.Player.Shoot.performed += ShootPerformed;
     }
 
     private void OnDisable()
@@ -35,13 +36,12 @@ public class InputManager : MonoBehaviour
         inputActions_SCR.Player.Move.performed -= MovePerformed;
         inputActions_SCR.Player.Move.canceled -= MoveCancelled;
 
-        //inputActions_SCR.Player.Shoot.Disable();
-        //inputActions_SCR.Player.Shoot.performed -= TankShooting;
+        inputActions_SCR.Player.Shoot.Disable();
+        inputActions_SCR.Player.Shoot.performed -= ShootPerformed;
     }
 
     private void MovePerformed(InputAction.CallbackContext value)
     {
-        Debug.Log(value.ReadValue<Vector2>());
         playerMove_SCR.moveDir = value.ReadValue<Vector2>();
         isMoving = true;
 
@@ -62,12 +62,34 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private void ShootPerformed(InputAction.CallbackContext button)
+    {
+        canShoot = true;
+
+        Debug.Log("TANK IS SHOOTING");
+        //ADD ANIMATOR HERE FOR TANK SHOOT
+        shootingCR = StartCoroutine(tankShootingCR());
+    }
+
     private IEnumerator tankMovingCR()
     {
         while (isMoving)
         {
             playerMove_SCR.MoveTank();
             yield return null;
+        }
+    }
+
+    private IEnumerator tankShootingCR()
+    {
+        while (canShoot)
+        {
+            //ADD METHOD FOR SHOOTING HERE
+            //playerMove_SCR.TankShoot();
+            canShoot = false;
+            yield return new WaitForSeconds(0.3f);
+            canShoot = true; 
+            break;
         }
     }
 }

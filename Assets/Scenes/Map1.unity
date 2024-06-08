@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 255274941}
   - component: {fileID: 255274944}
   - component: {fileID: 255274940}
-  - component: {fileID: 255274942}
+  - component: {fileID: 255274945}
   m_Layer: 0
   m_Name: SmallTankA
   m_TagString: Untagged
@@ -260,7 +260,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -286,11 +286,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1f47937d712b3489d4cd721e542e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalDir: 0
   moveDir: {x: 0, y: 0}
-  moveSpeed: 1
---- !u!61 &255274942
-BoxCollider2D:
+  tankMoveSpeed: 10
+  tankRotateSpeed: 0
+--- !u!114 &255274944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255274938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca3bb13278686549953c0f2ed275540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &255274945
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -321,31 +333,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005026698, y: 0.015080333}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.011155367}
   serializedVersion: 2
-  m_Size: {x: 2.1159365, y: 2.1360433}
-  m_EdgeRadius: 0
---- !u!114 &255274944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255274938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca3bb13278686549953c0f2ed275540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 1.0243077
 --- !u!1 &463798007
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,8 +346,9 @@ GameObject:
   m_Component:
   - component: {fileID: 463798008}
   - component: {fileID: 463798009}
+  - component: {fileID: 463798010}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Small Gun A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 463798007}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.11, z: 0}
+  m_LocalPosition: {x: 0, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -430,6 +421,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &463798010
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463798007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dececf547aac61b4182a272fcab2cd2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +529,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10451,7 +10463,7 @@ Transform:
   m_GameObject: {fileID: 827268351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10655,7 +10667,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 7cebb625b8f53944b9c69152893e91ef, type: 3}
-  m_Color: {r: 0.39215687, g: 1, b: 0, a: 0.39215687}
+  m_Color: {r: 0, g: 1, b: 0.56459475, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11476,7 +11488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180228317}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11549,6 +11561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133f0d3731bd90b479ed14124392d972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerLerpSpeed: 10
 --- !u!1 &1231460001
 GameObject:
   m_ObjectHideFlags: 0
@@ -11793,7 +11806,7 @@ Transform:
   m_GameObject: {fileID: 1853409048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

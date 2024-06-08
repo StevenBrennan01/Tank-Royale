@@ -7,19 +7,25 @@ public class RotateTower : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
 
+    [SerializeField] private float towerLerpSpeed;
+
     private void Awake()
     {
-        mainCam = FindObjectOfType<Camera>();
+        mainCam = Camera.main;     
     }
 
-    void Update()
+    private void Update()
     {
+        //GIVES THE MOUSE LOCATION A VALUE IN WORLD SPACE
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 rotation = mousePos - transform.position;
+        //FINDING THE ANGLE BETWEEN THE MOUSE AND TANK TOWER
+        Vector3 gunRot = (mousePos - transform.position).normalized;
 
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        float targetPoint = Mathf.Atan2(gunRot.y, gunRot.x) * Mathf.Rad2Deg - 90f;
 
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        //QUATERNION STUFF THAT IS TRICKY BUT LERPS THE TOWER TO FEEL BETTER
+        Quaternion targetRotation = Quaternion.Euler(0, 0, targetPoint);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, towerLerpSpeed * Time.deltaTime);
     }
 }
