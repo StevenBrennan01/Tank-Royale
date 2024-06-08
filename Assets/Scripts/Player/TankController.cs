@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class TankController : MonoBehaviour
 {
+    [SerializeField] private GameObject tankBullet;
+
     private Rigidbody2D rb;
 
-    public Vector2 moveDir;
+    //REMOVE THIS WHEN DONE
+    [HideInInspector] public Vector2 moveDir;
 
     #region Inspector Header and Spacing
     [Header("                                                -= Movement Attributes =-")]

@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1f47937d712b3489d4cd721e542e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tankBullet: {fileID: 0}
   moveDir: {x: 0, y: 0}
   tankMoveSpeed: 10
   tankRotateSpeed: 0
@@ -11561,7 +11562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133f0d3731bd90b479ed14124392d972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerLerpSpeed: 10
+  towerLerpSpeed: 8
 --- !u!1 &1231460001
 GameObject:
   m_ObjectHideFlags: 0
