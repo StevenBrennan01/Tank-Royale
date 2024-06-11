@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class TankController : MonoBehaviour
 {
     #region Inspector Header and Spacing
-    [Header("                                                    -= Tank Controller =-")]
+    [Header("                                                     -= Tank Controller =-")]
     [Space(15)]
     #endregion
 
@@ -50,7 +50,7 @@ public class TankController : MonoBehaviour
             float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
             Quaternion targetRotation = Quaternion.Euler(0, 0, angleTarget);
-            tankHull.transform.rotation = Quaternion.RotateTowards(tankHull.transform.rotation, targetRotation, hullRotateSpeed * Time.deltaTime);
+            tankHull.transform.rotation = Quaternion.RotateTowards(tankHull.transform.rotation, targetRotation, hullRotateSpeed);
         }
     }
 
@@ -62,7 +62,7 @@ public class TankController : MonoBehaviour
         float targetPoint = Mathf.Atan2(gunRot.y, gunRot.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
-        tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, towerRotateSpeed * Time.deltaTime);
+        tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, towerRotateSpeed);
     }
 
     public void TankShoot()

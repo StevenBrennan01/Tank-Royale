@@ -86,20 +86,20 @@ public class InputManager : MonoBehaviour
         shootingCR = StartCoroutine(tankShootingCR());
     }
 
-    private IEnumerator tankLooking()
-    {
-        while (tankCanLook)
-        {
-            tankController_SCR.TowerRotate();
-            yield return null;
-        }
-    }
-
     private IEnumerator tankMovingCR()
     {
         while (isMoving)
         {
             tankController_SCR.MoveTank();
+            yield return null;
+        }
+    }
+
+    private IEnumerator tankLooking()
+    {
+        while (tankCanLook)
+        {
+            tankController_SCR.TowerRotate();
             yield return null;
         }
     }
