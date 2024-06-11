@@ -5,19 +5,21 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    InputActions inputActions_SCR; 
-    TankController playerMove_SCR;
+    private InputActions inputActions_SCR;
+    private TankController tankController_SCR;
 
     private Coroutine movingCR;
     private Coroutine shootingCR;
+    private Coroutine tankLookingCR;
 
     private bool isMoving;
     private bool canShoot;
+    private bool tankCanLook;
 
     private void Awake()
     {
         inputActions_SCR = new InputActions();
-        playerMove_SCR = GetComponent<TankController>();
+        tankController_SCR = GetComponent<TankController>();
     }
 
     private void OnEnable()
@@ -28,6 +30,9 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Shoot.Enable();
         inputActions_SCR.Player.Shoot.performed += ShootPerformed;
+
+        inputActions_SCR.Player.MouseLook.Enable();
+        inputActions_SCR.Player.MouseLook.performed += MouseLooking;
     }
 
     private void OnDisable()
@@ -42,7 +47,7 @@ public class InputManager : MonoBehaviour
 
     private void MovePerformed(InputAction.CallbackContext value)
     {
-        playerMove_SCR.moveDir = value.ReadValue<Vector2>();
+        tankController_SCR.moveDir = value.ReadValue<Vector2>();
         isMoving = true;
 
         if (movingCR == null)
@@ -53,12 +58,22 @@ public class InputManager : MonoBehaviour
 
     private void MoveCancelled(InputAction.CallbackContext value)
     {
-        playerMove_SCR.moveDir = value.ReadValue<Vector2>();
+        tankController_SCR.moveDir = value.ReadValue<Vector2>();
         isMoving = false;
 
         if (movingCR != null)
         {
             movingCR = null;
+        }
+    }
+
+    private void MouseLooking(InputAction.CallbackContext passThrough)
+    {
+        tankCanLook = true;
+
+        if (tankLookingCR == null)
+        {
+            tankLookingCR = StartCoroutine(tankLooking());
         }
     }
 
@@ -71,11 +86,20 @@ public class InputManager : MonoBehaviour
         shootingCR = StartCoroutine(tankShootingCR());
     }
 
+    private IEnumerator tankLooking()
+    {
+        while (tankCanLook)
+        {
+            tankController_SCR.TowerRotate();
+            yield return null;
+        }
+    }
+
     private IEnumerator tankMovingCR()
     {
         while (isMoving)
         {
-            playerMove_SCR.MoveTank();
+            tankController_SCR.MoveTank();
             yield return null;
         }
     }
