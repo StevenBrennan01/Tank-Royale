@@ -12,8 +12,7 @@ public class InputManager : MonoBehaviour
     private Coroutine shootingCR;
     private Coroutine tankLookingCR;
 
-    private Animator TankTrack1;
-    private Animator TankTrack2;
+    //private Animator TankTrack1;
 
     private bool isMoving;
     private bool canShoot;
@@ -24,8 +23,7 @@ public class InputManager : MonoBehaviour
         inputActions_SCR = new InputActions();
         tankController_SCR = GetComponent<TankController>();
 
-        TankTrack1 = GameObject.FindGameObjectWithTag("TankTrackA").GetComponent<Animator>();
-        TankTrack2 = GameObject.FindGameObjectWithTag("TankTrackB").GetComponent<Animator>();
+        //TankTrack1 = GameObject.FindGameObjectWithTag("TankTrackA").GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -58,8 +56,6 @@ public class InputManager : MonoBehaviour
 
         if (movingCR == null)
         {
-            TankTrack1.SetBool("TrackMoving", true);
-            TankTrack2.SetBool("TrackMoving", true);
             movingCR = StartCoroutine(tankMovingCR());
         }
     }
@@ -71,8 +67,6 @@ public class InputManager : MonoBehaviour
 
         if (movingCR != null)
         {
-            TankTrack1.SetBool("TrackMoving", false);
-            TankTrack2.SetBool("TrackMoving", false);
             movingCR = null;
         }
     }
