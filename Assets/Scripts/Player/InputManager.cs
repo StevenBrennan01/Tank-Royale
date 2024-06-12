@@ -79,8 +79,6 @@ public class InputManager : MonoBehaviour
 
     private void ShootPerformed(InputAction.CallbackContext button)
     {
-        canShoot = true;
-
         Debug.Log("TANK IS SHOOTING");
         //ADD ANIMATOR HERE FOR TANK SHOOT
         shootingCR = StartCoroutine(tankShootingCR());
@@ -109,7 +107,7 @@ public class InputManager : MonoBehaviour
         while (canShoot)
         {
             //ADD METHOD FOR SHOOTING HERE
-            //playerMove_SCR.TankShoot();
+            tankController_SCR.TankShoot();
             canShoot = false;
             yield return new WaitForSeconds(0.3f);
             canShoot = true; 

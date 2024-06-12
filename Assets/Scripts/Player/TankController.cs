@@ -30,25 +30,17 @@ public class TankController : MonoBehaviour
     [SerializeField] private float hullRotateSpeed;
     [SerializeField] private float towerRotateSpeed;
 
-    #region Inspector Header and Spacing
-    [Header("                                                           -= Animations =-")]
-    [Space(15)]
-    #endregion
-
-    [SerializeField] private Animator trackAnimator;
-    [SerializeField] private Animator gunAnimator;
-
     private void Awake()
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        //gunAnimator = FindObjectOfType<Animator>();
     }
 
     public void MoveTank()
     {
         rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force);
         RotateHull();
-        //trackAnimator.SetBool("TrackMoving", true);
     }
 
     private void RotateHull()
@@ -75,6 +67,8 @@ public class TankController : MonoBehaviour
 
     public void TankShoot()
     {
+        //gunAnimator.SetTrigger("ShootAnim");
+        //Animator.SetBool("ShootAnim", true);
         //FUNCTION FOR SHOOTING + ANIMS + SCREEN SHAKE
     }
 }
