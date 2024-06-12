@@ -34,7 +34,6 @@ public class TankController : MonoBehaviour
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
-        //gunAnimator = FindObjectOfType<Animator>();
     }
 
     public void MoveTank()
@@ -67,8 +66,6 @@ public class TankController : MonoBehaviour
 
     public void TankShoot()
     {
-        //gunAnimator.SetTrigger("ShootAnim");
-        //Animator.SetBool("ShootAnim", true);
         //FUNCTION FOR SHOOTING + ANIMS + SCREEN SHAKE
     }
 }
