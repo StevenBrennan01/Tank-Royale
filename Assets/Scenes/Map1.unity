@@ -207,6 +207,8 @@ MonoBehaviour:
   tankMoveSpeed: 10
   hullRotateSpeed: 0.7
   towerRotateSpeed: 0.03
+  trackAnimator: {fileID: 837103723}
+  gunAnimator: {fileID: 0}
 --- !u!114 &255274944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11744,6 +11746,11 @@ MonoBehaviour:
 --- !u!4 &837103721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5184458963444298706, guid: 9dc656f5c35ae23439b6737de401a270, type: 3}
+  m_PrefabInstance: {fileID: 1826813606305409081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &837103723 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1440923131778618825, guid: 9dc656f5c35ae23439b6737de401a270, type: 3}
   m_PrefabInstance: {fileID: 1826813606305409081}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &837520059

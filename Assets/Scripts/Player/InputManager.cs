@@ -99,7 +99,7 @@ public class InputManager : MonoBehaviour
     {
         while (tankCanLook)
         {
-            tankController_SCR.TowerRotate();
+            tankController_SCR.RotateTower();
             yield return null;
         }
     }
