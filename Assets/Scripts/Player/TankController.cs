@@ -11,10 +11,6 @@ public class TankController : MonoBehaviour
     [Space(15)]
     #endregion
 
-    [SerializeField] private GameObject tankProjectile;
-
-    //ADD GAMEOBJECTS FOR PROJECTILE SPAWNS HERE
-
     [SerializeField] private GameObject tankHull;
     [SerializeField] private GameObject tankTower;
 

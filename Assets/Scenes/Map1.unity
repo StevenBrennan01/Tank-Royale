@@ -201,7 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1f47937d712b3489d4cd721e542e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankProjectile: {fileID: 0}
   tankHull: {fileID: 656873318}
   tankTower: {fileID: 1180228317}
   moveDir: {x: 0, y: 0, z: 0}
