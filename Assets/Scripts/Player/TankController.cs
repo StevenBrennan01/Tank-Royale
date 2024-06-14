@@ -18,7 +18,7 @@ public class TankController : MonoBehaviour
     private Camera mainCam;
 
     private Vector3 mousePos;
-    [HideInInspector] public Vector3 moveDir;
+    [HideInInspector] public Vector2 moveDir;
 
     #region Inspector Header and Spacing
     [Header("                                                -= Movement Attributes =-")]
@@ -43,7 +43,7 @@ public class TankController : MonoBehaviour
 
     private void RotateHull()
     {
-        if (moveDir != Vector3.zero)
+        if (moveDir != Vector2.zero)
         {
             float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
