@@ -48,6 +48,8 @@ public class ProjectileHandler : MonoBehaviour
                 projectileSpawn.transform.rotation = Quaternion.Euler(0f, 0f, projectileRotation - 90f);
                 projectileSpawn.GetComponent<Rigidbody2D>().AddForce(projectileFireDirection * projectileSpeed, ForceMode2D.Impulse);
             }
+            CinemachineShake.Instance.CameraShake(5f, .2f);
+
             canFire = false;
             StartCoroutine(FireDelayCR());
         }

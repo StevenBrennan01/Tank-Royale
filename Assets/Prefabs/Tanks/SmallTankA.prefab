@@ -299,7 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7768604706299593489}
   m_Layer: 0
-  m_Name: ProjectileSpawn
+  m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -474,10 +474,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1af2a90fdb373746afd38b2fff33a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
-  projectileSpawnPosition1: {fileID: 0}
-  projectileSpawnPosition2: {fileID: 0}
-  projectileSpeed: 0
+  projectileSpawnPositions:
+  - {fileID: 7768604706299593489}
+  index: 0
+  projectilePrefab: {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
+  projectileSpeed: 20
+  fireDelay: 0.5
+  canFire: 1
 --- !u!114 &1649704187556918831
 MonoBehaviour:
   m_ObjectHideFlags: 0

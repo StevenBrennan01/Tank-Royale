@@ -11413,6 +11413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 827268352}
   - component: {fileID: 827268353}
+  - component: {fileID: 827268354}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -11475,11 +11476,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1522553766}
---- !u!4 &897443439 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7768604706299593489, guid: ff39beeca0876454bb543820300480eb, type: 3}
-  m_PrefabInstance: {fileID: 6211172268477609254}
+--- !u!114 &827268354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827268351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c5c1e33fef8e542845dd19c972e6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &992280346
 GameObject:
   m_ObjectHideFlags: 0
@@ -11492,7 +11500,7 @@ GameObject:
   - component: {fileID: 992280350}
   - component: {fileID: 992280349}
   - component: {fileID: 992280348}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13267,6 +13275,7 @@ GameObject:
   - component: {fileID: 1522553766}
   - component: {fileID: 1522553768}
   - component: {fileID: 1522553767}
+  - component: {fileID: 1522553769}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -13344,6 +13353,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1522553769
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522553765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1543857356
 GameObject:
   m_ObjectHideFlags: 0
@@ -13768,6 +13794,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1140391562233276381, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318346198427966974, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13808,33 +13842,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: fireDelay
-      value: 0.5
+    - target: {fileID: 2097676570090570725, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: projectileSpeed
-      value: 20
+    - target: {fileID: 2831297277950252082, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: projectileSpawnPositions.Array.size
+    - target: {fileID: 3053494317060601838, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: projectileSpawnPositions.Array.data[0]
-      value: 
-      objectReference: {fileID: 897443439}
+    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: towerRotateSpeed
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 4878679233940078483, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Name
-      value: SpawnPosition
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024077823413549754, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374641496769118616, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921741604375373708, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040342617693369637, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
