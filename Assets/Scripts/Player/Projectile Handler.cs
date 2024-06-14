@@ -37,7 +37,7 @@ public class ProjectileHandler : MonoBehaviour
         {
             //FINDING MOUSE POSITION IN WORLD SPACE TO SEND PROJECTILE
             mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 projectileFireDirection = (mousePos - transform.position); projectileFireDirection.Normalize();
+            Vector2 projectileFireDirection = (mousePos - projectileSpawnPositions[0].position); projectileFireDirection.Normalize();
 
             GameObject projectileSpawn = Instantiate(projectilePrefab, projectileSpawnPositions[0].position, Quaternion.identity);
 
