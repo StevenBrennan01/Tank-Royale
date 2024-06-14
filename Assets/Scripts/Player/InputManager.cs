@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 {
     private InputActions inputActions_SCR;
     private TankController tankController_SCR;
+    private ProjectileHandler projectileHandler_SCR;
 
     private Coroutine movingCR;
     private Coroutine shootingCR;
@@ -15,13 +16,13 @@ public class InputManager : MonoBehaviour
     private Animator TankAnimator;
 
     private bool isMoving;
-    private bool canShoot;
     private bool tankCanLook;
 
     private void Awake()
     {
         inputActions_SCR = new InputActions();
         tankController_SCR = GetComponent<TankController>();
+        projectileHandler_SCR = GetComponent<ProjectileHandler>();
 
         TankAnimator = GetComponent<Animator>();
     }
@@ -85,9 +86,8 @@ public class InputManager : MonoBehaviour
 
     private void ShootPerformed(InputAction.CallbackContext button)
     {
-        Debug.Log("TANK IS SHOOTING");
-        TankAnimator.SetTrigger("GunFiring");
         shootingCR = StartCoroutine(tankShootingCR());
+        TankAnimator.SetTrigger("GunFiring");
     }
 
     private IEnumerator tankMovingCR()
@@ -110,13 +110,10 @@ public class InputManager : MonoBehaviour
 
     private IEnumerator tankShootingCR()
     {
-        while (canShoot)
+        while (projectileHandler_SCR.canFire)
         {
-            tankController_SCR.TankShoot();
-
-            canShoot = false;
-            yield return new WaitForSeconds(0.3f);
-            canShoot = true;
+            projectileHandler_SCR.TankFired();
+            yield return null;
         }
     }
 }

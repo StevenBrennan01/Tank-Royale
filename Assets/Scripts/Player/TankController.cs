@@ -12,7 +12,7 @@ public class TankController : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject tankHull;
-    [SerializeField] private GameObject tankTower;
+    [SerializeField] public GameObject tankTower;
 
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -37,13 +37,14 @@ public class TankController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force);
+        rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force); //OLD
+        //rb.AddForce(transform.up * moveDir.y * tankMoveSpeed, ForceMode2D.Force); // NEW
         RotateHull();
     }
 
     private void RotateHull()
     {
-        if (moveDir != Vector2.zero)
+        if (moveDir != Vector2.zero) //OLD
         {
             float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
@@ -61,10 +62,5 @@ public class TankController : MonoBehaviour
 
         Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
         tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, towerRotateSpeed);
-    }
-
-    public void TankShoot()
-    {
-        //FUNCTION FOR SHOOTING + ANIMS + SCREEN SHAKE
     }
 }

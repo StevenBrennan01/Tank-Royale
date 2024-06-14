@@ -11475,6 +11475,11 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1522553766}
+--- !u!4 &897443439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7768604706299593489, guid: ff39beeca0876454bb543820300480eb, type: 3}
+  m_PrefabInstance: {fileID: 6211172268477609254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &992280346
 GameObject:
   m_ObjectHideFlags: 0
@@ -13802,6 +13807,30 @@ PrefabInstance:
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: fireDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: projectileSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: projectileSpawnPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: projectileSpawnPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 897443439}
+    - target: {fileID: 4878679233940078483, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Name
+      value: SpawnPosition
       objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name

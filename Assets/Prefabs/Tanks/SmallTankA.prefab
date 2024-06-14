@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7768604706299593489}
   m_Father: {fileID: 7951166271706724819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3276100737949334719
@@ -288,6 +289,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4878679233940078483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7768604706299593489}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7768604706299593489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4878679233940078483}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.005, y: 0.20000005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6516734689268526248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5024077823413549754
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1731580536834850097}
   - component: {fileID: 4709695966054172973}
+  - component: {fileID: 3962251045148137221}
   - component: {fileID: 1649704187556918831}
   - component: {fileID: 8335362305769700899}
   - component: {fileID: 876427260556038871}
@@ -429,6 +462,22 @@ MonoBehaviour:
   tankMoveSpeed: 10
   hullRotateSpeed: 0.7
   towerRotateSpeed: 0.03
+--- !u!114 &3962251045148137221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933158723731941601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1af2a90fdb373746afd38b2fff33a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPosition1: {fileID: 0}
+  projectileSpawnPosition2: {fileID: 0}
+  projectileSpeed: 0
 --- !u!114 &1649704187556918831
 MonoBehaviour:
   m_ObjectHideFlags: 0
