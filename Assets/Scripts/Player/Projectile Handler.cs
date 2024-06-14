@@ -12,10 +12,18 @@ public class ProjectileHandler : MonoBehaviour
     #endregion
 
     [SerializeField] private Transform[] projectileSpawnPositions;
-    public int index;
+    [SerializeField] private GameObject[] projectilePrefabs;
 
-    [SerializeField] private GameObject projectilePrefab;
-    //ADD MORE LATER IF SWITCHING PROJECTILES IS ADDED
+    #region Inspector Spacing
+    [Space(15)]
+    #endregion
+
+    //public int index;
+
+    #region Inspector Comments and Spacing
+    [Header("Speed Values")]
+    [Space(15)]
+    #endregion
 
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float fireDelay;
@@ -30,9 +38,9 @@ public class ProjectileHandler : MonoBehaviour
         {
             Vector2 projectileFireDirection = projectileSpawnPositions[0].position; projectileFireDirection.Normalize();
 
-            GameObject projectileSpawn = Instantiate(projectilePrefab, projectileSpawnPositions[0].position, Quaternion.identity);
+            GameObject projectileSpawn = Instantiate(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
 
-            if (projectilePrefab.GetComponent<Rigidbody2D>() != null)
+            if (projectilePrefabs[0].GetComponent<Rigidbody2D>() != null)
             {
                 float projectileRotation = Mathf.Atan2(projectileFireDirection.y, projectileFireDirection.x) * Mathf.Rad2Deg;
 

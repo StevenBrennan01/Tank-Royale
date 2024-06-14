@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6516734689268526248}
   - component: {fileID: 3276100737949334719}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small Gun A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7951166271706724819}
   - component: {fileID: 1767156434695908201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 679057135870364687}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HullHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883064369786649582}
   - component: {fileID: 7753753101993600216}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunConnector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7768604706299593489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6339161203966186513}
   - component: {fileID: 6161649308280262086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TrackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 8335362305769700899}
   - component: {fileID: 876427260556038871}
   - component: {fileID: 3053494317060601838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallTankA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,8 +476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPositions:
   - {fileID: 7768604706299593489}
-  index: 0
-  projectilePrefab: {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
+  projectilePrefabs:
+  - {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
   projectileSpeed: 20
   fireDelay: 0.5
   canFire: 1
@@ -586,7 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5905337693435896605}
   - component: {fileID: 1608097140842479367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2949360292813784489}
   - component: {fileID: 3405739795099582063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TrackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3223673689287177498}
   - component: {fileID: 5865008964940037248}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

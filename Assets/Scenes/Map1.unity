@@ -13794,14 +13794,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1140391562233276381, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1318346198427966974, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13842,49 +13834,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2097676570090570725, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2831297277950252082, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3053494317060601838, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: towerRotateSpeed
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878679233940078483, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5024077823413549754, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374641496769118616, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8921741604375373708, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9040342617693369637, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

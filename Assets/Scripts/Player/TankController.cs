@@ -20,8 +20,8 @@ public class TankController : MonoBehaviour
     private Vector3 mousePos;
     [HideInInspector] public Vector2 moveDir;
 
-    #region Inspector Header and Spacing
-    [Header("                                                -= Movement Attributes =-")]
+    #region Inspector Comments and Spacing
+    [Header("Movement Values")]
     [Space(15)]
     #endregion
 
