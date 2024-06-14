@@ -23,20 +23,12 @@ public class ProjectileHandler : MonoBehaviour
     [HideInInspector] public bool canFire = true;
 
     private Vector3 mousePos;
-    private Camera mainCam;
-
-    private void Awake()
-    {
-        mainCam = Camera.main;
-    }
 
     public void TankFired()
     {
         if (canFire)
         {
-            //FINDING MOUSE POSITION IN WORLD SPACE TO SEND PROJECTILE
-            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 projectileFireDirection = (mousePos - projectileSpawnPositions[0].position); projectileFireDirection.Normalize();
+            Vector2 projectileFireDirection = projectileSpawnPositions[0].position; projectileFireDirection.Normalize();
 
             GameObject projectileSpawn = Instantiate(projectilePrefab, projectileSpawnPositions[0].position, Quaternion.identity);
 
