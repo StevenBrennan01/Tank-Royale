@@ -11,8 +11,8 @@ public class ProjectileHandler : MonoBehaviour
     [Space(15)]
     #endregion
 
-    [SerializeField] private Transform[] projectileSpawnPositions;
     [SerializeField] private GameObject[] projectilePrefabs;
+    [SerializeField] private Transform[] projectileSpawnPositions;
 
     #region Inspector Spacing
     [Space(15)]
@@ -36,7 +36,7 @@ public class ProjectileHandler : MonoBehaviour
     {
         if (canFire)
         {
-            Vector2 projectileFireDirection = projectileSpawnPositions[0].position; projectileFireDirection.Normalize();
+            Vector2 projectileFireDirection = projectileSpawnPositions[0].up; projectileFireDirection.Normalize();
 
             GameObject projectileSpawn = Instantiate(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
 
@@ -47,6 +47,7 @@ public class ProjectileHandler : MonoBehaviour
                 projectileSpawn.transform.rotation = Quaternion.Euler(0f, 0f, projectileRotation - 90f);
                 projectileSpawn.GetComponent<Rigidbody2D>().AddForce(projectileFireDirection * projectileSpeed, ForceMode2D.Impulse);
             }
+            //                            (INTENSITY, FOR TIME)
             CinemachineShake.Instance.CameraShake(5f, .2f);
 
             canFire = false;
