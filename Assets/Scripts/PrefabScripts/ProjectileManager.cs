@@ -22,7 +22,7 @@ public class ProjectileManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Vector2.Distance(startPos, rb.transform.position) >= maxRange)
         {

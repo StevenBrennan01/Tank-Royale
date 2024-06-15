@@ -14,11 +14,11 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private GameObject[] projectilePrefabs;
     [SerializeField] private Transform[] projectileSpawnPositions;
 
+    //public int index;
+
     #region Inspector Spacing
     [Space(15)]
     #endregion
-
-    //public int index;
 
     #region Inspector Comments and Spacing
     [Header("Speed Values")]
