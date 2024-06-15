@@ -37,14 +37,13 @@ public class TankController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force); //OLD
-        //rb.AddForce(transform.up * moveDir.y * tankMoveSpeed, ForceMode2D.Force); // NEW
+        rb.AddForce(moveDir * tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
         RotateHull();
     }
 
     private void RotateHull()
     {
-        if (moveDir != Vector2.zero) //OLD
+        if (moveDir != Vector2.zero)
         {
             float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
