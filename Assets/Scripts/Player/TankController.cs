@@ -37,7 +37,7 @@ public class TankController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(moveDir * tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
+        rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force);
         RotateHull();
     }
 

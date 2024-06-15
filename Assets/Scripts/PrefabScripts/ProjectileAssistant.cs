@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileManager : MonoBehaviour
+public class ProjectileAssistant : MonoBehaviour
 {
     #region Inspector Header and Spacing
     [Header("                                                  -= Projectile Manager =-")]
