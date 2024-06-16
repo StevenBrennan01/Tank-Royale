@@ -33,7 +33,7 @@ public class TankController : MonoBehaviour
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
-    }
+    } 
 
     public void MoveTank()
     {
