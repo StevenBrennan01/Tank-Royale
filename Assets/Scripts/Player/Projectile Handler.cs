@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ProjectileHandler : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ProjectileHandler : MonoBehaviour
 
     [SerializeField] private GameObject[] projectilePrefabs;
     [SerializeField] private Transform[] projectileSpawnPositions;
+
+    [SerializeField] private ParticleSystem gunShootEffect;
 
     //public int index;
 
@@ -47,6 +50,8 @@ public class ProjectileHandler : MonoBehaviour
                 projectileSpawn.transform.rotation = Quaternion.Euler(0f, 0f, projectileRotation - 90f);
                 projectileSpawn.GetComponent<Rigidbody2D>().AddForce(projectileFireDirection * projectileSpeed, ForceMode2D.Impulse);
             }
+            gunShootEffect.Play();
+
             //                            (INTENSITY, FOR TIME)
             CinemachineShake.Instance.CameraShake(5f, .2f);
 
