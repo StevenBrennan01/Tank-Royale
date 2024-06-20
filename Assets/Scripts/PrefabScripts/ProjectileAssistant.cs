@@ -17,6 +17,8 @@ public class ProjectileAssistant : MonoBehaviour
 
     private float maxRange = 100f;
 
+    //[SerializeField] private ParticleSystem collisionEffect;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,12 +34,13 @@ public class ProjectileAssistant : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ADD IF STATEMENT HERE TO CHECK FOR SCRIPT OR TAG OF ANOTHER TANK TO ADD DAMAGE USING GE COMPONENT FOR ANOTHER OBJECT
+        // ADD IF STATEMENT HERE TO CHECK FOR SCRIPT OR TAG OF ANOTHER TANK TO ADD DAMAGE USING GET COMPONENT FOR ANOTHER OBJECT
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
+            //collisionEffect.Play();
+
             rb.velocity = Vector2.zero;
-            //ADD SOME FX HERE
             Destroy(gameObject);
         }
     }

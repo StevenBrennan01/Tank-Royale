@@ -255,11 +255,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!4 &649859889 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-  m_PrefabInstance: {fileID: 528388347323791006}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &823015416
 GameObject:
   m_ObjectHideFlags: 0
@@ -13739,38 +13734,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1398441640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1398441641}
-  m_Layer: 0
-  m_Name: VFXPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1398441641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398441640}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 649859889}
-  m_Father: {fileID: 1729765503}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1522553765
 GameObject:
   m_ObjectHideFlags: 3
@@ -13924,16 +13887,6 @@ Transform:
   - {fileID: 992280347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1663565530 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5857973026824044408, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-  m_PrefabInstance: {fileID: 528388347323791006}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1729765503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7768604706299593489, guid: ff39beeca0876454bb543820300480eb, type: 3}
-  m_PrefabInstance: {fileID: 6211172268477609254}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1771203920
 GameObject:
   m_ObjectHideFlags: 0
@@ -14303,79 +14256,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &528388347323791006
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1398441641}
-    m_Modifications:
-    - target: {fileID: 2480563338621054870, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3016159435719801583, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8081896
-      objectReference: {fileID: 0}
-    - target: {fileID: 3016159435719801583, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8081896
-      objectReference: {fileID: 0}
-    - target: {fileID: 3016159435719801583, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8081896
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417405761239878375, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_Name
-      value: Shoot-VFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
 --- !u!1001 &6211172268477609254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14424,24 +14304,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: gunShootEffect
-      value: 
-      objectReference: {fileID: 1663565530}
-    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: tankMoveSpeed
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7768604706299593489, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1398441641}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff39beeca0876454bb543820300480eb, type: 3}
 --- !u!1660057539 &9223372036854775807

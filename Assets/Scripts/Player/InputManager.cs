@@ -87,7 +87,6 @@ public class InputManager : MonoBehaviour
     private void ShootPerformed(InputAction.CallbackContext button)
     {
         shootingCR = StartCoroutine(tankShootingCR());
-        TankAnimator.SetTrigger("GunFiring");
     }
 
     private IEnumerator tankMovingCR()

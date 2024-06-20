@@ -7,6 +7,8 @@ public class ProjectileHandler : MonoBehaviour
 {
     private TankController tankController_SCR;
 
+    private Animator TankAnimator;
+
     #region Inspector Header and Spacing
     [Header("                                                  -= Projectile Attributes =-")]
     [Space(15)]
@@ -35,6 +37,11 @@ public class ProjectileHandler : MonoBehaviour
 
     private Vector3 mousePos;
 
+    private void Awake()
+    {
+        TankAnimator = GetComponent<Animator>();
+    }
+
     public void TankFired()
     {
         if (canFire)
@@ -49,8 +56,10 @@ public class ProjectileHandler : MonoBehaviour
 
                 projectileSpawn.transform.rotation = Quaternion.Euler(0f, 0f, projectileRotation - 90f);
                 projectileSpawn.GetComponent<Rigidbody2D>().AddForce(projectileFireDirection * projectileSpeed, ForceMode2D.Impulse);
+
+                gunShootEffect.Play();
+                TankAnimator.SetTrigger("GunFiring");
             }
-            gunShootEffect.Play();
 
             //                            (INTENSITY, FOR TIME)
             CinemachineShake.Instance.CameraShake(5f, .2f);
