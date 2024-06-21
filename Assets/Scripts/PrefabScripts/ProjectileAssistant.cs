@@ -41,11 +41,10 @@ public class ProjectileAssistant : MonoBehaviour
             //collisionEffect.Play();
 
             rb.velocity = Vector2.zero;
+            Destroy(gameObject);
 
             //                            (INTENSITY, FOR TIME)
-            CinemachineShake.Instance.CameraShake(1f, .25f);
-
-            Destroy(gameObject);
+            //CinemachineShake.Instance.CameraShake(1f, .25f);
         }
     }
 }
