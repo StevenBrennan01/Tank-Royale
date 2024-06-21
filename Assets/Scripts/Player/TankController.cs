@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -33,14 +32,19 @@ public class TankController : MonoBehaviour
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+
+        moveDir += moveDir.normalized;
     } 
 
     public void MoveTank()
     {
-        rb.AddForce(moveDir * tankMoveSpeed, ForceMode2D.Force);
+        
+
+        rb.AddForce(moveDir * tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
         RotateHull();
     }
 
+    #region Tank Rotations
     private void RotateHull()
     {
         if (moveDir != Vector2.zero)
@@ -48,7 +52,7 @@ public class TankController : MonoBehaviour
             float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
             Quaternion targetRotation = Quaternion.Euler(0, 0, angleTarget);
-            tankHull.transform.rotation = Quaternion.RotateTowards(tankHull.transform.rotation, targetRotation, hullRotateSpeed);
+            tankHull.transform.rotation = Quaternion.RotateTowards(tankHull.transform.rotation, targetRotation, hullRotateSpeed * Time.deltaTime);
         }
     }
 
@@ -62,4 +66,5 @@ public class TankController : MonoBehaviour
         Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
         tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, towerRotateSpeed);
     }
+    #endregion
 }

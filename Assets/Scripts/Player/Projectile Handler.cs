@@ -62,7 +62,7 @@ public class ProjectileHandler : MonoBehaviour
             }
 
             //                            (INTENSITY, FOR TIME)
-            CinemachineShake.Instance.CameraShake(5f, .2f);
+            CinemachineShake.Instance.CameraShake(1.5f, .25f);
 
             canFire = false;
             StartCoroutine(FireDelayCR());
