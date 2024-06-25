@@ -185,7 +185,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.277
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -442,19 +442,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 576295121299852140, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Radius
-      value: 1.2967572
+      value: 0.20027399
       objectReference: {fileID: 0}
     - target: {fileID: 576295121299852140, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Offset.x
       value: -0.007086277
       objectReference: {fileID: 0}
+    - target: {fileID: 576295121299852140, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.046922207
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.021226883
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10037708
+      objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.7
+      value: -15.17
       objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -497,12 +517,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6468251784812939700, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_Height
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468251784812939700, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Radius
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6468251784812939700, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_AutoRepath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468251784812939700, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_BaseOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468251784812939700, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6468251784812939700, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_WalkableMask
@@ -38547,6 +38579,7 @@ GameObject:
   - component: {fileID: 992280349}
   - component: {fileID: 992280348}
   - component: {fileID: 992280351}
+  - component: {fileID: 992280352}
   m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
@@ -60632,6 +60665,22 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!208 &992280352
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992280346}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 56.000004, y: 34, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 18, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1005982601
 GameObject:
   m_ObjectHideFlags: 0
