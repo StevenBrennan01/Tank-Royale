@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         if (enemySpawnPositions.Length <= 0) Debug.Log("Please assign some locations for enemies to spawn");
     }
 
-
     void Start()
     {
         //spawn enemies, play music, etc.

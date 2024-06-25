@@ -7,13 +7,13 @@ public class EnemyController : MonoBehaviour
 {
     NavMeshAgent enemyAgent;
 
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform enemyTarget;
 
-    [SerializeField] private bool playerInRange;
-    [SerializeField] private bool enemyIsMoving;
+    private bool playerInRange;
+    private bool enemyIsMoving;
 
-    [SerializeField] private float enemySpeed;
-    [SerializeField] private float stoppingDistance;
+    //[SerializeField] private float enemySpeed;
+    //[SerializeField] private float stoppingDistance;
 
     private Coroutine enemyMoving;
     private Coroutine enemyAttacking;
@@ -21,6 +21,9 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
+
+        enemyAgent.updateRotation = false;
+        enemyAgent.updateUpAxis = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -42,24 +45,18 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyMove()
     {
-        if (playerInRange && Vector2.Distance(transform.position, player.position) >= stoppingDistance)
+        if (playerInRange) //&& Vector2.Distance(transform.position, player.position) >= stoppingDistance)
         {
-            StartCoroutine(TankMoving());
+            StartCoroutine(EnemyMoving());
         }
     }
 
-    private IEnumerator TankMoving()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, enemySpeed * Time.deltaTime);
-        enemyIsMoving = true;
-        yield return null;
-    }
-
-    private IEnumerator TankIdle()
-    {
-        transform.position = Vector2.zero;
-        yield return null;
-    }
+        private IEnumerator EnemyMoving()
+        {
+            enemyAgent.SetDestination(enemyTarget.position);
+            enemyIsMoving = true;
+            yield return null;
+        }
 
     private void EnemyAttack()
     {
