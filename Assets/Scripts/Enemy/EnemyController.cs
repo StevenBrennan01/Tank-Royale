@@ -47,11 +47,11 @@ public class EnemyController : MonoBehaviour
     {
         if (playerInRange) //&& Vector2.Distance(transform.position, player.position) >= stoppingDistance)
         {
-            StartCoroutine(EnemyMoving());
+            enemyMoving = StartCoroutine(EnemyMoving_CR());
         }
     }
 
-        private IEnumerator EnemyMoving()
+        private IEnumerator EnemyMoving_CR()
         {
             enemyAgent.SetDestination(enemyTarget.position);
             enemyIsMoving = true;
@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
     {
         if (playerInRange)
         {
-            //do something
+            //do something, shoot etc.
         }
     }
 }
