@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         if (tankEnemies.Length <= 0) Debug.Log("No enemies assigned, please assign some enemies to the level");
         if (enemySpawnPositions.Length <= 0) Debug.Log("Please assign some locations for enemies to spawn");
     }
