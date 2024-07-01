@@ -8,9 +8,8 @@ public class MousePosTracker : MonoBehaviour
 
     void Update()
     {
-        Vector3 mouseScreenPosition = Input.mousePosition;
-
-        Vector3 mouseWorldPosition = m_Camera.ScreenToWorldPoint(mouseScreenPosition);
+        Vector2 mouseScreenPosition = Input.mousePosition;
+        Vector2 mouseWorldPosition = m_Camera.ScreenToWorldPoint(mouseScreenPosition);
 
         transform.position = mouseWorldPosition;
     }
