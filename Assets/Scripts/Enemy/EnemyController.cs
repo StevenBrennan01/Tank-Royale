@@ -1,22 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    NavMeshAgent enemyAgent;
-
     [SerializeField] private Transform enemyTarget;
 
-    private bool playerInRange;
-    private bool enemyIsMoving;
+    #region Inspector Header and Spacing
+    [Header("-= Enemy Attributes =-")]
+    [Space(5)]
+    #endregion
 
-    //[SerializeField] private float enemySpeed;
-    //[SerializeField] private float stoppingDistance;
+    [SerializeField] private GameObject enemyTower;
+    [SerializeField] private GameObject enemyHull;
+
+    [SerializeField] private float hullRotateSpeed;
+    [SerializeField] private float towerRotateSpeed;
+
+    private bool playerInRange;
+
+    private Rigidbody2D rb;
+    private NavMeshAgent enemyAgent;
 
     private Coroutine enemyMoving;
     private Coroutine enemyAttacking;
+
 
     private void Awake()
     {
@@ -54,7 +64,6 @@ public class EnemyController : MonoBehaviour
         private IEnumerator EnemyMoving_CR()
         {
             enemyAgent.SetDestination(enemyTarget.position);
-            enemyIsMoving = true;
             yield return null;
         }
 
@@ -62,7 +71,9 @@ public class EnemyController : MonoBehaviour
     {
         if (playerInRange)
         {
-            //do something, shoot etc.
+            enemyTower.transform.rotation = Quaternion.RotateTowards(enemyTower.transform.rotation, enemyTarget.transform.position, towerRotateSpeed * Time.deltaTime);
+            //rotate tower to player position
+            //shoot at player
         }
     }
 }
