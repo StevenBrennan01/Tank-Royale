@@ -405,14 +405,6 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 255274939}
-    - target: {fileID: 6014693222852773915, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: hullRotateSpeed
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014693222852773915, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: towerRotateSpeed
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 7611189505446822488, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Name
       value: EnemyTankA
