@@ -659,10 +659,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 248675609896892657}
   - {fileID: 4009732505648999849}
   - {fileID: 1894236425799837645}
   - {fileID: 6450160850754706253}
-  - {fileID: 248675609896892657}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6014693222852773915
@@ -680,8 +680,8 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   enemyTower: {fileID: 242309197577641964}
   enemyHull: {fileID: 1507478333897942705}
-  hullRotateSpeed: 0
-  towerRotateSpeed: 0
+  hullRotateSpeed: 125
+  towerRotateSpeed: 0.03
 --- !u!195 &6468251784812939700
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -974,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798477754370369910, guid: 86d8049f07cde8244b6f56568c27f80e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.19
+      value: 1.837
       objectReference: {fileID: 0}
     - target: {fileID: 5798477754370369910, guid: 86d8049f07cde8244b6f56568c27f80e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
