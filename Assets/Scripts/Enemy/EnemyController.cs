@@ -58,13 +58,12 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyEngage()
     {
-        if (playerInRange) //&& Vector2.Distance(transform.position, player.position) >= stoppingDistance)
+        if (playerInRange)
         {
-            //Starts coroutine to move tank
+            //STARTS COROUTINE TO MOVE TANK
             enemyMoving = StartCoroutine(EnemyMoving_CR());
 
-
-            //Rotates tank tower to player position
+            //ROTATES TANK TOWER TO PLAYER POSITION
             Vector3 towerRot = (enemyTarget.transform.position - enemyTower.transform.position);
             float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
@@ -73,10 +72,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //COROUTINES FOR MOVING AND ATTACKING
-    private IEnumerator EnemyMoving_CR()
-    {
-        enemyAgent.SetDestination(enemyTarget.transform.position);
-        yield return null;
-    }
+        private IEnumerator EnemyMoving_CR()
+        {
+            enemyAgent.SetDestination(enemyTarget.transform.position);
+            yield return null;
+        }
 }

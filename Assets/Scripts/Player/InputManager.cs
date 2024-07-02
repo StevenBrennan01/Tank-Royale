@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     private InputActions inputActions_SCR;
     private PlayerController tankController_SCR;
     private ProjectileHandler projectileHandler_SCR;
+    private UIManager uiManager_SCR;
 
     private Coroutine movingCR;
     private Coroutine shootingCR;
@@ -17,14 +18,18 @@ public class InputManager : MonoBehaviour
 
     private bool isMoving;
     private bool tankCanLook;
+    private bool gamePaused;
 
     private void Awake()
     {
         inputActions_SCR = new InputActions();
         tankController_SCR = GetComponent<PlayerController>();
         projectileHandler_SCR = GetComponent<ProjectileHandler>();
+        uiManager_SCR = FindObjectOfType<UIManager>();
 
         TankAnimator = GetComponent<Animator>();
+
+        gamePaused = false;
     }
 
     private void OnEnable()
@@ -38,6 +43,9 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.MouseLook.Enable();
         inputActions_SCR.Player.MouseLook.performed += MouseLooking;
+
+        inputActions_SCR.Player.PauseGame.Enable();
+        inputActions_SCR.Player.PauseGame.performed += PausePerformed;
     }
 
     private void OnDisable()
@@ -48,7 +56,12 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Shoot.Disable();
         inputActions_SCR.Player.Shoot.performed -= ShootPerformed;
+
+        inputActions_SCR.Player.PauseGame.Disable();
+        inputActions_SCR.Player.PauseGame.performed -= PausePerformed;
     }
+
+    //METHODS
 
     private void MovePerformed(InputAction.CallbackContext value)
     {
@@ -61,7 +74,6 @@ public class InputManager : MonoBehaviour
             movingCR = StartCoroutine(tankMovingCR());
         }
     }
-
     private void MoveCancelled(InputAction.CallbackContext value)
     {
         tankController_SCR.moveDir = value.ReadValue<Vector2>();
@@ -88,6 +100,24 @@ public class InputManager : MonoBehaviour
     {
         shootingCR = StartCoroutine(tankShootingCR());
     }
+
+    private void PausePerformed(InputAction.CallbackContext button)
+    {
+        if (!gamePaused)
+        {
+            Time.timeScale = 0;
+            uiManager_SCR.pauseMenuUI.SetActive(true);
+            gamePaused = true;
+        }
+        else if (gamePaused)
+        {
+            Time.timeScale = 1;
+            uiManager_SCR.pauseMenuUI.SetActive(false);
+            gamePaused = false;
+        }
+    }
+
+    //COROUTINES
 
     private IEnumerator tankMovingCR()
     {
