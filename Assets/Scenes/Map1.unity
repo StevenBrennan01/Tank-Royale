@@ -415,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 255274939}
     - target: {fileID: 6014693222852773915, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: towerRotateSpeed
-      value: 0.04
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7611189505446822488, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Name
