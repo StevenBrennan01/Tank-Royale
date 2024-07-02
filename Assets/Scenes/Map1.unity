@@ -361,14 +361,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3082225688408961076, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: shootVFX
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3082225688408961076, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: shootVFX.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.25
@@ -413,10 +405,6 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 255274939}
-    - target: {fileID: 6014693222852773915, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: towerRotateSpeed
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 7611189505446822488, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_Name
       value: EnemyTankA
@@ -62359,18 +62347,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: shootVFX
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: shootVFX.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: projectilePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 6069812804996178849, guid: 3fcdc8a4a26603943bda19083efbd3b0, type: 3}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA

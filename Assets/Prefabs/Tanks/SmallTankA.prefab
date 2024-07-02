@@ -508,10 +508,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefabs:
-  - {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
+  - {fileID: 6069812804996178849, guid: 3fcdc8a4a26603943bda19083efbd3b0, type: 3}
   projectileSpawnPositions:
   - {fileID: 7768604706299593489}
-  shootVFX: {fileID: 5471873180625124475}
+  shootVFX: {fileID: 0}
   projectileSpeed: 20
   fireDelay: 0.5
   canFire: 1
@@ -935,11 +935,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
---- !u!198 &5471873180625124475 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5857973026824044408, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
-  m_PrefabInstance: {fileID: 1919743749966988035}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7401424168242914956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8940604953468282255, guid: 3062705f512d5c44c80648fe0ebdc266, type: 3}
