@@ -10,12 +10,10 @@ public class ProjectileAssistant : MonoBehaviour
     [Space(15)]
     #endregion
 
-    //[SerializeField] private float damageValue;
+    [SerializeField] private float damageValue;
 
     private Rigidbody2D rb;
     private Vector2 startPos;
-
-    //private float maxRange = 100f;
 
     //[SerializeField] private ParticleSystem collisionEffect;
 
@@ -23,14 +21,6 @@ public class ProjectileAssistant : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if (Vector2.Distance(startPos, rb.transform.position) >= maxRange)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

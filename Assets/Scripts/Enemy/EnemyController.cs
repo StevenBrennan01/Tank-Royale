@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,10 +7,15 @@ public class EnemyController : MonoBehaviour
 {
     private ProjectileHandler projectileHandler_SCR;
 
+    #region Inspector Header and Spacing
+    [Header("                                                    -= Enemy Controller =-")]
+    [Space(15)]
+    #endregion
+
     [SerializeField] private Transform enemyTarget;
 
     #region Inspector Header and Spacing
-    [Header("-= Enemy Attributes =-")]
+    [Header("Attributes")]
     [Space(5)]
     #endregion
 

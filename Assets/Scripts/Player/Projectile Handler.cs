@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,15 @@ public class ProjectileHandler : MonoBehaviour
     private Animator TankAnimator;
 
     #region Inspector Header and Spacing
-    [Header("                                                  -= Projectile Attributes =-")]
+    [Header("                                                    -= Projectile Handler =-")]
     [Space(15)]
     #endregion
 
     [SerializeField] private GameObject[] projectilePrefabs;
     [SerializeField] private Transform[] projectileSpawnPositions;
+
+    //WILL NEED TO USE THIS WHEN ENABLING NEW BULLETS ETC.
+    //private int index;
 
     [SerializeField] private ParticleSystem shootVFX;
 

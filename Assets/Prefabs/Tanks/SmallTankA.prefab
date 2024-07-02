@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 1731580536834850097}
   - component: {fileID: 4709695966054172973}
   - component: {fileID: 3962251045148137221}
+  - component: {fileID: 931373404213766350}
   - component: {fileID: 1649704187556918831}
   - component: {fileID: 8335362305769700899}
   - component: {fileID: 876427260556038871}
@@ -515,6 +516,18 @@ MonoBehaviour:
   projectileSpeed: 20
   fireDelay: 0.5
   canFire: 1
+--- !u!114 &931373404213766350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933158723731941601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18495c04d94f04947902a16f21e25141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1649704187556918831
 MonoBehaviour:
   m_ObjectHideFlags: 0
