@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    private ProjectileHandler projectileHandler_SCR;
+
     [SerializeField] private Transform enemyTarget;
 
     #region Inspector Header and Spacing
@@ -25,12 +27,11 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent enemyAgent;
 
     private Coroutine enemyMoving;
-    private Coroutine enemyAttacking;
-
 
     private void Awake()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
+        projectileHandler_SCR = GetComponent<ProjectileHandler>();
 
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;
@@ -41,7 +42,9 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = true;
-            EnemyMove();
+
+            EnemyEngage();
+            projectileHandler_SCR.TankFired();
         }
     }
 
@@ -53,27 +56,27 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void EnemyMove()
+    private void EnemyEngage()
     {
         if (playerInRange) //&& Vector2.Distance(transform.position, player.position) >= stoppingDistance)
         {
+            //Starts coroutine to move tank
             enemyMoving = StartCoroutine(EnemyMoving_CR());
+
+
+            //Rotates tank tower to player position
+            Vector3 towerRot = (enemyTarget.transform.position - enemyTower.transform.position);
+            float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
+
+            Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
+            enemyTower.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, towerRotation, towerRotateSpeed);
         }
     }
 
-        private IEnumerator EnemyMoving_CR()
-        {
-            enemyAgent.SetDestination(enemyTarget.position);
-            yield return null;
-        }
-
-    private void EnemyAttack()
+    //COROUTINES FOR MOVING AND ATTACKING
+    private IEnumerator EnemyMoving_CR()
     {
-        if (playerInRange)
-        {
-            enemyTower.transform.rotation = Quaternion.RotateTowards(enemyTower.transform.rotation, enemyTarget.transform.position, towerRotateSpeed * Time.deltaTime);
-            //rotate tower to player position
-            //shoot at player
-        }
+        enemyAgent.SetDestination(enemyTarget.transform.position);
+        yield return null;
     }
 }

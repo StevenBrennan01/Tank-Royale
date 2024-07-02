@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private InputActions inputActions_SCR;
-    private TankController tankController_SCR;
+    private PlayerController tankController_SCR;
     private ProjectileHandler projectileHandler_SCR;
 
     private Coroutine movingCR;
@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         inputActions_SCR = new InputActions();
-        tankController_SCR = GetComponent<TankController>();
+        tankController_SCR = GetComponent<PlayerController>();
         projectileHandler_SCR = GetComponent<ProjectileHandler>();
 
         TankAnimator = GetComponent<Animator>();

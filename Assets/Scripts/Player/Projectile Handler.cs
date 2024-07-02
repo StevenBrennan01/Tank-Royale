@@ -5,7 +5,7 @@ using UnityEngine.VFX;
 
 public class ProjectileHandler : MonoBehaviour
 {
-    private TankController tankController_SCR;
+    private PlayerController tankController_SCR;
 
     private Animator TankAnimator;
 
@@ -17,13 +17,9 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private GameObject[] projectilePrefabs;
     [SerializeField] private Transform[] projectileSpawnPositions;
 
-    [SerializeField] private ParticleSystem gunShootEffect;
+    [SerializeField] private ParticleSystem shootVFX;
 
     //public int index;
-
-    #region Inspector Spacing
-    [Space(15)]
-    #endregion
 
     #region Inspector Comments and Spacing
     [Header("Speed Values")]
@@ -57,8 +53,12 @@ public class ProjectileHandler : MonoBehaviour
                 projectileSpawn.transform.rotation = Quaternion.Euler(0f, 0f, projectileRotation - 90f);
                 projectileSpawn.GetComponent<Rigidbody2D>().AddForce(projectileFireDirection * projectileSpeed, ForceMode2D.Impulse);
 
-                gunShootEffect.Play();
                 TankAnimator.SetTrigger("GunFiring");
+
+                if (shootVFX != null)
+                {
+                    shootVFX.Play();
+                }
             }
 
             //                            (INTENSITY, FOR TIME)

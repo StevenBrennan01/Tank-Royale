@@ -19,12 +19,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (tankEnemies.Length <= 0) Debug.Log("No enemies assigned, please assign some enemies to the level");
-        if (enemySpawnPositions.Length <= 0) Debug.Log("Please assign some locations for enemies to spawn");
+        if (tankEnemies.Length <= 0) Debug.LogError("No enemies assigned, please assign some enemies to the level");
+        if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
+
+        //spawn enemies at spawn positions
     }
 
     void Start()
     {
-        //spawn enemies, play music, etc.
+        //play music, etc.
     }
 }

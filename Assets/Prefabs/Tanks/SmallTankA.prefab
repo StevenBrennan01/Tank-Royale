@@ -115,8 +115,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6516734689268526248}
   - {fileID: 883064369786649582}
+  - {fileID: 6516734689268526248}
   m_Father: {fileID: 1731580536834850097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1767156434695908201
@@ -331,7 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7768604706299593489}
   m_Layer: 7
-  m_Name: SpawnPosition
+  m_Name: ProjectileSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 3053494317060601838}
   m_Layer: 7
   m_Name: SmallTankA
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,8 +492,8 @@ MonoBehaviour:
   tankHull: {fileID: 2097676570090570725}
   tankTower: {fileID: 1318346198427966974}
   moveDir: {x: 0, y: 0}
-  tankMoveSpeed: 3.5
-  hullRotateSpeed: 0.4
+  tankMoveSpeed: 1500
+  hullRotateSpeed: 125
   towerRotateSpeed: 0.03
 --- !u!114 &3962251045148137221
 MonoBehaviour:
@@ -511,7 +511,7 @@ MonoBehaviour:
   - {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
   projectileSpawnPositions:
   - {fileID: 7768604706299593489}
-  gunShootEffect: {fileID: 5471873180625124475}
+  shootVFX: {fileID: 5471873180625124475}
   projectileSpeed: 20
   fireDelay: 0.5
   canFire: 1
@@ -550,7 +550,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4

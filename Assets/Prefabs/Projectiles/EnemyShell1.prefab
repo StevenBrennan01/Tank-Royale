@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7837485304658889785}
   - component: {fileID: 3427471848998212442}
   m_Layer: 6
-  m_Name: LightShell
+  m_Name: EnemyShell1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.03016, y: 0.77261996, z: 0.25754}
+  m_LocalScale: {x: 1.449023, y: 1.0867672, z: 0.36225575}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1886639698544515862}

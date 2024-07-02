@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TankController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     #region Inspector Header and Spacing
     [Header("                                                     -= Tank Controller =-")]
@@ -58,8 +58,8 @@ public class TankController : MonoBehaviour
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 gunRot = (mousePos - tankTower.transform.position);
-        float targetPoint = Mathf.Atan2(gunRot.y, gunRot.x) * Mathf.Rad2Deg - 90f;
+        Vector3 towerRot = (mousePos - tankTower.transform.position);
+        float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
         tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, towerRotateSpeed);
