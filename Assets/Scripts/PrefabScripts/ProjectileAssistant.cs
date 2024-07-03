@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ProjectileAssistant : MonoBehaviour
 {
@@ -28,8 +29,12 @@ public class ProjectileAssistant : MonoBehaviour
         {
             //give damage
 
+            Debug.Log("HealthManager found on gameobject");
+
             rb.velocity = Vector2.zero;
             Destroy(this.gameObject);
+
+            Debug.Log("Object destroyed");
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
