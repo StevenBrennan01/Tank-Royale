@@ -29,12 +29,7 @@ public class ProjectileAssistant : MonoBehaviour
         {
             //give damage
 
-            Debug.Log("HealthManager found on gameobject");
-
-            rb.velocity = Vector2.zero;
             Destroy(this.gameObject);
-
-            Debug.Log("Object destroyed");
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
