@@ -679,29 +679,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: m_Size.x
-      value: 25.152592
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: m_Size.y
-      value: 12.752171
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.054050446
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186317681081158539, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.1293945
-      objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.55
+      value: -30.3
       objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.7
+      value: -8.1
       objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -734,10 +718,6 @@ PrefabInstance:
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5796831018753307835, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6014693222852773915, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: enemyTarget
