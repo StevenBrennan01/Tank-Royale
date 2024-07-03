@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-        private IEnumerator EnemyMoving_CR()
+    private IEnumerator EnemyMoving_CR()
         {
             enemyAgent.SetDestination(enemyTarget.transform.position);
             yield return null;

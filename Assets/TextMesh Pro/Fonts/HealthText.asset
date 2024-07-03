@@ -118,11 +118,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Cross Boxed SDF
+  m_Name: HealthText
   m_EditorClassIdentifier: 
-  hashCode: -2146484805
+  hashCode: 1335020641
   material: {fileID: -3507901113651057458}
-  materialHashCode: 1689360059
+  materialHashCode: -882281183
   m_Version: 1.1.0
   m_SourceFontFileGUID: cfa7a1528abc5614cae334ca565099fc
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: cfa7a1528abc5614cae334ca565099fc, type: 3}

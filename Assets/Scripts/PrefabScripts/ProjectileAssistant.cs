@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileAssistant : MonoBehaviour
 {
     #region Inspector Header and Spacing
-    [Header("                                                  -= Projectile Manager =-")]
+    [Header("                                                 -= Projectile Manager =-")]
     [Header("                                   (If projectile hits wall it will auto destroy)")]
     [Space(15)]
     #endregion
@@ -22,19 +22,21 @@ public class ProjectileAssistant : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // ADD IF STATEMENT HERE TO CHECK FOR SCRIPT OR TAG OF ANOTHER TANK TO ADD DAMAGE USING GET COMPONENT FOR ANOTHER OBJECT
+        if (collision.gameObject.GetComponent<HealthManager>() != null)
+        {
+            //give damage
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            rb.velocity = Vector2.zero;
+            Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             //collisionEffect.Play();
 
             rb.velocity = Vector2.zero;
-            Destroy(gameObject);
-
-            //                            (INTENSITY, FOR TIME)
-            //CinemachineShake.Instance.CameraShake(1f, .25f);
+            Destroy(this.gameObject);
         }
     }
 }

@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    #region Inspector Comments and Spacing
-    [Header("-= Health Manager =-")]
-    [Space(10)]
-    #endregion
-
     private GameManager gameManager_SCR;
 
-    [SerializeField] private Image healthBar;
+    #region Inspector Comments and Spacing
+    [Header("                                                          -= Health Manager =-")]
+    [Space(15)]
+    #endregion
 
-    [SerializeField] bool canRespawn;
+    [SerializeField] private bool agentCanRespawn;
+    [SerializeField] private float respawnDelay;
 
-    private float maxHealth;
+    [SerializeField] private Image healthBarImage;
+
+    [SerializeField] private float maxHealth;
     private float currentHealth;
-
 
     private void OnEnable()
     {

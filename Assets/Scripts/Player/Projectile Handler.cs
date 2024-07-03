@@ -23,8 +23,6 @@ public class ProjectileHandler : MonoBehaviour
 
     [SerializeField] private ParticleSystem shootVFX;
 
-    //public int index;
-
     #region Inspector Comments and Spacing
     [Header("Speed Values")]
     [Space(15)]
