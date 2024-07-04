@@ -52,6 +52,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //ATTEMPTING ROAMING HERE, RANDOM OR WAYPOINTS
+
+    //Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
+
+    //randomDirection += transform.position;
+    //        NavMeshHit hit;
+    //NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+
+    //        Vector3 finalPosition = hit.position;
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

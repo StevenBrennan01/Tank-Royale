@@ -5,6 +5,8 @@ using UnityEngine.VFX;
 
 public class ProjectileAssistant : MonoBehaviour
 {
+    private HealthManager healthManager_SCR;
+
     #region Inspector Header and Spacing
     [Header("                                                 -= Projectile Manager =-")]
     [Header("                                   (If projectile hits wall it will auto destroy)")]
@@ -18,10 +20,7 @@ public class ProjectileAssistant : MonoBehaviour
 
     //[SerializeField] private ParticleSystem collisionEffect;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    private void Awake() { rb = GetComponent<Rigidbody2D>(); }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -29,6 +28,9 @@ public class ProjectileAssistant : MonoBehaviour
         {
             //give damage
 
+            //healthManager_SCR.DealDamage(damageValue);
+
+            rb.velocity = Vector2.zero;
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))

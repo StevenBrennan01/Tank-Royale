@@ -5,12 +5,32 @@ using UnityEngine;
 public class MousePosTracker : MonoBehaviour
 {
     [SerializeField] private Camera m_Camera;
+    [SerializeField] private Transform playerPos;
 
-    void Update()
+    [Space(10)]
+
+    [SerializeField] private float maxCamDistance = 15f;
+
+    private void Update()
     {
-        Vector2 mouseScreenPosition = Input.mousePosition;
-        Vector2 mouseWorldPosition = m_Camera.ScreenToWorldPoint(mouseScreenPosition);
+        Vector3 mousePosition = GetMouseWorldPosition();
 
-        transform.position = mouseWorldPosition;
+        Vector3 direction = (mousePosition - playerPos.position).normalized;
+        float distance = Vector3.Distance(mousePosition, playerPos.position);
+
+        if (distance > maxCamDistance)
+        {
+            mousePosition = playerPos.position + direction * maxCamDistance;
+        }
+
+        transform.position = mousePosition;
+    }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mouseScreenPosition = Input.mousePosition;
+        mouseScreenPosition.z = Camera.main.nearClipPlane;
+
+        return Camera.main.ScreenToWorldPoint(mouseScreenPosition);
     }
 }

@@ -12,10 +12,10 @@ public class HealthManager : MonoBehaviour
     [Space(15)]
     #endregion
 
+    [SerializeField] private Image healthBarImage;
+
     [SerializeField] private bool agentCanRespawn;
     [SerializeField] private float respawnDelay;
-
-    [SerializeField] private Image healthBarImage;
 
     [SerializeField] private float maxHealth;
     private float currentHealth;
@@ -25,6 +25,17 @@ public class HealthManager : MonoBehaviour
         gameManager_SCR = FindObjectOfType<GameManager>();
 
         currentHealth = maxHealth;
+    }
+
+    public void IncreaseHealth()
+    {
+        //healing function
+    }
+
+    public void DealDamage(float damageDealt)
+    {
         
     }
+
+
 }
