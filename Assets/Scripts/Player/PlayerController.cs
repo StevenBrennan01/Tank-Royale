@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     [SerializeField] private float tankMoveSpeed;
-    [SerializeField] private float hullRotateSpeed;
+    [SerializeField] private float tankRotateSpeed;
+    //[SerializeField] private float hullRotateSpeed;
     [SerializeField] private float towerRotateSpeed;
 
     private void Awake()
@@ -38,19 +39,25 @@ public class PlayerController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(moveDir * tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
+        rb.AddForce(transform.up * moveDir.y * tankMoveSpeed, ForceMode2D.Force);
         RotateHull();
     }
 
     #region Tank Rotations
     private void RotateHull()
     {
-        if (moveDir != Vector2.zero)
-        {
-            float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
+        //if (moveDir != Vector2.zero)
+        //{
+        //    float angleTarget = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
-            Quaternion targetRotation = Quaternion.Euler(0, 0, angleTarget);
-            tankHull.transform.rotation = Quaternion.RotateTowards(tankHull.transform.rotation, targetRotation, hullRotateSpeed * Time.deltaTime);
+        //    Quaternion targetRotation = Quaternion.Euler(0, 0, angleTarget);
+        //    tankHull.transform.rotation = Quaternion.RotateTowards(tankHull.transform.rotation, targetRotation, hullRotateSpeed * Time.deltaTime);
+        //}
+
+        if (moveDir.x != 0)
+        {
+            float rotationAmount = moveDir.x * -tankRotateSpeed;
+            transform.Rotate(Vector3.forward, rotationAmount * Time.deltaTime);
         }
     }
 

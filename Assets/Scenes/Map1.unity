@@ -73732,13 +73732,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: fireDelay
-      value: 0.7
+    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: tankMoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: tankRotateSpeed
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335362305769700899, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

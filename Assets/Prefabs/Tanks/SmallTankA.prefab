@@ -494,8 +494,8 @@ MonoBehaviour:
   tankHull: {fileID: 2097676570090570725}
   tankTower: {fileID: 1318346198427966974}
   moveDir: {x: 0, y: 0}
-  tankMoveSpeed: 1500
-  hullRotateSpeed: 125
+  tankMoveSpeed: 10
+  tankRotateSpeed: 100
   towerRotateSpeed: 0.03
 --- !u!114 &3962251045148137221
 MonoBehaviour:
@@ -587,7 +587,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7933158723731941601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
