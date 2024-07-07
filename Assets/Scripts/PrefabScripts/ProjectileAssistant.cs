@@ -22,7 +22,6 @@ public class ProjectileAssistant : MonoBehaviour
 
     private void Awake()
     {
-        gameManager_SCR = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
     }
 
