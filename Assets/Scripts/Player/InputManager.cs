@@ -61,7 +61,7 @@ public class InputManager : MonoBehaviour
         inputActions_SCR.Player.PauseGame.performed -= PausePerformed;
     }
 
-    //METHODS
+        //METHODS
 
     private void MovePerformed(InputAction.CallbackContext value)
     {
@@ -117,32 +117,32 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    //COROUTINES
+        //COROUTINES
 
-    private IEnumerator tankMovingCR()
-    {
-        while (isMoving)
+        private IEnumerator tankMovingCR()
         {
-            tankController_SCR.MoveTank();
-            yield return null;
+            while (isMoving)
+            {
+                tankController_SCR.MoveTank();
+                yield return null;
+            }
         }
-    }
 
-    private IEnumerator tankLooking()
-    {
-        while (tankCanLook)
+        private IEnumerator tankLooking()
         {
-            tankController_SCR.RotateTower();
-            yield return null;
+            while (tankCanLook)
+            {
+                tankController_SCR.RotateTower();
+                yield return null;
+            }
         }
-    }
 
-    private IEnumerator tankShootingCR()
-    {
-        while (projectileHandler_SCR.canFire)
+        private IEnumerator tankShootingCR()
         {
-            projectileHandler_SCR.TankFired();
-            yield return null;
+            while (projectileHandler_SCR.canFire)
+            {
+                projectileHandler_SCR.TankFired();
+                yield return null;
+            }
         }
-    }
 }

@@ -32,10 +32,10 @@ public class HealthManager : MonoBehaviour
         //healing function
     }
 
-    public void DealDamage(float damageDealt)
-    {
+    //public void DealDamage(float damageDealt)
+    //{
         
-    }
+    //}
 
 
 }

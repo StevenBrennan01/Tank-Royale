@@ -37,14 +37,16 @@ public class ProjectileAssistant : MonoBehaviour
             //healthManager_SCR.DealDamage(damageValue);
 
             rb.velocity = Vector2.zero;
-            Destroy(this.gameObject);
+
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject); //INSTEAD OF DESTROYING, RETURN TO POOL AND RECYCLE
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             //collisionEffect.Play();
 
             rb.velocity = Vector2.zero;
-            Destroy(this.gameObject);
+
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject); //INSTEAD OF DESTROYING, RETURN TO POOL AND RECYCLE
         }
     }
 }

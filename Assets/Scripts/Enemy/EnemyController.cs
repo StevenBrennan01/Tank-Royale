@@ -34,8 +34,9 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        enemyAgent = GetComponent<NavMeshAgent>();
         projectileHandler_SCR = GetComponent<ProjectileHandler>();
+
+        enemyAgent = GetComponent<NavMeshAgent>();
 
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;

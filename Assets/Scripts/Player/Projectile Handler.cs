@@ -44,7 +44,9 @@ public class ProjectileHandler : MonoBehaviour
         {
             Vector2 projectileFireDirection = projectileSpawnPositions[0].up; projectileFireDirection.Normalize();
 
-            GameObject projectileSpawn = Instantiate(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
+            //GameObject projectileSpawn = Instantiate(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
+
+            GameObject projectileSpawn = ObjectPoolManager.spawnObject(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
 
             if (projectilePrefabs[0].GetComponent<Rigidbody2D>() != null)
             {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8162612282167497393}
   - component: {fileID: 4320170733548342828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628677424274787349}
   - component: {fileID: 9188459885729339411}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2852658069342268139}
   - component: {fileID: 5488545345842326694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3976527058264876571}
   - component: {fileID: 6366918411733724460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunConnector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9176830875881437879}
   - component: {fileID: 908450663620292298}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,10 +436,12 @@ GameObject:
   - component: {fileID: 2302032561089210637}
   - component: {fileID: 3522070243625712353}
   - component: {fileID: 6739011788855648184}
+  - component: {fileID: 2546049170046479855}
   - component: {fileID: 5105602677580963015}
+  - component: {fileID: 6107586258625906473}
   - component: {fileID: 2533281751971276445}
   - component: {fileID: 5720202669032126323}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallTankC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefabs:
   - {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
-  projectileSpawnPositions: []
+  projectileSpawnPositions:
+  - {fileID: 5238058424399703366}
   shootVFX: {fileID: 0}
   projectileSpeed: 20
   fireDelay: 1.5
@@ -513,10 +516,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18495c04d94f04947902a16f21e25141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBarImage: {fileID: 1599830925552396312}
   agentCanRespawn: 0
   respawnDelay: 0
-  healthBarImage: {fileID: 0}
   maxHealth: 0
+--- !u!195 &2546049170046479855
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527953417801519968}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 4
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 60
+  m_StoppingDistance: 6
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 6
+  m_BaseOffset: 3
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!50 &5105602677580963015
 Rigidbody2D:
   serializedVersion: 4
@@ -529,7 +554,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 9999
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -544,6 +569,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &6107586258625906473
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527953417801519968}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 30, y: 25}
+  m_EdgeRadius: 0
 --- !u!58 &2533281751971276445
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -609,7 +679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5238058424399703366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjectileSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3692656394370104941}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VFXPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7275238052281316778}
   - component: {fileID: 7185034418571108073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4418760082032810023}
   - component: {fileID: 4405954040599043736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8610753460684463506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HullHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,6 +942,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5432577881990024937}
     m_Modifications:
+    - target: {fileID: 240631842092534616, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2166231123629851057, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -952,15 +1026,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4305783436089905767, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7384631002860855204, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384631002860855204, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247954775730575951, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+--- !u!114 &1599830925552396312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8096628051385687230, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+  m_PrefabInstance: {fileID: 7381045267685094566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8674287106826761495 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2166231123629851057, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
