@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileHandler : MonoBehaviour
 {
     private PlayerController tankController_SCR;
-    public GameManager gameManagerSCR;
 
     private Animator TankAnimator;
 

@@ -6,7 +6,6 @@ using UnityEngine.VFX;
 public class ProjectileAssistant : MonoBehaviour
 {
     private HealthManager healthManager_SCR;
-    public GameManager gameManager_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                 -= Projectile Manager =-")]
