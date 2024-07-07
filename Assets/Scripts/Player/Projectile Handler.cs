@@ -67,6 +67,8 @@ public class ProjectileHandler : MonoBehaviour
             canFire = false;
             StartCoroutine(FireDelayCR());
         }
+
+        else return;
     }
 
     private IEnumerator FireDelayCR()
