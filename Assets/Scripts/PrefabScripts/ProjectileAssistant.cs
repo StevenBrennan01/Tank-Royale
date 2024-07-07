@@ -6,6 +6,7 @@ using UnityEngine.VFX;
 public class ProjectileAssistant : MonoBehaviour
 {
     private HealthManager healthManager_SCR;
+    public GameManager gameManager_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                 -= Projectile Manager =-")]
@@ -20,10 +21,17 @@ public class ProjectileAssistant : MonoBehaviour
 
     //[SerializeField] private ParticleSystem collisionEffect;
 
-    private void Awake() { rb = GetComponent<Rigidbody2D>(); }
+    private void Awake()
+    {
+        gameManager_SCR = FindObjectOfType<GameManager>();
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject.GetComponent<HealthManager>() != null)
         {
             //give damage

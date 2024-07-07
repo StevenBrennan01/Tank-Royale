@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 519420031}
   playerPos: {fileID: 255274939}
+  maxCamDistance: 15
 --- !u!1 &486813515
 GameObject:
   m_ObjectHideFlags: 0
@@ -73483,6 +73484,10 @@ PrefabInstance:
       propertyPath: healthBarImage
       value: 
       objectReference: {fileID: 81649260}
+    - target: {fileID: 1722583676425651248, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -73523,6 +73528,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: gameManagerSCR
+      value: 
+      objectReference: {fileID: 1077473018}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA

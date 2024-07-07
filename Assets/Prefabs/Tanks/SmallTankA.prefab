@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 1722583676425651248}
   - component: {fileID: 8335362305769700899}
   - component: {fileID: 3053494317060601838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallTankA
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1af2a90fdb373746afd38b2fff33a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManagerSCR: {fileID: 0}
   projectilePrefabs:
   - {fileID: 6069812804996178849, guid: 3fcdc8a4a26603943bda19083efbd3b0, type: 3}
   projectileSpawnPositions:
@@ -528,9 +529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18495c04d94f04947902a16f21e25141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBarImage: {fileID: 0}
   agentCanRespawn: 0
   respawnDelay: 0
-  healthBarImage: {fileID: 0}
   maxHealth: 0
 --- !u!114 &1649704187556918831
 MonoBehaviour:
@@ -578,7 +579,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
 --- !u!50 &8335362305769700899
 Rigidbody2D:
   serializedVersion: 4
