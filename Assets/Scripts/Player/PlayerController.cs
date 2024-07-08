@@ -24,17 +24,22 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     [SerializeField] private float tankMoveSpeed;
-    //[SerializeField] private float tankRotateSpeed;
     [SerializeField] private float hullRotateSpeed;
     [SerializeField] private float towerRotateSpeed;
 
     private float zRotation;
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    mainCam = Camera.main;
+    //    rb = GetComponent<Rigidbody2D>();
+    //}
+
+    private void OnEnable()
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
-    } 
+    }
 
     public void MoveTank()
     {

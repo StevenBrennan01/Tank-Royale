@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay);
         Agent.transform.position = respawnPosition.position;
 
+        // GIVE AGENT MAX HEALTH AND AMMO AGAIN
+
         // DISABLE RESPAWN UI
         Agent.SetActive(true);
 

@@ -65,7 +65,7 @@ public class HealthManager : MonoBehaviour
             else
             {
                 //currentEnemyCount --; HERE WE CAN DO WAVES OF ENEMIES OR SOMETHING
-                Destroy(this.gameObject);
+                
             }
         }
     }

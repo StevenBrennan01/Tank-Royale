@@ -43,6 +43,7 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.MouseLook.Enable();
         inputActions_SCR.Player.MouseLook.performed += MouseLooking;
+        inputActions_SCR.Player.MouseLook.canceled += MouseCancelled;
 
         inputActions_SCR.Player.PauseGame.Enable();
         inputActions_SCR.Player.PauseGame.performed += PausePerformed;
@@ -56,6 +57,10 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Shoot.Disable();
         inputActions_SCR.Player.Shoot.performed -= ShootPerformed;
+
+        inputActions_SCR.Player.MouseLook.Disable();
+        inputActions_SCR.Player.MouseLook.performed -= MouseLooking;
+        inputActions_SCR.Player.MouseLook.canceled -= MouseCancelled;
 
         inputActions_SCR.Player.PauseGame.Disable();
         inputActions_SCR.Player.PauseGame.performed -= PausePerformed;
@@ -93,6 +98,16 @@ public class InputManager : MonoBehaviour
         if (tankLookingCR == null)
         {
             tankLookingCR = StartCoroutine(tankLooking());
+        }
+    }
+
+    private void MouseCancelled(InputAction.CallbackContext passThrough)
+    {
+        tankCanLook = false;
+
+        if (tankLookingCR != null)
+        {
+            tankLookingCR = null;
         }
     }
 
