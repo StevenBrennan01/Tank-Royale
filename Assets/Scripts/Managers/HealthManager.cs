@@ -37,7 +37,7 @@ public class HealthManager : MonoBehaviour
         else agentCanRespawn = false; //THIS IS ALWAYS AN ENEMY
     }
 
-    private void UpdateHealth()
+    private void UpdateHealthUI()
     {
         //healthBarImage.fillAmount = Mathf.Lerp(newestHealthAmount, currentHealth / maxHealth, UIDelay);
         healthBarImage.fillAmount = Mathf.Lerp(newestHealthAmount, currentHealth / maxHealth, UIDelay);
@@ -51,14 +51,12 @@ public class HealthManager : MonoBehaviour
     public void DealDamage(float damageDealt)
     {
         currentHealth -= damageDealt;
-        UpdateHealth();
+        UpdateHealthUI();
 
         if (currentHealth <= 0)
         {
             Mathf.Clamp01(currentHealth);
-            UpdateHealth();
-
-            //if (respawnPosition != null)
+            UpdateHealthUI();
 
             if (respawnPosition != null && agentCanRespawn)
             {
