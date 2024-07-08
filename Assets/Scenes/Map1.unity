@@ -72991,10 +72991,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7088908252135120167, guid: a8608b44ae2a60e48b93a2aec31ab599, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7528830027661003651, guid: a8608b44ae2a60e48b93a2aec31ab599, type: 3}
       propertyPath: m_Targets.Array.data[0].target
       value: 
       objectReference: {fileID: 255274939}
+    - target: {fileID: 7588040963523823200, guid: a8608b44ae2a60e48b93a2aec31ab599, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065505131778186338, guid: a8608b44ae2a60e48b93a2aec31ab599, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -73018,7 +73030,7 @@ PrefabInstance:
       objectReference: {fileID: 1786224702}
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalPosition.y
