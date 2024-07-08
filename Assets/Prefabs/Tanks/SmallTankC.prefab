@@ -483,7 +483,7 @@ MonoBehaviour:
   enemyTower: {fileID: 784012590219245449}
   enemyHull: {fileID: 9077642625069182824}
   hullRotateSpeed: 125
-  towerRotateSpeed: 0.1
+  towerRotateSpeed: 0.09
 --- !u!114 &3522070243625712353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1037,10 @@ PrefabInstance:
     - target: {fileID: 7384631002860855204, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096628051385687230, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8247954775730575951, guid: 9b13f0c5a9fdd6c48b6af8f0a2bcae47, type: 3}
       propertyPath: m_Layer

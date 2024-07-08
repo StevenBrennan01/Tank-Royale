@@ -14,9 +14,12 @@ public class ProjectileAssistant : MonoBehaviour
     #endregion
 
     [SerializeField] private float damageValue;
+    //[SerializeField] private float damageDelay;
 
     private Rigidbody2D rb;
     private Vector2 startPos;
+
+    private Coroutine GiveDamage_CR;
 
     //[SerializeField] private ParticleSystem collisionEffect;
 
@@ -27,16 +30,11 @@ public class ProjectileAssistant : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        Debug.Log(collision.gameObject.name);
-
         if (collision.gameObject.GetComponent<HealthManager>() != null)
         {
-            //give damage
+            GiveDamage_CR = StartCoroutine(DealDamage(collision));
 
-            //healthManager_SCR.DealDamage(damageValue);
-
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
 
             ObjectPoolManager.ReturnObjectToPool(this.gameObject); //INSTEAD OF DESTROYING, RETURN TO POOL AND RECYCLE
         }
@@ -48,5 +46,12 @@ public class ProjectileAssistant : MonoBehaviour
 
             ObjectPoolManager.ReturnObjectToPool(this.gameObject); //INSTEAD OF DESTROYING, RETURN TO POOL AND RECYCLE
         }
+    }
+
+    private IEnumerator DealDamage(Collision2D collision)
+    {
+        //healthManager_SCR.DealDamage(damageValue);
+        collision.gameObject.GetComponent<HealthManager>().DealDamage(damageValue);
+        yield return null;
     }
 }
