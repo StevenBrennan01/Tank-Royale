@@ -14,59 +14,74 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private Image healthBarImage;
 
-    [HideInInspector] public bool agentCanRespawn;
-    public float respawnDelay;
+    private bool agentCanRespawn;
+    private float respawnDelay = 3f;
     public Transform respawnPosition;
 
     [SerializeField] private float maxHealth;
-    public float currentHealth;
-    private float newestHealthAmount;
-    private float UIDelay;
+    private float currentHealth;
+    private float UIDelay = .1f;
+
+    private Coroutine smoothHealthBar_CR;
 
     private void OnEnable()
     {
         gameManager_SCR = FindObjectOfType<GameManager>();
 
         currentHealth = maxHealth;
-        newestHealthAmount = maxHealth;
 
-        if (GetComponent<PlayerController>() != null)
+        if (GetComponent<PlayerController>() != null) // ALWYAYS TRUE FOR THE PLAYER
         {
-            agentCanRespawn = true; //THIS IS ALWYAYS THE PLAYER
+            agentCanRespawn = true;
         }
-        else agentCanRespawn = false; //THIS IS ALWAYS AN ENEMY
+        else agentCanRespawn = false; // THIS IS ALWAYS AN ENEMY
+
+        UpdateHealthUI();
     }
 
-    private void UpdateHealthUI()
+    private void UpdateHealthUI() { smoothHealthBar_CR = StartCoroutine(SmoothHealthBar()); }
+
+        private IEnumerator SmoothHealthBar()
+        {
+            float currentFillAmount = healthBarImage.fillAmount;
+            float targetFillAmount = currentHealth / maxHealth;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < UIDelay)
+            {
+                elapsedTime += Time.deltaTime;
+
+                healthBarImage.fillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, elapsedTime / UIDelay);
+                yield return null;
+            }
+            healthBarImage.fillAmount = targetFillAmount;
+        }
+
+    public void DealDamage(float damageDealt)
     {
-        //healthBarImage.fillAmount = Mathf.Lerp(newestHealthAmount, currentHealth / maxHealth, UIDelay);
-        healthBarImage.fillAmount = Mathf.Lerp(newestHealthAmount, currentHealth / maxHealth, UIDelay);
+        currentHealth -= damageDealt;
+
+        if (currentHealth <= 0)
+        {
+            Mathf.Clamp01(currentHealth);
+
+            if (respawnPosition != null && agentCanRespawn) // aka is the player
+            {
+                gameManager_SCR.AgentDeath(this.gameObject, this.respawnPosition, this.respawnDelay);
+            }
+            else // aka is not the player
+            {
+                //currentEnemyCount --; HERE WE CAN DO WAVES OF ENEMIES OR SOMETHING
+                Destroy(this.gameObject); 
+            }
+        }
+
+        UpdateHealthUI();
+
     }
 
     public void IncreaseHealth()
     {
         //healing function
-    }
-
-    public void DealDamage(float damageDealt)
-    {
-        currentHealth -= damageDealt;
-        UpdateHealthUI();
-
-        if (currentHealth <= 0)
-        {
-            Mathf.Clamp01(currentHealth);
-            UpdateHealthUI();
-
-            if (respawnPosition != null && agentCanRespawn)
-            {
-                gameManager_SCR.AgentDeath(this.gameObject, this.respawnPosition, this.respawnDelay);
-            }
-            else
-            {
-                //currentEnemyCount --; HERE WE CAN DO WAVES OF ENEMIES OR SOMETHING
-                
-            }
-        }
     }
 }

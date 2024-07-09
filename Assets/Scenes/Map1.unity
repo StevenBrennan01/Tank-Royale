@@ -72943,6 +72943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400401076128352435, guid: a8608b44ae2a60e48b93a2aec31ab599, type: 3}
+      propertyPath: m_ShowCameraFrustum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3846263408540816717, guid: a8608b44ae2a60e48b93a2aec31ab599, type: 3}
       propertyPath: playerPos
       value: 

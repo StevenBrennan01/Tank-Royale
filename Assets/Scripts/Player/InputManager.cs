@@ -40,6 +40,7 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Shoot.Enable();
         inputActions_SCR.Player.Shoot.performed += ShootPerformed;
+        inputActions_SCR.Player.Shoot.canceled += ShootCancelled;
 
         inputActions_SCR.Player.MouseLook.Enable();
         inputActions_SCR.Player.MouseLook.performed += MouseLooking;
@@ -57,6 +58,7 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Shoot.Disable();
         inputActions_SCR.Player.Shoot.performed -= ShootPerformed;
+        inputActions_SCR.Player.Shoot.canceled -= ShootCancelled;
 
         inputActions_SCR.Player.MouseLook.Disable();
         inputActions_SCR.Player.MouseLook.performed -= MouseLooking;
@@ -114,6 +116,11 @@ public class InputManager : MonoBehaviour
     private void ShootPerformed(InputAction.CallbackContext button)
     {
         shootingCR = StartCoroutine(tankShootingCR());
+    } 
+    
+    private void ShootCancelled(InputAction.CallbackContext button)
+    {
+        shootingCR = null;
     }
 
     private void PausePerformed(InputAction.CallbackContext button)
