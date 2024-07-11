@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private float maxHealth;
     private float currentHealth;
-    private float UIDelay = .1f;
+    private float UIDelay = .2f;
 
     private Coroutine smoothHealthBar_CR;
 
@@ -41,6 +41,7 @@ public class HealthManager : MonoBehaviour
 
     private void UpdateHealthUI() { smoothHealthBar_CR = StartCoroutine(SmoothHealthBar()); }
 
+        //Slowing down the HealthBar Update speed
         private IEnumerator SmoothHealthBar()
         {
             float currentFillAmount = healthBarImage.fillAmount;

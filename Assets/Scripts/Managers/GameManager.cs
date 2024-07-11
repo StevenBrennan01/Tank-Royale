@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
 
-    private int enemySpawnAmount;
+    [SerializeField] private int enemiesSpawned;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
     #endregion
@@ -37,7 +37,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //spawn enemies at spawn positions
+        for (int i = 0; i < Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn); i++)
+        {
+            // spawn enemy at spawn position
+            // enemiesSpawned++;
+        }
+
         //play music, etc.
     }
 

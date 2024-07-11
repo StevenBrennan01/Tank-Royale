@@ -73016,6 +73016,10 @@ PrefabInstance:
       propertyPath: respawnPosition
       value: 
       objectReference: {fileID: 1786224702}
+    - target: {fileID: 1721239273980586087, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -73055,6 +73059,10 @@ PrefabInstance:
     - target: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: reloadDelay
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
