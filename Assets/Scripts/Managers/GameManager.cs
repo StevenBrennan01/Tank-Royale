@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay)
     {
-        //CHECK IF currentLife = maxLives, then do something
+        //CHECK IF currentLife = maxLives, then die
         EntityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay));
     }
 
