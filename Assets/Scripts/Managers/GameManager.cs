@@ -49,16 +49,14 @@ public class GameManager : MonoBehaviour
         //play music, etc.
     }
 
-        //METHODS
-
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay)
     {
         //CHECK IF currentLife = maxLives, then die
         EntityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay));
     }
 
-        //COROUTINES
-
+        // -= COROUTINES =-
+   
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay)
     {
         Agent.SetActive(false);

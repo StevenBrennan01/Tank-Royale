@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using System.Linq;
+//using System.Linq; USED FOR THE SIMPLER EXPRESSIONS
 
 public class ObjectPoolManager : MonoBehaviour
 {
@@ -85,8 +85,6 @@ public class ObjectPoolManager : MonoBehaviour
         {
             obj.SetActive(false);
             currentPool.InactiveObjects.Add(obj);
-
-            
         }
     }
 }

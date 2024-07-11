@@ -26,15 +26,15 @@ public class ProjectileHandler : MonoBehaviour
 
     [HideInInspector] public bool canFire = true;
 
-    public int ammoCount;
+    [SerializeField] private int ammoCount;
 
     #region Inspector Header and Spacing
     [Header("                                                    -= Projectile Values =-")]
     [Space(15)]
     #endregion
 
-    public int maxAmmo = 5;
-    public int minAmmo = 0;
+    [SerializeField] private int maxAmmo = 5;
+    [SerializeField] private int minAmmo = 1;
 
     private Coroutine fireDelay_CR;
     [SerializeField] private float fireDelay;
@@ -53,8 +53,7 @@ public class ProjectileHandler : MonoBehaviour
 
     public void TankFired()
     {
-
-        if (canFire && ammoCount > minAmmo)
+        if (canFire)
         {
             Vector2 projectileFireDirection = projectileSpawnPositions[0].up; projectileFireDirection.Normalize();
 
@@ -73,6 +72,7 @@ public class ProjectileHandler : MonoBehaviour
 
                 if (shootVFX != null) { shootVFX.Play(); }
             }
+
             canFire = false;
 
             //                            (INTENSITY, FOR TIME)
@@ -80,17 +80,15 @@ public class ProjectileHandler : MonoBehaviour
 
             ammoCount--; //MAKE UI WORK WITH THIS FOR DEPLETING AMMO
 
-            fireDelay_CR = StartCoroutine(FireDelay());
+            if (ammoCount == minAmmo)
+            {
+                reloadDelay_CR = StartCoroutine(ReloadDelay());
+            }
+            else { fireDelay_CR = StartCoroutine(FireDelay()); }
         }
-
-        else
-        {
-            reloadDelay_CR = StartCoroutine(ReloadDelay());
-            //return;
-        }
-
-        //else return;
     }
+
+    // COROUTINES
 
     private IEnumerator FireDelay()
     {
@@ -100,8 +98,6 @@ public class ProjectileHandler : MonoBehaviour
 
     private IEnumerator ReloadDelay()
     {
-        canFire = false;
-
         for (int i = 0; i < maxAmmo; i++)
         {
             ammoCount++;
@@ -109,7 +105,7 @@ public class ProjectileHandler : MonoBehaviour
             // ADD SFX HERE TO AUDIOLISE RELOADING
         }
 
-        //ammoCount = maxAmmo;
         canFire = true;
+        yield return null;
     }
 }

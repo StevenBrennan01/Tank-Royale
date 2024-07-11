@@ -72320,9 +72320,12 @@ MonoBehaviour:
   - {fileID: 759509892}
   - {fileID: 2101715167}
   - {fileID: 2119784974}
+  enemiesSpawned: 0
   minEnemiesToSpawn: 5
   maxEnemiesToSpawn: 7
   respawnUI: {fileID: 0}
+  maxLives: 0
+  currentLife: 0
 --- !u!1 &1182277469
 GameObject:
   m_ObjectHideFlags: 0
@@ -73084,6 +73087,10 @@ PrefabInstance:
     - target: {fileID: 2135665859721117358, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726410433696605283, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3318528009457380204, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
       propertyPath: m_IsActive
