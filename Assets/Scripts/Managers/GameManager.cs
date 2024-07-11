@@ -29,13 +29,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject respawnUI;
 
+    [SerializeField] private int maxLives;
+    [SerializeField] private int currentLife;
+
     private void Awake()
     {
         if (tankEnemies.Length <= 0) Debug.LogError("No enemies assigned, please assign some enemies to the level");
         if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
     }
 
-    void Start()
+    private void Start()
     {
         for (int i = 0; i < Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn); i++)
         {
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay)
     {
+        //CHECK IF currentLife = maxLives, then do something
         EntityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay));
     }
 
