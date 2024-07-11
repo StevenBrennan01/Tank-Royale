@@ -45,7 +45,7 @@ public class HealthManager : MonoBehaviour
     }
 
     //SLOWING DOWN HEALTHBAR UPDATE
-    private IEnumerator SmoothHealthBar()
+    public IEnumerator SmoothHealthBar()
     {
         float currentFillAmount = healthBarImage.fillAmount;
         float targetFillAmount = currentHealth / maxHealth;

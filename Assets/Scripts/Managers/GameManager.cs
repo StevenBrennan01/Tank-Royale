@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private HealthManager healthManager_SCR;
+
     #region Inspector Header and Spacing
     [Header("                                                     -= Enemy Manager =-")]
     [Space(15)]
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     {
         if (tankEnemies.Length <= 0) Debug.LogError("No enemies assigned, please assign some enemies to the level");
         if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
+
+        healthManager_SCR = FindObjectOfType<HealthManager>();
     }
 
     private void Start()
@@ -59,6 +63,7 @@ public class GameManager : MonoBehaviour
    
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay)
     {
+        healthManager_SCR.SmoothHealthBar();
         Agent.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
