@@ -39,7 +39,14 @@ public class HealthManager : MonoBehaviour
         UpdateHealthUI();
     }
 
-    private void UpdateHealthUI() { smoothHealthBar_CR = StartCoroutine(SmoothHealthBar()); }
+    private void UpdateHealthUI()
+    {
+        if (smoothHealthBar_CR != null)
+        {
+            StopCoroutine(smoothHealthBar_CR);
+        }
+        smoothHealthBar_CR = StartCoroutine(SmoothHealthBar());
+    }
 
         //Slowing down the HealthBar Update speed
         private IEnumerator SmoothHealthBar()
