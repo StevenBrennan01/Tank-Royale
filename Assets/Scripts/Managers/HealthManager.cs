@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private float maxHealth;
     private float currentHealth;
-    private float UIDelay = .2f;
+    public float UIDelay = .2f;
 
     private Coroutine smoothHealthBar_CR;
 
@@ -41,33 +41,31 @@ public class HealthManager : MonoBehaviour
 
     private void UpdateHealthUI()
     {
-        if (smoothHealthBar_CR != null)
-        {
-            StopCoroutine(smoothHealthBar_CR);
-        }
         smoothHealthBar_CR = StartCoroutine(SmoothHealthBar());
     }
 
-        //Slowing down the HealthBar Update speed
-        private IEnumerator SmoothHealthBar()
+    //SLOWING DOWN HEALTHBAR UPDATE
+    private IEnumerator SmoothHealthBar()
+    {
+        float currentFillAmount = healthBarImage.fillAmount;
+        float targetFillAmount = currentHealth / maxHealth;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < UIDelay)
         {
-            float currentFillAmount = healthBarImage.fillAmount;
-            float targetFillAmount = currentHealth / maxHealth;
-            float elapsedTime = 0f;
+            elapsedTime += Time.deltaTime;
 
-            while (elapsedTime < UIDelay)
-            {
-                elapsedTime += Time.deltaTime;
-
-                healthBarImage.fillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, elapsedTime / UIDelay);
-                yield return null;
-            }
-            healthBarImage.fillAmount = targetFillAmount;
+            healthBarImage.fillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, elapsedTime / UIDelay);
+            yield return null;
         }
+        healthBarImage.fillAmount = targetFillAmount;
+    }
 
     public void DealDamage(float damageDealt)
     {
         currentHealth -= damageDealt;
+
+        UpdateHealthUI();
 
         if (currentHealth <= 0)
         {
@@ -83,9 +81,6 @@ public class HealthManager : MonoBehaviour
                 Destroy(this.gameObject); 
             }
         }
-
-        UpdateHealthUI();
-
     }
 
     public void IncreaseHealth()

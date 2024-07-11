@@ -73013,7 +73013,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 931373404213766350, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 931373404213766350, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: healthBarImage
