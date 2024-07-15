@@ -26,8 +26,6 @@ public class HealthManager : MonoBehaviour
 
     public bool isActive;
 
-    //private Coroutine smoothHealthBar_CR;
-
     private void Awake()
     {
         gameManager_SCR = FindObjectOfType<GameManager>();
