@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private HealthManager healthManager_SCR;
+    private UIManager uiManager_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                     -= Enemy Manager =-")]
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
 
         healthManager_SCR = FindObjectOfType<HealthManager>();
+        uiManager_SCR = FindObjectOfType<UIManager>();
     }
 
     private void Start()
@@ -53,17 +56,17 @@ public class GameManager : MonoBehaviour
         //play music, etc.
     }
 
-    public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay)
+    public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
         //CHECK IF currentLife = maxLives, then die
-        EntityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay));
+        EntityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay, target, healthBarImage));
     }
 
         // -= COROUTINES =-
    
-    private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay)
+    private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
-        healthManager_SCR.SmoothHealthBar();
+        uiManager_SCR.UpdateHealthUI(target, healthBarImage);
         Agent.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;

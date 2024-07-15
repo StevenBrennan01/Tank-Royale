@@ -73071,6 +73071,10 @@ PrefabInstance:
       propertyPath: reloadDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: tankMoveSpeed
+      value: 5500
+      objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
