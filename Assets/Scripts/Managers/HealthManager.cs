@@ -24,7 +24,7 @@ public class HealthManager : MonoBehaviour
     public float currentHealth;
     public float UIDelay = .2f;
 
-    public bool isActive;
+    private bool isActive;
 
     private void Awake()
     {

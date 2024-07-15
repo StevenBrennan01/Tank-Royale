@@ -78,8 +78,12 @@ MonoBehaviour:
   - {fileID: 7768604706299593489}
   shootVFX: {fileID: 0}
   projectileSpeed: 20
-  fireDelay: 0.7
   canFire: 1
+  ammoCount: 0
+  maxAmmo: 5
+  minAmmo: 1
+  fireDelay: 0.7
+  reloadRoundDelay: 0.5
 --- !u!114 &931373404213766350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,11 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 0}
-  agentCanRespawn: 0
-  respawnDelay: 3
   respawnPosition: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 50
   currentHealth: 0
+  UIDelay: 0.2
 --- !u!114 &1649704187556918831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +155,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7933158723731941601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

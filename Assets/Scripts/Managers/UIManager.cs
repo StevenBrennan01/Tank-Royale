@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        healthManager_SCR = GetComponent<HealthManager>();
+        healthManager_SCR = FindObjectOfType<HealthManager>();
     }
 
     public void UpdateHealthUI(HealthManager target, Image healthBarImage)
