@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     }
 
     //SLOWING DOWN HEALTHBAR UPDATE
+
+    //LOOK AT COLOR.LERP FOR HEALTHBAR COLOUR CHANGE?
     private IEnumerator SmoothHealthBar(HealthManager target, Image healthBarImage)
     {
         float currentFillAmount = healthBarImage.fillAmount;
