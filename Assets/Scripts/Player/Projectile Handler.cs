@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileHandler : MonoBehaviour
 {
     private PlayerController tankController_SCR;
+    private UIManager uiManager_SCR;
 
     private Animator TankAnimator;
 
@@ -34,7 +35,7 @@ public class ProjectileHandler : MonoBehaviour
     #endregion
 
     [SerializeField] private int maxAmmo = 5;
-    [SerializeField] private int minAmmo = 1;
+    [SerializeField] private int minAmmo = 0;
 
     private Coroutine fireDelay_CR;
     [SerializeField] private float fireDelay;
@@ -80,10 +81,8 @@ public class ProjectileHandler : MonoBehaviour
 
             ammoCount--; //MAKE UI WORK WITH THIS FOR DEPLETING AMMO
 
-            if (ammoCount == minAmmo)
-            {
-                reloadDelay_CR = StartCoroutine(ReloadDelay());
-            }
+            if (ammoCount < minAmmo) { reloadDelay_CR = StartCoroutine(ReloadDelay()); }
+
             else { fireDelay_CR = StartCoroutine(FireDelay()); }
         }
     }
