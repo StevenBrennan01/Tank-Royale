@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxEnemiesToSpawn;
     #endregion
 
-    private Coroutine EntityDeath_CR;
+    private Coroutine entityDeath_CR;
 
     #region Inspector Header and Spacing
     [Space(15)]
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
         //CHECK IF currentLife = maxLives, then die
-        EntityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay, target, healthBarImage));
+        entityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay, target, healthBarImage));
     }
 
         // -= COROUTINES =-

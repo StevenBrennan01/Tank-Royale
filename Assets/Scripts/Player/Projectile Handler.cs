@@ -22,23 +22,23 @@ public class ProjectileHandler : MonoBehaviour
 
     [SerializeField] private ParticleSystem shootVFX;
 
+    #region Inspector Header and Spacing
     [Space(15)]
+    [Header("                                                    -= Projectile Values =-")]
+    [Space(15)]
+    #endregion
+
     [SerializeField] private float projectileSpeed;
 
     [HideInInspector] public bool canFire = true;
 
     [SerializeField] private int ammoCount;
 
-    #region Inspector Header and Spacing
-    [Header("                                                    -= Projectile Values =-")]
-    [Space(15)]
-    #endregion
-
     [SerializeField] private int maxAmmo = 5;
     [SerializeField] private int minAmmo = 0;
 
     private Coroutine fireDelay_CR;
-    [SerializeField] private float fireDelay;
+    [SerializeField] private float fireDelay = .7f;
 
     private Coroutine reloadDelay_CR;
     [SerializeField] private float reloadRoundDelay = .5f;

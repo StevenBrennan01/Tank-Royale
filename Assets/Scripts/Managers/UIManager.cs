@@ -30,10 +30,10 @@ public class UIManager : MonoBehaviour
         projectileHandler_SCR = FindObjectOfType<ProjectileHandler>();
     }
 
-    public void AmmoDepleteUI()
-    {
-        for (int i = 0;
-    }
+    //public void AmmoDepleteUI()
+    //{
+    //    for (int i = 0;
+    //}
 
     public void UpdateHealthUI(HealthManager target, Image healthBarImage)
     {
