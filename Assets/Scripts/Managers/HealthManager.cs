@@ -53,8 +53,7 @@ public class HealthManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //Mathf.Clamp01(currentHealth);
-            currentHealth = 0;
+            Mathf.Clamp01(currentHealth);
             isActive = false;
 
             if (respawnPosition != null && agentCanRespawn) // aka is the player

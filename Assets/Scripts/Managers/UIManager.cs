@@ -33,7 +33,6 @@ public class UIManager : MonoBehaviour
         float currentFillAmount = healthBarImage.fillAmount;
         float targetFillAmount = target.currentHealth / target.maxHealth;
         float elapsedTime = 0f;
-
         float UIDelay = target.UIDelay;
 
         while (elapsedTime < UIDelay)

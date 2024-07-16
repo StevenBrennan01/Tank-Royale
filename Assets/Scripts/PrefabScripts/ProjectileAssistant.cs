@@ -40,6 +40,7 @@ public class ProjectileAssistant : MonoBehaviour
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
+            //ALLOW BULLET TO BOUNCE ONCE MORE USING A COUNTER
             //collisionEffect.Play();
 
             rb.velocity = Vector2.zero;
@@ -50,7 +51,6 @@ public class ProjectileAssistant : MonoBehaviour
 
     private IEnumerator DealDamage(Collision2D collision)
     {
-        //healthManager_SCR.DealDamage(damageValue);
         collision.gameObject.GetComponent<HealthManager>().DealDamage(damageValue);
         yield return null;
     }
