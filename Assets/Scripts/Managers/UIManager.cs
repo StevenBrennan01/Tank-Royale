@@ -32,7 +32,12 @@ public class UIManager : MonoBehaviour
 
     //public void AmmoDepleteUI()
     //{
-    //    for (int i = 0;
+    //    for (int i = 0; i < maxAmmo; i++)
+    //    {
+           
+            
+    //        // ADD SFX HERE TO AUDIOLISE RELOADING
+    //    }
     //}
 
     public void UpdateHealthUI(HealthManager target, Image healthBarImage)

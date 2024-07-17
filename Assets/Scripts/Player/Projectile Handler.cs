@@ -48,7 +48,10 @@ public class ProjectileHandler : MonoBehaviour
     private void Awake()
     {
         TankAnimator = GetComponent<Animator>();
+    }
 
+    private void OnEnable()
+    {
         ammoCount = maxAmmo;
     }
 
