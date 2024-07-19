@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
     public GameObject healthUI;
     public GameObject pauseMenuUI;
 
-    [SerializeField] private GameObject[] bulletUI;
+    [SerializeField] private GameObject[] fullBulletsUI;
+    [SerializeField] private GameObject[] emptyBulletsUI;
+
     private float reloadRoundUIDelay = .5f;
     // BULLET UI DEPLETION
     // ARRAY OF GAMEOBJECTS FOR THE BULLETS, FOR LOOP CHANGING THE COLOR OF EACH INDEX UNTIL MINIMUM IS REACHED
