@@ -154,6 +154,34 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""c5f057ed-f94d-442f-85b8-73426eaeb42c"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""c6ae1b56-e0f0-4e89-8862-175d24682b45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""03e785f0-b159-4619-91d0-83e1a765890a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -164,6 +192,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_MouseLook = m_Player.FindAction("MouseLook", throwIfNotFound: true);
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
+        // MainMenu
+        m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
+        m_MainMenu_Newaction = m_MainMenu.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -291,11 +322,61 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // MainMenu
+    private readonly InputActionMap m_MainMenu;
+    private List<IMainMenuActions> m_MainMenuActionsCallbackInterfaces = new List<IMainMenuActions>();
+    private readonly InputAction m_MainMenu_Newaction;
+    public struct MainMenuActions
+    {
+        private @InputActions m_Wrapper;
+        public MainMenuActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_MainMenu_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMainMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MainMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainMenuActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(IMainMenuActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(IMainMenuActions instance)
+        {
+            if (m_Wrapper.m_MainMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMainMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MainMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MainMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MainMenuActions @MainMenu => new MainMenuActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnMouseLook(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
