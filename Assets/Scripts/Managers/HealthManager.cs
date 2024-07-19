@@ -22,7 +22,7 @@ public class HealthManager : MonoBehaviour
 
     public float maxHealth;
     public float currentHealth;
-    public float uiDelay = .2f;
+    public float uiDelay = .1f;
 
     private bool isActive;
 
