@@ -87,7 +87,11 @@ public class ProjectileHandler : MonoBehaviour
 
             ammoCount--; //MAKE UI WORK WITH THIS FOR DEPLETING AMMO
 
-            if (ammoCount < minAmmo) { reloadDelay_CR = StartCoroutine(ReloadDelay()); }
+            if (ammoCount < minAmmo)
+            {
+                reloadDelay_CR = StartCoroutine(ReloadDelay());
+                uiManager_SCR.ReloadAmmoUI();
+            }
 
             else { fireDelay_CR = StartCoroutine(FireDelay()); }
         }
@@ -103,8 +107,6 @@ public class ProjectileHandler : MonoBehaviour
 
     private IEnumerator ReloadDelay()
     {
-        uiManager_SCR.ReloadAmmoUI();
-
         for (int i = 0; i < maxAmmo; i++)
         {
             ammoCount++;

@@ -37826,6 +37826,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1182277470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &931093539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5915658476364516738, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+  m_PrefabInstance: {fileID: 6866162278671562539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &992280346
 GameObject:
   m_ObjectHideFlags: 0
@@ -60268,9 +60273,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 386963560993005332, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821127585292480081, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2135665859721117358, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318528009457380204, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455390959176988419, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3829197011240959236, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60316,6 +60337,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI-Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5915658476364516738, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039731711510386358, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: bulletsUI.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039731711510386358, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: bulletsUI.Array.data[5]
+      value: 
+      objectReference: {fileID: 931093539}
+    - target: {fileID: 8039731711510386358, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: bulletsUI.Array.data[6]
+      value: 
+      objectReference: {fileID: 931093539}
+    - target: {fileID: 8039731711510386358, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
+      propertyPath: bulletsUI.Array.data[7]
+      value: 
+      objectReference: {fileID: 931093539}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

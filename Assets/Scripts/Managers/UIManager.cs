@@ -35,11 +35,18 @@ public class UIManager : MonoBehaviour
 
     public void DepleteAmmoUI()
     {
+        StartCoroutine(DepleteAmmoUI_CR());
+    }
+
+    private IEnumerator DepleteAmmoUI_CR()
+    {
         if (arrayIndex < bulletsUI.Length)
         {
             bulletsUI[arrayIndex].SetActive(false);
             arrayIndex++;
         }
+        ReloadAmmoUI();
+        yield return null;
     }
 
     public void ReloadAmmoUI()
@@ -53,9 +60,12 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < currentIndex; i++)
         {
-            arrayIndex--;
-            bulletsUI[arrayIndex].SetActive(true);
-            yield return new WaitForSeconds(reloadRoundUIDelay);
+            if (arrayIndex > 0)
+            {
+                arrayIndex--;
+                bulletsUI[arrayIndex].SetActive(true);
+                yield return new WaitForSeconds(reloadRoundUIDelay);
+            }
         }
     }
 
