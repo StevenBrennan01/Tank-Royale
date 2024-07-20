@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     private ProjectileHandler projectileHandler_SCR;
 
     #region Inspector Header and Spacing
-    [Header("-= UI Manager =-")]
+    [Header("-= Level UI =-")]
     [Space(15)]
     #endregion
 
