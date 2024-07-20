@@ -45,7 +45,6 @@ public class UIManager : MonoBehaviour
             bulletsUI[arrayIndex].SetActive(false);
             arrayIndex++;
         }
-        ReloadAmmoUI();
         yield return null;
     }
 
