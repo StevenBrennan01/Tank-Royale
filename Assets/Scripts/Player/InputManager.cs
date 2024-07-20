@@ -32,6 +32,10 @@ public class InputManager : MonoBehaviour
         gamePaused = false;
     }
 
+    // In future, keep in mind that these can be subscribed and unsubscribed to -
+    // depending on if the scene actually needs to access them or not.
+    // For example only calling the player controls when in game, not in menu and vice versa
+
     private void OnEnable()
     {
         inputActions_SCR.Player.Move.Enable();
