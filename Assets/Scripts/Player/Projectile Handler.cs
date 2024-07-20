@@ -41,13 +41,14 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private float fireDelay = .7f;
 
     private Coroutine reloadDelay_CR;
-    [SerializeField] private float reloadRoundDelay = .5f;
+    [HideInInspector] public float reloadRoundDelay = .5f;
 
     private Vector3 mousePos;
 
     private void Awake()
     {
         TankAnimator = GetComponent<Animator>();
+        uiManager_SCR = FindObjectOfType<UIManager>();
     }
 
     private void OnEnable()
@@ -77,6 +78,8 @@ public class ProjectileHandler : MonoBehaviour
                 if (shootVFX != null) { shootVFX.Play(); }
             }
 
+            uiManager_SCR.DepleteAmmoUI();
+
             canFire = false;
 
             //                            (INTENSITY, FOR TIME)
@@ -90,7 +93,7 @@ public class ProjectileHandler : MonoBehaviour
         }
     }
 
-    // COROUTINES
+    // ===== COROUTINES =====
 
     private IEnumerator FireDelay()
     {
@@ -100,6 +103,8 @@ public class ProjectileHandler : MonoBehaviour
 
     private IEnumerator ReloadDelay()
     {
+        uiManager_SCR.ReloadAmmoUI();
+
         for (int i = 0; i < maxAmmo; i++)
         {
             ammoCount++;

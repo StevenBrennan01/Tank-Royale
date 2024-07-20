@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class CinemachineShake : MonoBehaviour
 {
-
     public static CinemachineShake Instance { get; private set; }
 
     private CinemachineVirtualCamera virtualCamera;
@@ -16,7 +15,9 @@ public class CinemachineShake : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance != null) { Destroy(this.gameObject); }
+        else { Instance = this; }
+
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 

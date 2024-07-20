@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +17,8 @@ public class UIManager : MonoBehaviour
     public GameObject healthUI;
     public GameObject pauseMenuUI;
 
-    [SerializeField] private GameObject[] fullBulletsUI;
-    [SerializeField] private GameObject[] emptyBulletsUI;
+    [SerializeField] private GameObject[] bulletsUI;
+    public int arrayIndex = 0;
 
     private float reloadRoundUIDelay = .5f;
     // BULLET UI DEPLETION
@@ -32,19 +33,44 @@ public class UIManager : MonoBehaviour
         projectileHandler_SCR = FindObjectOfType<ProjectileHandler>();
     }
 
-    //public void AmmoDepleteUI()
-    //{
-    //    for (int i = 0; i < maxAmmo; i++)
-    //    {
-           
-            
-    //        // ADD SFX HERE TO AUDIOLISE RELOADING
-    //    }
-    //}
+    public void DepleteAmmoUI()
+    {
+        if (arrayIndex < bulletsUI.Length)
+        {
+            bulletsUI[arrayIndex].SetActive(false);
+            arrayIndex++;
+        }
+    }
+
+    public void ReloadAmmoUI()
+    {
+        StartCoroutine(ReloadAmmoUI_CR());
+    }
+
+    private IEnumerator ReloadAmmoUI_CR()
+    {
+        int currentIndex = arrayIndex;
+
+        for (int i = 0; i < currentIndex; i++)
+        {
+            arrayIndex--;
+            bulletsUI[arrayIndex].SetActive(true);
+            yield return new WaitForSeconds(reloadRoundUIDelay);
+        }
+    }
 
     public void UpdateHealthUI(HealthManager target, Image healthBarImage)
     {
         smoothHealthBar_CR = StartCoroutine(SmoothHealthBar(target, healthBarImage));
+    }
+
+    private IEnumerator DisableAmmoUIIncrementally()
+    {
+        for (int i = 0; i < bulletsUI.Length; i++)
+        {
+            bulletsUI[i].SetActive(false);
+        }
+        yield return null;
     }
 
     //SLOWING DOWN HEALTHBAR UPDATE     //LOOK AT COLOR.LERP FOR HEALTHBAR COLOUR CHANGE?

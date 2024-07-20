@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource menuAudio;
+    public static AudioManager instance {  get; private set; }
+
+    public AudioSource menuAudio;
+    public AudioSource levelAudio;
+
+    //[SerializeField] private AudioSource[] shootAudio;
+
+    private void Awake()
+    {
+        if (instance != null) { Destroy(this.gameObject); }
+        else { instance = this; }
+    }
 
     void Start()
     {
         DontDestroyOnLoad(this);
-
-        // Create a temporary reference to the current scene.
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        // Retrieve the name of this scene.
-        string sceneName = currentScene.name;
-
-        if (sceneName == "MainMenu")
-        {
-            menuAudio.Play();
-        }
     }
 }
