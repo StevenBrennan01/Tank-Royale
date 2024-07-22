@@ -73,15 +73,6 @@ public class UIManager : MonoBehaviour
         smoothHealthBar_CR = StartCoroutine(SmoothHealthBar(target, healthBarImage));
     }
 
-    private IEnumerator DisableAmmoUIIncrementally()
-    {
-        for (int i = 0; i < bulletsUI.Length; i++)
-        {
-            bulletsUI[i].SetActive(false);
-        }
-        yield return null;
-    }
-
     //SLOWING DOWN HEALTHBAR UPDATE     //LOOK AT COLOR.LERP FOR HEALTHBAR COLOUR CHANGE?
     private IEnumerator SmoothHealthBar(HealthManager target, Image healthBarImage)
     {

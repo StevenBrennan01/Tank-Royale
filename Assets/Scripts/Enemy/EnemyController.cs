@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    private EnemyProjectileHandler enemyProjectileHandler_SCR;
     private ProjectileHandler projectileHandler_SCR;
 
     #region Inspector Header and Spacing
@@ -34,7 +35,8 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        projectileHandler_SCR = GetComponent<ProjectileHandler>();
+        enemyProjectileHandler_SCR = GetComponent<EnemyProjectileHandler>();  
+        projectileHandler_SCR = GetComponent <ProjectileHandler>();
 
         enemyAgent = GetComponent<NavMeshAgent>();
 
@@ -49,7 +51,9 @@ public class EnemyController : MonoBehaviour
             playerInRange = true;
 
             EnemyEngage();
+            //enemyProjectileHandler_SCR.EnemyTankFired();
             projectileHandler_SCR.TankFired();
+
         }
     }
 

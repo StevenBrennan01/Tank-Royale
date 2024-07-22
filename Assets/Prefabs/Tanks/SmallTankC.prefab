@@ -434,7 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5432577881990024937}
   - component: {fileID: 2302032561089210637}
-  - component: {fileID: 3522070243625712353}
+  - component: {fileID: 6454488364110964159}
   - component: {fileID: 6739011788855648184}
   - component: {fileID: 2546049170046479855}
   - component: {fileID: 5105602677580963015}
@@ -484,7 +484,7 @@ MonoBehaviour:
   enemyHull: {fileID: 9077642625069182824}
   hullRotateSpeed: 125
   towerRotateSpeed: 0.09
---- !u!114 &3522070243625712353
+--- !u!114 &6454488364110964159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4527953417801519968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af2a90fdb373746afd38b2fff33a2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 602b441d72af33243a52c0671ffb0f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefabs:
@@ -502,8 +502,8 @@ MonoBehaviour:
   - {fileID: 5238058424399703366}
   shootVFX: {fileID: 0}
   projectileSpeed: 20
-  fireDelay: 1.5
   canFire: 1
+  fireDelay: 0.7
 --- !u!114 &6739011788855648184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,9 +517,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 1599830925552396312}
-  agentCanRespawn: 0
-  respawnDelay: 0
-  maxHealth: 0
+  respawnPosition: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  uiDelay: 0.1
 --- !u!195 &2546049170046479855
 NavMeshAgent:
   m_ObjectHideFlags: 0
