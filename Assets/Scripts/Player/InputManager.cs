@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     private Coroutine movingCR;
     private Coroutine shootingCR;
     private Coroutine tankLookingCR;
+    private Coroutine reloadingCR;
 
     private Animator TankAnimator;
 
@@ -52,6 +53,9 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.PauseGame.Enable();
         inputActions_SCR.Player.PauseGame.performed += PausePerformed;
+
+        inputActions_SCR.Player.Reload.Enable();
+        inputActions_SCR.Player.Reload.performed += ReloadPerformed;
     }
 
     private void OnDisable()
@@ -70,9 +74,12 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.PauseGame.Disable();
         inputActions_SCR.Player.PauseGame.performed -= PausePerformed;
+
+        inputActions_SCR.Player.Reload.Disable();
+        inputActions_SCR.Player.Reload.performed -= ReloadCancelled;
     }
 
-        //METHODS
+    //METHODS
 
     private void MovePerformed(InputAction.CallbackContext value)
     {
@@ -120,13 +127,22 @@ public class InputManager : MonoBehaviour
     private void ShootPerformed(InputAction.CallbackContext button)
     {
         shootingCR = StartCoroutine(tankShootingCR());
-    } 
-    
+    }
+
     private void ShootCancelled(InputAction.CallbackContext button)
     {
         shootingCR = null;
     }
 
+    private void ReloadPerformed(InputAction.CallbackContext button)
+    {
+        reloadingCR = StartCoroutine(tankReloadingCR());
+    }
+
+    private void ReloadCancelled(InputAction.CallbackContext button)
+    {
+        reloadingCR = null;
+    }
     private void PausePerformed(InputAction.CallbackContext button)
     {
         if (!gamePaused)
@@ -143,32 +159,38 @@ public class InputManager : MonoBehaviour
         }
     }
 
-        //COROUTINES
+    //COROUTINES
 
-        private IEnumerator tankMovingCR()
+    private IEnumerator tankMovingCR()
+    {
+        while (isMoving)
         {
-            while (isMoving)
-            {
-                tankController_SCR.MoveTank();
-                yield return null;
-            }
+            tankController_SCR.MoveTank();
+            yield return null;
         }
+    }
 
-        private IEnumerator tankLooking()
+    private IEnumerator tankLooking()
+    {
+        while (tankCanLook)
         {
-            while (tankCanLook)
-            {
-                tankController_SCR.RotateTower();
-                yield return null;
-            }
+            tankController_SCR.RotateTower();
+            yield return null;
         }
+    }
 
-        private IEnumerator tankShootingCR()
+    private IEnumerator tankShootingCR()
+    {
+        while (projectileHandler_SCR.canFire)
         {
-            while (projectileHandler_SCR.canFire)
-            {
-                projectileHandler_SCR.TankFired();
-                yield return null;
-            }
+            projectileHandler_SCR.TankFired();
+            yield return null;
         }
+    }
+
+    private IEnumerator tankReloadingCR()
+    {
+        StartCoroutine(projectileHandler_SCR.ReloadDelay());
+        yield return null;
+    }
 }

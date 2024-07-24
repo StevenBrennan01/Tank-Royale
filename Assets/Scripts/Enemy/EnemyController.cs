@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private EnemyProjectileHandler enemyProjectileHandler_SCR;
-    private ProjectileHandler projectileHandler_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                    -= Enemy Controller =-")]
@@ -36,14 +35,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         enemyProjectileHandler_SCR = GetComponent<EnemyProjectileHandler>();  
-        //projectileHandler_SCR = GetComponent <ProjectileHandler>();
-
         enemyAgent = GetComponent<NavMeshAgent>();
-
-        if (enemyProjectileHandler_SCR == null)
-        {
-            Debug.LogError("EnemyProjectileHandler component not found on " + gameObject.name);
-        }
 
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;
@@ -57,8 +49,6 @@ public class EnemyController : MonoBehaviour
 
             EnemyEngage();
             enemyProjectileHandler_SCR.EnemyTankFired();
-            //projectileHandler_SCR.TankFired();
-
         }
     }
 

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn); i++)
         {
+
             // spawn enemy at spawn position
             // enemiesSpawned++;
         }

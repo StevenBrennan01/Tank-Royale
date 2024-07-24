@@ -57,7 +57,7 @@ MonoBehaviour:
   tankHull: {fileID: 2097676570090570725}
   tankTower: {fileID: 1318346198427966974}
   moveDir: {x: 0, y: 0}
-  tankMoveSpeed: 5067
+  tankMoveSpeed: 2500
   hullRotateSpeed: 200
   towerRotateSpeed: 0.03
 --- !u!114 &3962251045148137221
@@ -81,7 +81,7 @@ MonoBehaviour:
   canFire: 1
   ammoCount: 0
   maxAmmo: 5
-  minAmmo: 1
+  minAmmo: 0
   fireDelay: 0.7
   reloadRoundDelay: 0.5
 --- !u!114 &931373404213766350
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 0}
   respawnPosition: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 100
   currentHealth: 0
   uiDelay: 0.1
 --- !u!114 &1649704187556918831

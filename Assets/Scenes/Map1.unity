@@ -60004,11 +60004,67 @@ Transform:
   - {fileID: 992280347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1567437470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7611189505446822488, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-  m_PrefabInstance: {fileID: 749973332}
-  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1587971073
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2154034576896201859, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_Name
+      value: MediumTankB
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699859193455929388, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: enemyTarget
+      value: 
+      objectReference: {fileID: 255274939}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546023888195856530, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
 --- !u!1 &1771203920
 GameObject:
   m_ObjectHideFlags: 0
@@ -60252,10 +60308,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      propertyPath: tankMoveSpeed
-      value: 2500
-      objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
@@ -60373,11 +60425,15 @@ PrefabInstance:
     - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: tankEnemies.Array.data[0]
       value: 
-      objectReference: {fileID: 1567437470}
+      objectReference: {fileID: 7611189505446822488, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
     - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: tankEnemies.Array.data[1]
       value: 
-      objectReference: {fileID: 8244575935890267608}
+      objectReference: {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
+    - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      propertyPath: tankEnemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 2154034576896201859, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
     - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: enemySpawnPositions.Array.data[0]
       value: 
@@ -60406,10 +60462,6 @@ PrefabInstance:
       propertyPath: enemySpawnPositions.Array.data[6]
       value: 
       objectReference: {fileID: 2119784974}
-    - target: {fileID: 2074262118013116128, guid: 96362114907cb51419a9b4badb32504d, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 2783971683361881250, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -60471,10 +60523,6 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 255274939}
-    - target: {fileID: 3763622312165666213, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
-      propertyPath: fireDelay
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
       propertyPath: m_Name
       value: SmallTankC
@@ -60524,11 +60572,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
---- !u!1 &8244575935890267608 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
-  m_PrefabInstance: {fileID: 8244575935890267607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8605700097298253551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60606,5 +60649,6 @@ SceneRoots:
   - {fileID: 1182277470}
   - {fileID: 749973332}
   - {fileID: 8244575935890267607}
+  - {fileID: 1587971073}
   - {fileID: 354967417}
   - {fileID: 505008224}

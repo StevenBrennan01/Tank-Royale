@@ -502,7 +502,7 @@ MonoBehaviour:
   - {fileID: 5238058424399703366}
   shootVFX: {fileID: 0}
   projectileSpeed: 20
-  fireDelay: 0.7
+  fireDelay: 1
 --- !u!114 &6739011788855648184
 MonoBehaviour:
   m_ObjectHideFlags: 0
