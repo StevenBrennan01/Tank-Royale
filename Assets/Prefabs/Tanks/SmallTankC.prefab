@@ -434,7 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5432577881990024937}
   - component: {fileID: 2302032561089210637}
-  - component: {fileID: 6454488364110964159}
+  - component: {fileID: 3763622312165666213}
   - component: {fileID: 6739011788855648184}
   - component: {fileID: 2546049170046479855}
   - component: {fileID: 5105602677580963015}
@@ -484,7 +484,7 @@ MonoBehaviour:
   enemyHull: {fileID: 9077642625069182824}
   hullRotateSpeed: 125
   towerRotateSpeed: 0.09
---- !u!114 &6454488364110964159
+--- !u!114 &3763622312165666213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -502,7 +502,6 @@ MonoBehaviour:
   - {fileID: 5238058424399703366}
   shootVFX: {fileID: 0}
   projectileSpeed: 20
-  canFire: 1
   fireDelay: 0.7
 --- !u!114 &6739011788855648184
 MonoBehaviour:

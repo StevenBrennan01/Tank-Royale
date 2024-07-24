@@ -36,9 +36,14 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         enemyProjectileHandler_SCR = GetComponent<EnemyProjectileHandler>();  
-        projectileHandler_SCR = GetComponent <ProjectileHandler>();
+        //projectileHandler_SCR = GetComponent <ProjectileHandler>();
 
         enemyAgent = GetComponent<NavMeshAgent>();
+
+        if (enemyProjectileHandler_SCR == null)
+        {
+            Debug.LogError("EnemyProjectileHandler component not found on " + gameObject.name);
+        }
 
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;
@@ -51,8 +56,8 @@ public class EnemyController : MonoBehaviour
             playerInRange = true;
 
             EnemyEngage();
-            //enemyProjectileHandler_SCR.EnemyTankFired();
-            projectileHandler_SCR.TankFired();
+            enemyProjectileHandler_SCR.EnemyTankFired();
+            //projectileHandler_SCR.TankFired();
 
         }
     }

@@ -134,11 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &125919271 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5238058424399703366, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
-  m_PrefabInstance: {fileID: 8244575935890267607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &255274939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
@@ -436,10 +431,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1194081379225590771, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
-      propertyPath: fireDelay
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 4691171343923439570, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.3
@@ -60261,6 +60252,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4709695966054172973, guid: ff39beeca0876454bb543820300480eb, type: 3}
+      propertyPath: tankMoveSpeed
+      value: 2500
+      objectReference: {fileID: 0}
     - target: {fileID: 7933158723731941601, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: m_Name
       value: SmallTankA
@@ -60476,6 +60471,10 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 255274939}
+    - target: {fileID: 3763622312165666213, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
+      propertyPath: fireDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
       propertyPath: m_Name
       value: SmallTankC
@@ -60520,44 +60519,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6454488364110964159, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8244575935890267618}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
 --- !u!1 &8244575935890267608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
   m_PrefabInstance: {fileID: 8244575935890267607}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8244575935890267618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244575935890267608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af2a90fdb373746afd38b2fff33a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefabs:
-  - {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
-  projectileSpawnPositions:
-  - {fileID: 125919271}
-  shootVFX: {fileID: 0}
-  projectileSpeed: 20
-  canFire: 1
-  ammoCount: 1111
-  maxAmmo: 111
-  minAmmo: 0
-  fireDelay: 0.7
-  reloadRoundDelay: 0.5
 --- !u!1001 &8605700097298253551
 PrefabInstance:
   m_ObjectHideFlags: 0

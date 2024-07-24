@@ -41,7 +41,8 @@ public class EnemyProjectileHandler : MonoBehaviour
     {
         if (enemyCanFire)
         {
-            Vector2 projectileFireDirection = projectileSpawnPositions[0].up; projectileFireDirection.Normalize();
+            Vector2 projectileFireDirection = projectileSpawnPositions[0].up;
+            projectileFireDirection.Normalize();
 
             /// INSTANTIATES THE OBJECT FROM THE POOL
             GameObject projectileSpawn = ObjectPoolManager.spawnObject(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
@@ -56,15 +57,20 @@ public class EnemyProjectileHandler : MonoBehaviour
 
                 if (shootVFX != null) { shootVFX.Play(); }
             }
+
+            enemyCanFire = false;
+
+            //                            (INTENSITY, FOR TIME)
+            CinemachineShake.Instance.CameraShake(1.5f, .25f);
+
+            // Stop any currently running coroutine
+            if (enemyFireDelay_CR != null)
+            {
+                StopCoroutine(enemyFireDelay_CR);
+            }
+
+            enemyFireDelay_CR = StartCoroutine(EnemyFireDelay());
         }
-
-        enemyCanFire = false;
-        Debug.Log("I cannot fire now");
-
-        //                            (INTENSITY, FOR TIME)
-        CinemachineShake.Instance.CameraShake(1.5f, .25f);
-
-        enemyFireDelay_CR = StartCoroutine(EnemyFireDelay());
     }
 
     // ===== COROUTINES =====
@@ -73,6 +79,5 @@ public class EnemyProjectileHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(fireDelay);
         enemyCanFire = true;
-        Debug.Log("I can now fire!");
     }
 }

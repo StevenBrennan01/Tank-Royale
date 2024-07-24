@@ -766,8 +766,7 @@ MonoBehaviour:
   - {fileID: 2502302810374058553}
   shootVFX: {fileID: 0}
   projectileSpeed: 20
-  canFire: 1
-  fireDelay: 0.7
+  fireDelay: 1
 --- !u!114 &1375225504625346912
 MonoBehaviour:
   m_ObjectHideFlags: 0
