@@ -64,6 +64,7 @@ public class ObjectPoolManager : MonoBehaviour
 
     public static void ReturnObjectToPool(GameObject obj)
     {
+        // LAMBDA EXPRESSION
         //PooledObjectInfo currentPool = ObjectPools.Find(p => p.LookupString == obj.name);
 
         string goName = obj.name.Substring(0, obj.name.Length - 7); // REMOVES THE (CLONE) PORTION OF THE OBJECT BY USING -7 ON THE NAME

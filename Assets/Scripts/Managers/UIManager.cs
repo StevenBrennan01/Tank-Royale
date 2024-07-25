@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,9 +20,6 @@ public class UIManager : MonoBehaviour
     public int arrayIndex = 0;
 
     private float reloadRoundUIDelay = .5f;
-    // BULLET UI DEPLETION
-    // ARRAY OF GAMEOBJECTS FOR THE BULLETS, FOR LOOP CHANGING THE COLOR OF EACH INDEX UNTIL MINIMUM IS REACHED
-    // THEN WHEN RELOADING INCREMENT THE OPPOSITE WAY
 
     private Coroutine smoothHealthBar_CR;
 

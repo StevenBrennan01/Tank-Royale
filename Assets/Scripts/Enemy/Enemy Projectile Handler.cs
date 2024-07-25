@@ -41,6 +41,7 @@ public class EnemyProjectileHandler : MonoBehaviour
     {
         if (enemyCanFire)
         {
+            // === GOING TO NEED TO MAKE THIS WORK WITH MULTIPLE PROJECTILE SPAWN POS
             Vector2 projectileFireDirection = projectileSpawnPositions[0].up;
             projectileFireDirection.Normalize();
 
