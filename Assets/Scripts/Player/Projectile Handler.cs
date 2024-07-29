@@ -92,6 +92,7 @@ public class ProjectileHandler : MonoBehaviour
             else if (ammoCount == minAmmo)
             {
                 canFire = false;
+                UIManager.Instance.reloadUI.SetActive(true);
             }
         }
     }
@@ -106,6 +107,7 @@ public class ProjectileHandler : MonoBehaviour
 
     public IEnumerator ReloadDelay()
     {
+        UIManager.Instance.reloadUI.SetActive(false);
         uiManager_SCR.ReloadAmmoUI();
 
         for (int i = ammoCount; i < maxAmmo; i++)

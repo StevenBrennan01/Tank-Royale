@@ -13,7 +13,7 @@ public class CinemachineShake : MonoBehaviour
     private float shakeTimerTotal;
     private float startingIntensity;
 
-    void Awake()
+    private void Awake()
     {
         if (Instance != null) { Destroy(this.gameObject); }
         else { Instance = this; }

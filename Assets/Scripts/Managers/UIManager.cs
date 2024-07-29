@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+
     private HealthManager healthManager_SCR;
     private ProjectileHandler projectileHandler_SCR;
 
@@ -15,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject healthUI;
     public GameObject pauseMenuUI;
+    public GameObject reloadUI;
 
     [SerializeField] private GameObject[] bulletsUI;
     public int arrayIndex = 0;
@@ -25,8 +28,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null) { Destroy(this.gameObject); }
+        else { Instance = this; }
+
         healthManager_SCR = FindObjectOfType<HealthManager>();
         projectileHandler_SCR = FindObjectOfType<ProjectileHandler>();
+
+        reloadUI.SetActive(false);
     }
 
     public void DepleteAmmoUI()
