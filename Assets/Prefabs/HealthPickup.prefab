@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7783667310595514295}
   - component: {fileID: 5064259432046148867}
   - component: {fileID: 8388327400949959246}
+  - component: {fileID: 3761456578030255709}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3761456578030255709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189089796225527940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333e67edd2f57bc47ae3662e0e544731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

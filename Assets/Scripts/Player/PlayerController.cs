@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour
 
     private float zRotation;
 
-    //private void Awake()
-    //{
-    //    mainCam = Camera.main;
-    //    rb = GetComponent<Rigidbody2D>();
-    //}
+    private void Awake()
+    {
+        mainCam = Camera.main;
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void OnEnable()
     {

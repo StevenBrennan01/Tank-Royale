@@ -51,7 +51,7 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth -= damageDealt;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0) // If the player or enemy is dead
         {
             Mathf.Clamp01(currentHealth);
             isActive = false;
@@ -74,8 +74,13 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void IncreaseHealth()
+    public void IncreaseHealth(float healthIncreased)
     {
-        //healing function
+        currentHealth += healthIncreased;
+
+        if (isActive)
+        {
+            uiManager_SCR.UpdateHealthUI(this, healthBarImage);
+        }
     }
 }
