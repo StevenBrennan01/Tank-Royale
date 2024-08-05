@@ -56,6 +56,9 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Reload.Enable();
         inputActions_SCR.Player.Reload.performed += ReloadPerformed;
+
+        inputActions_SCR.Player.SpeedBoost.Enable();
+        inputActions_SCR.Player.SpeedBoost.performed += SpeedBoostPerformed;
     }
 
     private void OnDisable()
@@ -77,6 +80,9 @@ public class InputManager : MonoBehaviour
 
         inputActions_SCR.Player.Reload.Disable();
         inputActions_SCR.Player.Reload.performed -= ReloadCancelled;
+
+        inputActions_SCR.Player.SpeedBoost.Disable();
+        inputActions_SCR.Player.SpeedBoost.performed -= SpeedBoostCancelled;
     }
 
     //METHODS
@@ -143,6 +149,16 @@ public class InputManager : MonoBehaviour
     {
         reloadingCR = null;
     }
+
+    private void SpeedBoostPerformed(InputAction.CallbackContext button)
+    {
+
+    }
+    private void SpeedBoostCancelled(InputAction.CallbackContext button)
+    {
+
+    }
+
     private void PausePerformed(InputAction.CallbackContext button)
     {
         if (!gamePaused)

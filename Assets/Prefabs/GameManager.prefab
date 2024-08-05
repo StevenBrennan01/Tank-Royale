@@ -47,11 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tankEnemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4527953417801519968, guid: 7596176099e88de4b8bf12445a36b0bb, type: 3}
+  - {fileID: 7611189505446822488, guid: 98382654be708c84d849635dad2f0ae6, type: 3}
+  - {fileID: 2154034576896201859, guid: 90c76115c7a524348b9a72294615bb8a, type: 3}
   enemySpawnPositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -60,10 +58,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   enemiesSpawned: 0
-  minEnemiesToSpawn: 5
+  minEnemiesToSpawn: 3
   maxEnemiesToSpawn: 7
-  respawnUI: {fileID: 0}
   maxLives: 0
   currentLife: 0
 --- !u!82 &2074262118013116128

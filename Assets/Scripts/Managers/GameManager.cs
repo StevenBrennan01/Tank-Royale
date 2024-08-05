@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
 
-    [SerializeField] private int enemiesSpawned = 0;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
     #endregion
