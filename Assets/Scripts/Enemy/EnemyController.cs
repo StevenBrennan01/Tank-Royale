@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private EnemyProjectileHandler enemyProjectileHandler_SCR;
+    private PlayerController playerController_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                    -= Enemy Controller =-")]
@@ -36,9 +37,15 @@ public class EnemyController : MonoBehaviour
     {
         enemyProjectileHandler_SCR = GetComponent<EnemyProjectileHandler>();  
         enemyAgent = GetComponent<NavMeshAgent>();
+        playerController_SCR = GetComponent<PlayerController>();
 
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;
+    }
+
+    private void OnEnable()
+    {
+        enemyTarget = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -20,14 +20,19 @@ public class HealthPickup : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
+            PlayVFX();
+
             healthIncreaseCR = StartCoroutine(IncreaseHealth(collision));
 
-            if (healVFX != null)
-            {
-                healVFX.gameObject.SetActive(true);
-            }
+            Destroy(this.gameObject);
+        }
+    }
 
-            //Destroy(this.gameObject);
+    private void PlayVFX()
+    {
+        if (healVFX != null)
+        {
+            healVFX.Play(this.transform);
         }
     }
 

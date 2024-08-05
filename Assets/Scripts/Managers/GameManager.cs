@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
 
-    [SerializeField] private int enemiesSpawned;
+    [SerializeField] private int enemiesSpawned = 0;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
     #endregion
@@ -31,10 +32,8 @@ public class GameManager : MonoBehaviour
     [Space(15)]
     #endregion
 
-    [SerializeField] private GameObject respawnUI;
-
-    [SerializeField] private int maxLives;
-    [SerializeField] private int currentLife;
+    [SerializeField] private int maxLives = 3;
+    [SerializeField] private int currentLife = 0;
 
     private void Awake()
     {
@@ -47,14 +46,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn); i++)
-        {
-
-            // spawn enemy at spawn position
-            // enemiesSpawned++;
-        }
-
+        SpawnEnemies();
         //play music, etc.
+    }
+
+    private void SpawnEnemies()
+    {
+        int enemiesSpawned = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn);
+
+        // Randomly shuffles through the spawnPositions Array
+        List<Transform> shufflePositions = enemySpawnPositions.OrderBy(x => Random.value).ToList();
+
+        for (int i = 0; i < enemiesSpawned; i++)
+        {
+            if (i >= shufflePositions.Count) break; // Allows only 1 to be spawned per Position
+
+            Transform spawnPosition = shufflePositions[i];
+            GameObject tankEnemy = tankEnemies[Random.Range(0, tankEnemies.Length)];
+            Instantiate(tankEnemy, spawnPosition.position, Quaternion.identity);
+        }
     }
 
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
@@ -64,7 +74,7 @@ public class GameManager : MonoBehaviour
     }
 
         // -= COROUTINES =-
-   
+    
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
         uiManager_SCR.UpdateHealthUI(target, healthBarImage);
@@ -78,9 +88,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay);
         Agent.transform.position = respawnPosition.position;
 
-        // GIVE AGENT MAX HEALTH AND AMMO AGAIN
-
-        // DISABLE RESPAWN UI
         Agent.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
