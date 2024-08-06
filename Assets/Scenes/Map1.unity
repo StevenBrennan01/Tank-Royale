@@ -73619,10 +73619,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1687364359}
     m_Modifications:
-    - target: {fileID: 3022822770761794995, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -343.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3829197011240959236, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -73671,22 +73667,6 @@ PrefabInstance:
       propertyPath: reloadUI
       value: 
       objectReference: {fileID: 767615073}
-    - target: {fileID: 8989197529226219066, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8989197529226219066, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1be4b83e5199a954b84bbcfed8218337, type: 3}
-    - target: {fileID: 8989197529226219066, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8989197529226219066, guid: 68cb66af804fdcc4c8311ffb6862142d, type: 3}
-      propertyPath: m_FillClockwise
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

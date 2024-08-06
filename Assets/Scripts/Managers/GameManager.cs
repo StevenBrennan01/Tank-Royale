@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
 
+    [SerializeField] private int enemiesSpawned;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
     #endregion
@@ -46,12 +46,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnEnemies();
+
+        currentLife = maxLives;
         //play music, etc.
     }
 
     private void SpawnEnemies()
     {
-        int enemiesSpawned = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn);
+        enemiesSpawned = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn);
 
         // Randomly shuffles through the spawnPositions Array
         List<Transform> shufflePositions = enemySpawnPositions.OrderBy(x => Random.value).ToList();
@@ -68,11 +70,20 @@ public class GameManager : MonoBehaviour
 
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
-        //CHECK IF currentLife = maxLives, then die
+        currentLife--;
+
+        uiManager_SCR.DepleteLives();
+
         entityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay, target, healthBarImage));
+
+        if (currentLife <= 0)
+        {
+            Debug.Log("Player has no lives left");
+            // KILL THE PLAYER / RESTART LEVEL
+        }
     }
 
-        // -= COROUTINES =-
+        // ==== COROUTINES ====
     
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {

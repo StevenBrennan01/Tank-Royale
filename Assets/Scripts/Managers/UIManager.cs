@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,10 @@ public class UIManager : MonoBehaviour
     public GameObject reloadUI;
 
     [SerializeField] private GameObject[] bulletsUI;
-    public int arrayIndex = 0;
+    [SerializeField] private GameObject[] livesUI;
+
+    public int ammoIndex = 0;
+    public int livesIndex = 0;
 
     private float reloadRoundUIDelay = .5f;
 
@@ -44,10 +48,10 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator DepleteAmmoUI_CR()
     {
-        if (arrayIndex < bulletsUI.Length)
+        if (ammoIndex < bulletsUI.Length)
         {
-            bulletsUI[arrayIndex].SetActive(false);
-            arrayIndex++;
+            bulletsUI[ammoIndex].SetActive(false);
+            ammoIndex++;
         }
         yield return null;
     }
@@ -59,18 +63,48 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator ReloadAmmoUI_CR()
     {
-        int currentIndex = arrayIndex;
+        int currentIndex = ammoIndex;
 
         for (int i = 0; i < currentIndex; i++)
         {
-            if (arrayIndex > 0)
+            if (ammoIndex > 0)
             {
-                arrayIndex--;
-                bulletsUI[arrayIndex].SetActive(true);
+                ammoIndex--;
+                bulletsUI[ammoIndex].SetActive(true);
                 yield return new WaitForSeconds(reloadRoundUIDelay);
             }
         }
     }
+
+    public void DepleteLives()
+    {
+        StartCoroutine(DepleteLives_CR());
+    }
+
+    private IEnumerator DepleteLives_CR()
+    {
+        if (livesIndex <= livesUI.Length)
+        {
+            livesUI[livesIndex].SetActive(false);
+            livesIndex++;
+        }
+        yield return null;
+    }
+
+    //public IEnumerator IncreaseLives_CR()
+    //{
+    //    int currentIndex = livesIndex;
+
+    //    for (int i = 0; i < currentIndex; i++)
+    //    {
+    //        if (livesIndex > 0)
+    //        {
+    //            livesIndex--;
+    //            livesUI[livesIndex].SetActive(true);
+    //            yield return null;
+    //        }
+    //    }
+    //}
 
     public void UpdateHealthUI(HealthManager target, Image healthBarImage)
     {

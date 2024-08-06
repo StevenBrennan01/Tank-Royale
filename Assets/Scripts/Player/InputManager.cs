@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private InputActions inputActions_SCR;
-    private PlayerController tankController_SCR;
-    private ProjectileHandler projectileHandler_SCR;
-    private UIManager uiManager_SCR;
+    private static InputActions inputActions_SCR;
+    private static PlayerController tankController_SCR;
+    private static ProjectileHandler projectileHandler_SCR;
+    private static UIManager uiManager_SCR;
 
     private Coroutine movingCR;
     private Coroutine shootingCR;
@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
         gamePaused = false;
     }
 
-    // In future, keep in mind that these can be subscribed and unsubscribed to -
+    // In future, keep in mind that these can be subscribed and unsubscribed to
     // depending on if the scene actually needs to access them or not.
     // For example only calling the player controls when in game, not in menu and vice versa
 
@@ -85,7 +85,7 @@ public class InputManager : MonoBehaviour
         inputActions_SCR.Player.SpeedBoost.performed -= SpeedBoostCancelled;
     }
 
-    //METHODS
+    // ==== METHODS ====
 
     private void MovePerformed(InputAction.CallbackContext value)
     {
@@ -175,7 +175,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    //COROUTINES
+    // ==== COROUTINES ====
 
     private IEnumerator tankMovingCR()
     {
