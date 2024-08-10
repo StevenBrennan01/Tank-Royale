@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +19,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
 
-    [SerializeField] private int enemiesSpawned;
+    public int enemyCount;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
+    #endregion
+
+    #region Game UI
+    [SerializeField] private TMP_Text enemiesRemainingText;
     #endregion
 
     private Coroutine entityDeath_CR;
@@ -48,17 +53,19 @@ public class GameManager : MonoBehaviour
         SpawnEnemies();
 
         currentLife = maxLives;
+
+        enemiesRemainingText.text = "" + enemyCount; // is there a better way of doing this?
         //play music, etc.
     }
 
     private void SpawnEnemies()
     {
-        enemiesSpawned = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn);
+        enemyCount = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn);
 
         // Randomly shuffles through the spawnPositions Array
         List<Transform> shufflePositions = enemySpawnPositions.OrderBy(x => Random.value).ToList();
 
-        for (int i = 0; i < enemiesSpawned; i++)
+        for (int i = 0; i < enemyCount; i++)
         {
             if (i >= shufflePositions.Count) break; // Allows only 1 to be spawned per Position
 
@@ -79,7 +86,10 @@ public class GameManager : MonoBehaviour
         if (currentLife <= 0)
         {
             Debug.Log("Player has no lives left");
-            // KILL THE PLAYER / RESTART LEVEL
+
+            Agent.SetActive(false);
+
+            //Show the death screen ui here, replay level etc.
         }
     }
 

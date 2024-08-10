@@ -63,7 +63,7 @@ public class HealthManager : MonoBehaviour
             }
             else // aka is not the player
             {
-                //currentEnemyCount --;
+                gameManager_SCR.enemyCount--;
 
                 Destroy(this.gameObject); 
             }

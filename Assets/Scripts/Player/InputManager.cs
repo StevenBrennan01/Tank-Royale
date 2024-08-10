@@ -34,7 +34,7 @@ public class InputManager : MonoBehaviour
     }
 
     // In future, keep in mind that these can be subscribed and unsubscribed to
-    // depending on if the scene actually needs to access them or not.
+    // depending on if the scene actually needs to access them
     // For example only calling the player controls when in game, not in menu and vice versa
 
     private void OnEnable()
@@ -152,7 +152,7 @@ public class InputManager : MonoBehaviour
 
     private void SpeedBoostPerformed(InputAction.CallbackContext button)
     {
-
+        //coroutine / uni.task? in player controller that gives temporary speed
     }
     private void SpeedBoostCancelled(InputAction.CallbackContext button)
     {
