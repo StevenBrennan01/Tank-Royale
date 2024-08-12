@@ -72,8 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1af2a90fdb373746afd38b2fff33a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefabs:
-  - {fileID: 6069812804996178849, guid: 3fcdc8a4a26603943bda19083efbd3b0, type: 3}
+  projectilePrefab: {fileID: 6069812804996178849, guid: 3fcdc8a4a26603943bda19083efbd3b0, type: 3}
   projectileSpawnPositions:
   - {fileID: 7768604706299593489}
   shootVFX: {fileID: 0}

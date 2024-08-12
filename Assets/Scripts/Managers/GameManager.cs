@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [SerializeField] private int maxLives = 3;
-    [SerializeField] private int currentLife = 0;
+    [SerializeField] private int currentLife;
 
     private void Awake()
     {
@@ -52,9 +52,9 @@ public class GameManager : MonoBehaviour
     {
         SpawnEnemies();
 
-        currentLife = maxLives;
+        CurrentEnemyCountUI();
 
-        enemiesRemainingText.text = "" + enemyCount; // is there a better way of doing this?
+        currentLife = maxLives;
         //play music, etc.
     }
 
@@ -75,13 +75,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void CurrentEnemyCountUI()
+    {
+        enemiesRemainingText.text = enemyCount.ToString();
+    }
+
+    public void EnemyDeath()
+    {
+        enemyCount--;
+
+        if (enemyCount <= 0)
+        {
+            CurrentEnemyCountUI();
+            // do something, display ui ...
+
+            Debug.Log("All enemies are dead");
+        }
+        else
+        {
+            CurrentEnemyCountUI();
+        }
+    }
+
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
         currentLife--;
 
         uiManager_SCR.DepleteLives();
-
-        entityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay, target, healthBarImage));
 
         if (currentLife <= 0)
         {
@@ -91,10 +111,14 @@ public class GameManager : MonoBehaviour
 
             //Show the death screen ui here, replay level etc.
         }
+        else
+        {
+            entityDeath_CR = StartCoroutine(AgentDeath_CR(Agent, respawnPosition, respawnDelay, target, healthBarImage));
+        }
     }
 
-        // ==== COROUTINES ====
-    
+    // ==== COROUTINES ====
+
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
     {
         uiManager_SCR.UpdateHealthUI(target, healthBarImage);

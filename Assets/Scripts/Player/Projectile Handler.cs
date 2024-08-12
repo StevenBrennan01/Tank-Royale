@@ -14,7 +14,7 @@ public class ProjectileHandler : MonoBehaviour
     [Space(15)]
     #endregion
 
-    [SerializeField] private GameObject[] projectilePrefabs;
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform[] projectileSpawnPositions;
 
     //WILL NEED TO USE THIS WHEN ENABLING NEW BULLETS ETC.
@@ -61,9 +61,9 @@ public class ProjectileHandler : MonoBehaviour
             Vector2 projectileFireDirection = projectileSpawnPositions[0].up; projectileFireDirection.Normalize();
 
             /// INSTANTIATES THE OBJECT FROM THE POOL
-            GameObject projectileSpawn = ObjectPoolManager.spawnObject(projectilePrefabs[0], projectileSpawnPositions[0].position, Quaternion.identity);
+            GameObject projectileSpawn = ObjectPoolManager.spawnObject(projectilePrefab, projectileSpawnPositions[0].position, Quaternion.identity);
 
-            if (projectilePrefabs[0].GetComponent<Rigidbody2D>() != null)
+            if (projectilePrefab.GetComponent<Rigidbody2D>() != null)
             {
                 float projectileRotation = Mathf.Atan2(projectileFireDirection.y, projectileFireDirection.x) * Mathf.Rad2Deg;
 

@@ -59,8 +59,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  enemyCount: 0
   minEnemiesToSpawn: 5
   maxEnemiesToSpawn: 7
+  enemiesRemainingText: {fileID: 0}
   maxLives: 3
   currentLife: 0
 --- !u!82 &2074262118013116128
