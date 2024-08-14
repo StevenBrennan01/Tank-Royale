@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         inputActions_SCR = new InputActions();
+
         tankController_SCR = GetComponent<PlayerController>();
         projectileHandler_SCR = GetComponent<ProjectileHandler>();
         uiManager_SCR = FindObjectOfType<UIManager>();
