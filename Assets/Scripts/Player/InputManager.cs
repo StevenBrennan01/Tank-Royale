@@ -133,7 +133,10 @@ public class InputManager : MonoBehaviour
 
     private void ShootPerformed(InputAction.CallbackContext button)
     {
-        shootingCR = StartCoroutine(tankShootingCR());
+        if (shootingCR == null)
+        {
+            shootingCR = StartCoroutine(tankShootingCR());
+        }
     }
 
     private void ShootCancelled(InputAction.CallbackContext button)
@@ -143,7 +146,10 @@ public class InputManager : MonoBehaviour
 
     private void ReloadPerformed(InputAction.CallbackContext button)
     {
-        reloadingCR = StartCoroutine(tankReloadingCR());
+        if (!projectileHandler_SCR.isReloading)
+        {
+            reloadingCR = StartCoroutine(tankReloadingCR());
+        }
     }
 
     private void ReloadCancelled(InputAction.CallbackContext button)

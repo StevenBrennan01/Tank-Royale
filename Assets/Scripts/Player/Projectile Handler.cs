@@ -31,6 +31,7 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private float projectileSpeed;
 
     [HideInInspector] public bool canFire = true;
+    /*[HideInInspector]*/ public bool isReloading = false;
 
     [SerializeField] private int ammoCount;
 
@@ -56,7 +57,7 @@ public class ProjectileHandler : MonoBehaviour
 
     public void TankFired()
     {
-        if (canFire)
+        if (canFire && !isReloading)
         {
             Vector2 projectileFireDirection = projectileSpawnPositions[0].up; projectileFireDirection.Normalize();
 
@@ -107,6 +108,8 @@ public class ProjectileHandler : MonoBehaviour
 
     public IEnumerator ReloadDelay()
     {
+        isReloading = true;
+
         UIManager.Instance.reloadUI.SetActive(false);
         uiManager_SCR.ReloadAmmoUI();
 
@@ -118,6 +121,6 @@ public class ProjectileHandler : MonoBehaviour
         }
 
         canFire = true;
-        yield return null;
+        isReloading = false;
     }
 }
