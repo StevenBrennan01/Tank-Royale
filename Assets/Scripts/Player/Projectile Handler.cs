@@ -31,7 +31,7 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private float projectileSpeed;
 
     [HideInInspector] public bool canFire = true;
-    /*[HideInInspector]*/ public bool isReloading = false;
+    [HideInInspector] public bool isReloading = false;
 
     [SerializeField] private int ammoCount;
 

@@ -119,9 +119,10 @@ public class GameManager : MonoBehaviour
 
     // ==== COROUTINES ====
 
-    private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
+    private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager healthScript, Image healthBarImage)
     {
-        uiManager_SCR.UpdateHealthUI(target, healthBarImage);
+        uiManager_SCR.UpdateHealthUI(healthScript, healthBarImage);
+
         Agent.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay);
         Agent.transform.position = respawnPosition.position;
 
+        uiManager_SCR.ReloadAmmoUI();
         Agent.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;

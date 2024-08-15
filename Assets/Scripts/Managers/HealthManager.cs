@@ -77,11 +77,17 @@ public class HealthManager : MonoBehaviour
 
     public void IncreaseHealth(float healthIncreased)
     {
-        currentHealth += healthIncreased;
-
-        if (isActive)
+        if (currentHealth < maxHealth)
         {
-            uiManager_SCR.UpdateHealthUI(this, healthBarImage);
+            currentHealth += healthIncreased;
+
+            //Stops player from overhealing
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+            if (isActive)
+            {
+                uiManager_SCR.UpdateHealthUI(this, healthBarImage);
+            }
         }
     }
 }
