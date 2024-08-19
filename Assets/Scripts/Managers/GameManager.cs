@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         uiManager_SCR.ReloadAmmoUI();
         Agent.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
 }

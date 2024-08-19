@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance {  get; private set; }
+
     private static InputActions inputActions_SCR;
     private static PlayerController tankController_SCR;
     private static ProjectileHandler projectileHandler_SCR;
