@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance { get; private set; }
+
     private HealthManager healthManager_SCR;
     private UIManager uiManager_SCR;
 
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     private Coroutine entityDeath_CR;
+    private Coroutine reinstateHealthPickup;
 
     #region Inspector Header and Spacing
     [Space(15)]
@@ -50,6 +53,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (instance != null) { Destroy(this.gameObject); }
+        else { instance = this; }
+
         SpawnEnemies();
 
         CurrentEnemyCountUI();
@@ -90,6 +96,7 @@ public class GameManager : MonoBehaviour
             // do something, display ui ...
 
             Debug.Log("All enemies are dead");
+            // START NEXT WAVE OF ENEMY TANKS
         }
         else
         {

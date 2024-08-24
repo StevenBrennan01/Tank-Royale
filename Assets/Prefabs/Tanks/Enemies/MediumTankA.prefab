@@ -746,7 +746,7 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   enemyTower: {fileID: 242309197577641964}
   enemyHull: {fileID: 1507478333897942705}
-  hullRotateSpeed: 100
+  hullRotateSpeed: 2
   towerRotateSpeed: 0.09
 --- !u!114 &1194081379225590771
 MonoBehaviour:

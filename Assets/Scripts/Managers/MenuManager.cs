@@ -9,6 +9,8 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    LevelLoader levelLoader_SCR;
+
     private int firstSceneIndex = 1;
 
     [Header("== UI Canvas ==")]
@@ -20,6 +22,7 @@ public class MenuManager : MonoBehaviour
     [Header("== Volume Settings ==")]
     [Space(10)]
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioClip menuMusic;
 
     [Space(10)]
     [SerializeField] private Slider masterVolumeSlider;
@@ -34,14 +37,17 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         ActivateMenuUI();
+
+        levelLoader_SCR = FindObjectOfType<LevelLoader>();
     }
 
     #region Main Menu Management
 
     public void StartGame()
     {
-        SceneManager.LoadScene(firstSceneIndex);
-
+        levelLoader_SCR.EnableAnimator();
+        AudioManager.instance.StopMusic();
+        levelLoader_SCR.LoadMap();
         //FADE OUT MUSIC
     }
 
@@ -90,7 +96,6 @@ public class MenuManager : MonoBehaviour
 
     public void SetMusicVolume(float musicVolumeValue)
     {
-
         musicVolValueToText.text = musicVolumeValue.ToString("0.0");
     }
 

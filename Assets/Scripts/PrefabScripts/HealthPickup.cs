@@ -7,9 +7,9 @@ public class HealthPickup : MonoBehaviour
     private HealthManager healthManager_SCR;
 
     private Coroutine healthIncreaseCR;
+    private Coroutine reinstateHealthPickup;
 
     [SerializeField] private float healAmount;
-    [SerializeField] private ParticleSystem healVFX;
 
     private void Awake()
     {
@@ -20,20 +20,16 @@ public class HealthPickup : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            PlayVFX();
-
             healthIncreaseCR = StartCoroutine(IncreaseHealth(collision));
-
-            Destroy(this.gameObject);
+            reinstateHealthPickup = StartCoroutine(ReinstateHP());
         }
     }
 
-    private void PlayVFX()
+    private IEnumerator ReinstateHP()
     {
-        if (healVFX != null)
-        {
-            healVFX.Play(this.transform);
-        }
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(true);
     }
 
     private IEnumerator IncreaseHealth(Collider2D collision)

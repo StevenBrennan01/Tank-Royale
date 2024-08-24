@@ -73732,6 +73732,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1687364359}
     m_Modifications:
     - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      propertyPath: HealthPickup
+      value: 
+      objectReference: {fileID: 7378754287456647613, guid: 5a6c56025fd182947ad44b58c8757add, type: 3}
+    - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      propertyPath: maxEnemiesToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      propertyPath: minEnemiesToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: enemiesRemainingText
       value: 
       objectReference: {fileID: 1226595966}

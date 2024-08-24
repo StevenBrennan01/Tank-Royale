@@ -61,14 +61,6 @@ public class EnemyController : MonoBehaviour
 
     //ATTEMPTING ROAMING HERE, RANDOM OR WAYPOINTS
 
-    //Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
-
-    //randomDirection += transform.position;
-    //        NavMeshHit hit;
-    //NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
-
-    //        Vector3 finalPosition = hit.position;
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -86,10 +78,17 @@ public class EnemyController : MonoBehaviour
 
             //ROTATES TANK TOWER TO PLAYER POSITION
             Vector3 towerRot = (enemyTarget.transform.position - enemyTower.transform.position);
+            float targetPointForTower = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
+
+            Quaternion towerRotation = Quaternion.Euler(0, 0, targetPointForTower);
+            enemyTower.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, towerRotation, towerRotateSpeed);
+
+            //ROTATING ENEMY HULL TO PLAYER POSITION
+            Vector3 hullRot = (enemyTarget.transform.position - enemyHull.transform.position);
             float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
-            Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
-            enemyTower.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, towerRotation, towerRotateSpeed);
+            Quaternion hullRotation = Quaternion.Euler(0, 0, targetPointForTower);
+            enemyHull.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, hullRotation, hullRotateSpeed);
         }
     }
 
