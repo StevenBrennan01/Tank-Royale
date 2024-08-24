@@ -85,9 +85,9 @@ public class EnemyController : MonoBehaviour
 
             //ROTATING ENEMY HULL TO PLAYER POSITION
             Vector3 hullRot = (enemyTarget.transform.position - enemyHull.transform.position);
-            float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
+            float targetPointForHull = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
-            Quaternion hullRotation = Quaternion.Euler(0, 0, targetPointForTower);
+            Quaternion hullRotation = Quaternion.Euler(0, 0, targetPointForHull);
             enemyHull.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, hullRotation, hullRotateSpeed);
         }
     }
