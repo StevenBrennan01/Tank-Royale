@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
 
     private bool isMoving;
     private bool tankCanLook;
-    private bool gamePaused;
+    private bool gamePaused = false;
 
     private void Awake()
     {
@@ -32,8 +32,6 @@ public class InputManager : MonoBehaviour
         uiManager_SCR = FindObjectOfType<UIManager>();
 
         TankAnimator = GetComponent<Animator>();
-
-        gamePaused = false;
     }
 
     // In future, keep in mind that these can be subscribed and unsubscribed to
@@ -41,6 +39,19 @@ public class InputManager : MonoBehaviour
     // For example only calling the player controls when in game, not in menu and vice versa
 
     private void OnEnable()
+    {
+        EnableAllTankActions();
+    }
+
+    private void OnDisable()
+    {
+        DisableAllTankActions();
+    }
+
+    // ==== METHODS ====
+
+    #region Enable / Disable Tank Action Maps
+    private void EnableAllTankActions()
     {
         inputActions_SCR.Player.Move.Enable();
         inputActions_SCR.Player.Move.performed += MovePerformed;
@@ -64,7 +75,7 @@ public class InputManager : MonoBehaviour
         inputActions_SCR.Player.SpeedBoost.performed += SpeedBoostPerformed;
     }
 
-    private void OnDisable()
+    private void DisableAllTankActions()
     {
         inputActions_SCR.Player.Move.Disable();
         inputActions_SCR.Player.Move.performed -= MovePerformed;
@@ -88,7 +99,7 @@ public class InputManager : MonoBehaviour
         inputActions_SCR.Player.SpeedBoost.performed -= SpeedBoostCancelled;
     }
 
-    // ==== METHODS ====
+    #endregion
 
     private void MovePerformed(InputAction.CallbackContext value)
     {

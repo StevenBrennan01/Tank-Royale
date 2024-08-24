@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
             {
                 ammoIndex--;
                 bulletsUI[ammoIndex].SetActive(true);
-                yield return null;
+                yield return new WaitForSeconds(reloadRoundUIDelay);
             }
         }
     }
