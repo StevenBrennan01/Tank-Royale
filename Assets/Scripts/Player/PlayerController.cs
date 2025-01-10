@@ -23,9 +23,18 @@ public class PlayerController : MonoBehaviour
     [Space(15)]
     #endregion
 
-    [SerializeField] private float tankMoveSpeed;
-    [SerializeField] private float hullRotateSpeed;
-    [SerializeField] private float towerRotateSpeed;
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    [System.Serializable]
+    // This can also be made into a seperate tank data script that lives in memory
+    // Which can then be utilised as a ScriptableObject with each tank having its own
+    public struct TankMovementSettings
+    {
+        public float tankMoveSpeed;       // Speed for forward/backward movement
+        public float hullRotateSpeed; // Speed for hull rotation
+        public float turretRotateSpeed; // Speed for turret rotation
+    }
+    [SerializeField] private TankMovementSettings movementSettings;
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
     private float zRotation;
 
@@ -43,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(transform.up * moveDir.y * tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
+        rb.AddForce(transform.up * moveDir.y * movementSettings.tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
         RotateHull();
     }
 
