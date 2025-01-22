@@ -56,10 +56,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankHull: {fileID: 2097676570090570725}
   tankTower: {fileID: 1318346198427966974}
+  movementSettings:
+    tankMoveSpeed: 2500
+    hullRotateSpeed: 200
+    towerRotateSpeed: 0.03
   moveDir: {x: 0, y: 0}
-  tankMoveSpeed: 2500
-  hullRotateSpeed: 200
-  towerRotateSpeed: 0.03
 --- !u!114 &3962251045148137221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +79,7 @@ MonoBehaviour:
   shootVFX: {fileID: 0}
   projectileSpeed: 20
   canFire: 1
+  isReloading: 0
   ammoCount: 0
   maxAmmo: 5
   minAmmo: 0

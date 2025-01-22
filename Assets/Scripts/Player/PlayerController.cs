@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static TankData;
+using static TankMovementSettingsSO;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject tankHull;
     [SerializeField] public GameObject tankTower;
 
-    [SerializeField] private TankMovementSettings movementSettings;
+    //TankData
+    [SerializeField] private TankMovementSettingsSO movementSettings;
 
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+
+        if (movementSettings == null)
+        {
+            Debug.LogError("Movement Settings ScriptableObject is not assigned!", this);
+        }
     }
 
     private void OnEnable()
