@@ -513,11 +513,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb8d457ffedaf499f2f24a48debf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tankData: {fileID: 11400000, guid: 03959f74e46d2734e8fac41ff241a52b, type: 2}
   enemyTarget: {fileID: 0}
   enemyTower: {fileID: 784012590219245449}
   enemyHull: {fileID: 3821221792470247078}
-  hullRotateSpeed: 2
-  towerRotateSpeed: 0.09
 --- !u!114 &3763622312165666213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,10 +547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18495c04d94f04947902a16f21e25141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tankData: {fileID: 11400000, guid: 03959f74e46d2734e8fac41ff241a52b, type: 2}
   healthBarImage: {fileID: 1599830925552396312}
   respawnPosition: {fileID: 0}
   maxHealth: 100
-  currentHealth: 0
   uiDelay: 0.1
 --- !u!195 &2546049170046479855
 NavMeshAgent:

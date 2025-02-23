@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +6,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    private HealthManager healthManager_SCR;
+    //private HealthManager healthManager_SCR;
     private ProjectileHandler projectileHandler_SCR;
+
+    //TankData
+    [SerializeField]
+    private TankAttributesSO tankData;
 
     #region Inspector Header and Spacing
     [Header("-= Level UI =-")]
@@ -35,7 +37,7 @@ public class UIManager : MonoBehaviour
         if (Instance != null) { Destroy(this.gameObject); }
         else { Instance = this; }
 
-        healthManager_SCR = FindObjectOfType<HealthManager>();
+        //healthManager_SCR = FindObjectOfType<HealthManager>();
         projectileHandler_SCR = FindObjectOfType<ProjectileHandler>();
 
         reloadUI.SetActive(false);
@@ -115,7 +117,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator SmoothHealthBar(HealthManager target, Image healthBarImage)
     {
         float currentFillAmount = healthBarImage.fillAmount;
-        float targetFillAmount = target.currentHealth / target.maxHealth;
+        float targetFillAmount = tankData.tankHealth / target.maxHealth;
         float elapsedTime = 0f;
         float UIDelay = target.uiDelay;
 

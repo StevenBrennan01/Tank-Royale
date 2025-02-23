@@ -1,17 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
     private EnemyProjectileHandler enemyProjectileHandler_SCR;
-    private PlayerController playerController_SCR;
+    //private PlayerController playerController_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                    -= Enemy Controller =-")]
     [Space(15)]
     #endregion
+
+    //TankData
+    [SerializeField] private TankAttributesSO tankData;
 
     [SerializeField] private Transform enemyTarget;
 
@@ -23,8 +25,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject enemyTower;
     [SerializeField] private GameObject enemyHull;
 
-    [SerializeField] private float hullRotateSpeed;
-    [SerializeField] private float towerRotateSpeed;
+    //[SerializeField] private float hullRotateSpeed;
+    //[SerializeField] private float towerRotateSpeed;
 
     private bool playerInRange;
 
@@ -37,7 +39,7 @@ public class EnemyController : MonoBehaviour
     {
         enemyProjectileHandler_SCR = GetComponent<EnemyProjectileHandler>();  
         enemyAgent = GetComponent<NavMeshAgent>();
-        playerController_SCR = GetComponent<PlayerController>();
+        //playerController_SCR = GetComponent<PlayerController>();
 
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;
@@ -81,14 +83,14 @@ public class EnemyController : MonoBehaviour
             float targetPointForTower = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
             Quaternion towerRotation = Quaternion.Euler(0, 0, targetPointForTower);
-            enemyTower.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, towerRotation, towerRotateSpeed);
+            enemyTower.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, towerRotation, tankData.towerRotateSpeed);
 
             //ROTATING ENEMY HULL TO PLAYER POSITION
             Vector3 hullRot = (enemyTarget.transform.position - enemyHull.transform.position);
             float targetPointForHull = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
             Quaternion hullRotation = Quaternion.Euler(0, 0, targetPointForHull);
-            enemyHull.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, hullRotation, hullRotateSpeed);
+            enemyHull.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, hullRotation, tankData.hullRotateSpeed);
         }
     }
 

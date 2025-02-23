@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static TankMovementSettingsSO;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public GameObject tankTower;
 
     //TankData
-    [SerializeField] private TankMovementSettingsSO movementSettings;
+    [SerializeField] private TankAttributesSO tankData;
 
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -34,9 +31,9 @@ public class PlayerController : MonoBehaviour
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
 
-        if (movementSettings == null)
+        if (tankData == null)
         {
-            Debug.LogError("Movement Settings ScriptableObject is not assigned!", this);
+            Debug.LogError("No tank data has been attached!");
         }
     }
 
@@ -48,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(transform.up * moveDir.y * movementSettings.tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
+        rb.AddForce(transform.up * moveDir.y * tankData.tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
         RotateHull();
     }
 
@@ -57,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (moveDir.x != 0)
         {
-            zRotation += moveDir.x * movementSettings.hullRotateSpeed * Time.deltaTime;
+            zRotation += moveDir.x * tankData.hullRotateSpeed * Time.deltaTime;
             rb.rotation = -zRotation;
         }
     }
@@ -70,7 +67,7 @@ public class PlayerController : MonoBehaviour
         float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
-        tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, movementSettings.towerRotateSpeed);
+        tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, tankData.towerRotateSpeed);
     }
     #endregion
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +5,10 @@ public class HealthManager : MonoBehaviour
 {
     private GameManager gameManager_SCR;
     private UIManager uiManager_SCR;
+
+    //TankData
+    [SerializeField]
+    private TankAttributesSO tankData;
 
     #region Inspector Header and Spacing
     [Header("                                                          -= Health Manager =-")]
@@ -21,7 +22,7 @@ public class HealthManager : MonoBehaviour
     public Transform respawnPosition;
 
     public float maxHealth;
-    public float currentHealth;
+    //public float currentHealth;
 
     public float uiDelay = .1f;
 
@@ -31,11 +32,16 @@ public class HealthManager : MonoBehaviour
     {
         gameManager_SCR = FindObjectOfType<GameManager>();
         uiManager_SCR = FindObjectOfType<UIManager>();
+
+        if (tankData == null)
+        {
+            Debug.Log("No tank data has been attached!");
+        }
     }
 
     private void OnEnable()
     {
-        currentHealth = maxHealth;
+        tankData.tankHealth = maxHealth;
 
         if (GetComponent<PlayerController>() != null) // ALWYAYS TRUE FOR THE PLAYER
         {
@@ -50,11 +56,11 @@ public class HealthManager : MonoBehaviour
 
     public void DealDamage(float damageDealt)
     {
-        currentHealth -= damageDealt;
+        tankData.tankHealth -= damageDealt;
 
-        if (currentHealth <= 0) // If the player or enemy is dead
+        if (tankData.tankHealth <= 0) // If the player or enemy is dead
         {
-            Mathf.Clamp01(currentHealth);
+            Mathf.Clamp01(tankData.tankHealth);
             isActive = false;
 
             if (respawnPosition != null && agentCanRespawn) // aka is the player
@@ -77,12 +83,12 @@ public class HealthManager : MonoBehaviour
 
     public void IncreaseHealth(float healthIncreased)
     {
-        if (currentHealth < maxHealth)
+        if (tankData.tankHealth < maxHealth)
         {
-            currentHealth += healthIncreased;
+            tankData.tankHealth += healthIncreased;
 
             //Stops player from overhealing
-            currentHealth = Mathf.Min(currentHealth, maxHealth);
+            tankData.tankHealth = Mathf.Min(tankData.tankHealth, maxHealth);
 
             if (isActive)
             {
