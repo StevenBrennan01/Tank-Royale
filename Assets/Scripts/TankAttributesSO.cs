@@ -6,7 +6,8 @@ public class TankAttributesSO : ScriptableObject
     [Header("Main Attributes")]
     [Space (10)]
     public float tankMoveSpeed;
-    public float tankHealth;
+    public float tankCurrentHealth;
+    public float tankMaxHealth;
 
     [Header("Secondary Attributes")]
     [Space(10)]

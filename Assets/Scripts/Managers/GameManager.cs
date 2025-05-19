@@ -24,14 +24,20 @@ public class GameManager : MonoBehaviour
     public int enemyCount;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
+
+    public int waveCount;
+    private int maxWave = 4; //then final boss wave or something / gradually increase enemies per wave
+
     #endregion
 
     #region Game UI
     [SerializeField] private TMP_Text enemiesRemainingText;
+
+    [SerializeField] private TMP_Text waveNumberText;
     #endregion
 
     private Coroutine entityDeath_CR;
-    private Coroutine reinstateHealthPickup;
+    private Coroutine reinstateHealthPickup; // not implemented yet 
 
     #region Inspector Header and Spacing
     [Space(15)]
@@ -56,8 +62,11 @@ public class GameManager : MonoBehaviour
         if (instance != null) { Destroy(this.gameObject); }
         else { instance = this; }
 
+        waveCount = 1;
+
         SpawnEnemies();
 
+        CurrentWaveNumber();
         CurrentEnemyCountUI();
 
         currentLife = maxLives;
@@ -66,7 +75,26 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        enemyCount = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn);
+        switch(waveCount)
+        {
+            case 1:
+                enemyCount = Random.Range(1, 3);
+                break;
+            case 2:
+                enemyCount = Random.Range(3, 5);
+                break;
+            case 3:
+                enemyCount = Random.Range(5, 7);
+                break;
+            case 4:
+                enemyCount = Random.Range(7, 10);
+                break;
+            default:
+                enemyCount = Random.Range(0,0);
+                break;
+        }
+
+        CurrentEnemyCountUI();
 
         // Randomly shuffles through the spawnPositions Array
         List<Transform> shufflePositions = enemySpawnPositions.OrderBy(x => Random.value).ToList();
@@ -86,6 +114,11 @@ public class GameManager : MonoBehaviour
         enemiesRemainingText.text = enemyCount.ToString();
     }
 
+    private void CurrentWaveNumber()
+    {
+        waveNumberText.text = waveCount.ToString();
+    }
+
     public void EnemyDeath()
     {
         enemyCount--;
@@ -96,7 +129,22 @@ public class GameManager : MonoBehaviour
             // do something, display ui ...
 
             Debug.Log("All enemies are dead");
+
             // START NEXT WAVE OF ENEMY TANKS
+            if(waveCount < maxWave)
+            {
+                waveCount++;
+
+                // Updating the UI
+                CurrentWaveNumber();
+                // Generating new Enemies
+                SpawnEnemies();
+            }
+            else
+            {
+                Debug.Log("Final Boss Wave");
+                // Spawn final boss or something
+            }
         }
         else
         {
@@ -146,6 +194,4 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
-
-
 }

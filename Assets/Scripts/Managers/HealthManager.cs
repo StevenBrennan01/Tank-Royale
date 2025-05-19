@@ -21,8 +21,8 @@ public class HealthManager : MonoBehaviour
     private float respawnDelay = 3f;
     public Transform respawnPosition;
 
-    public float maxHealth;
-    //public float currentHealth;
+    public float currentHealth {  get; private set; }
+    public float maxHealth { get; private set; }
 
     public float uiDelay = .1f;
 
@@ -41,7 +41,10 @@ public class HealthManager : MonoBehaviour
 
     private void OnEnable()
     {
-        tankData.tankHealth = maxHealth;
+        maxHealth = tankData.tankMaxHealth;
+        currentHealth = tankData.tankCurrentHealth;
+
+        currentHealth = maxHealth;
 
         if (GetComponent<PlayerController>() != null) // ALWYAYS TRUE FOR THE PLAYER
         {
@@ -56,11 +59,11 @@ public class HealthManager : MonoBehaviour
 
     public void DealDamage(float damageDealt)
     {
-        tankData.tankHealth -= damageDealt;
+        currentHealth -= damageDealt;
 
-        if (tankData.tankHealth <= 0) // If the player or enemy is dead
+        if (currentHealth <= 0) // If the player or enemy is dead
         {
-            Mathf.Clamp01(tankData.tankHealth);
+            Mathf.Clamp01(currentHealth);
             isActive = false;
 
             if (respawnPosition != null && agentCanRespawn) // aka is the player
@@ -83,12 +86,12 @@ public class HealthManager : MonoBehaviour
 
     public void IncreaseHealth(float healthIncreased)
     {
-        if (tankData.tankHealth < maxHealth)
+        if (currentHealth < maxHealth)
         {
-            tankData.tankHealth += healthIncreased;
+            currentHealth += healthIncreased;
 
             //Stops player from overhealing
-            tankData.tankHealth = Mathf.Min(tankData.tankHealth, maxHealth);
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
 
             if (isActive)
             {

@@ -117,14 +117,13 @@ public class UIManager : MonoBehaviour
     private IEnumerator SmoothHealthBar(HealthManager target, Image healthBarImage)
     {
         float currentFillAmount = healthBarImage.fillAmount;
-        float targetFillAmount = tankData.tankHealth / target.maxHealth;
+        float targetFillAmount = target.currentHealth / target.maxHealth;
         float elapsedTime = 0f;
         float UIDelay = target.uiDelay;
 
         while (elapsedTime < UIDelay)
         {
             elapsedTime += Time.deltaTime;
-
             healthBarImage.fillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, elapsedTime / UIDelay);
             yield return null;
         }

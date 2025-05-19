@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BaseEnemy
   m_EditorClassIdentifier: 
   tankMoveSpeed: 5
-  tankHealth: 100
+  tankCurrentHealth: 0
+  tankMaxHealth: 100
   hullRotateSpeed: 2
   towerRotateSpeed: 0.09

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerTank
   m_EditorClassIdentifier: 
   tankMoveSpeed: 2500
-  tankHealth: 40
+  tankCurrentHealth: 0
+  tankMaxHealth: 100
   hullRotateSpeed: 250
-  towerRotateSpeed: 250
+  towerRotateSpeed: 0.05
