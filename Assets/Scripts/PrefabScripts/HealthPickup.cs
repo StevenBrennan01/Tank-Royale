@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
@@ -10,6 +9,7 @@ public class HealthPickup : MonoBehaviour
     private Coroutine reinstateHealthPickup;
 
     [SerializeField] private float healAmount;
+    [SerializeField] private float respawnDelay = 4f;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class HealthPickup : MonoBehaviour
     private IEnumerator ReinstateHP()
     {
         gameObject.SetActive(false);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(respawnDelay);
         gameObject.SetActive(true);
     }
 
