@@ -6,7 +6,7 @@ public class HealthPickup : MonoBehaviour
     private HealthManager healthManager_SCR;
 
     private Coroutine healthIncreaseCR;
-    private Coroutine reinstateHealthPickup;
+    //private Coroutine reinstateHealthPickup;
 
     [SerializeField] private float healAmount;
     [SerializeField] private float respawnDelay = 4f;
@@ -21,20 +21,21 @@ public class HealthPickup : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             healthIncreaseCR = StartCoroutine(IncreaseHealth(collision));
-            reinstateHealthPickup = StartCoroutine(ReinstateHP());
+            //reinstateHealthPickup = StartCoroutine(ReinstateHP());
         }
     }
 
-    private IEnumerator ReinstateHP()
-    {
-        gameObject.SetActive(false);
-        yield return new WaitForSeconds(respawnDelay);
-        gameObject.SetActive(true);
-    }
+    //private IEnumerator ReinstateHP()
+    //{
+    //    gameObject.SetActive(false);
+    //    yield return new WaitForSeconds(respawnDelay);
+    //    gameObject.SetActive(true);
+    //}
 
     private IEnumerator IncreaseHealth(Collider2D collision)
     {
         collision.gameObject.GetComponent<HealthManager>().IncreaseHealth(healAmount);
+        this.gameObject.SetActive(false);
         yield return null;
     }
 }

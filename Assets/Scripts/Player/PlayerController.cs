@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     //TankData
     [SerializeField] private TankAttributesSO tankData;
+    public float tankMoveSpeed { get; set; }
+    public float hullRotateSpeed { get; private set; }
+    public float towerRotateSpeed { get; private set; }
 
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -35,6 +39,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("No tank data has been attached!");
         }
+
+        tankMoveSpeed = tankData.tankMoveSpeed;
+        hullRotateSpeed = tankData.hullRotateSpeed;
+        towerRotateSpeed = tankData.towerRotateSpeed;
+
     }
 
     private void OnEnable()
@@ -45,8 +54,22 @@ public class PlayerController : MonoBehaviour
 
     public void MoveTank()
     {
-        rb.AddForce(transform.up * moveDir.y * tankData.tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
+        rb.AddForce(transform.up * moveDir.y * tankMoveSpeed * Time.deltaTime, ForceMode2D.Force);
         RotateHull();
+    }
+
+    public void IncreaseSpeed()
+    {
+        StartCoroutine(IncreaseTankSpeed(GetComponent<Collider2D>()));
+    }
+
+    private IEnumerator IncreaseTankSpeed(Collider2D collision)
+    {
+        tankMoveSpeed *= 2f;
+
+        yield return new WaitForSeconds(3f);
+
+        tankMoveSpeed /= 2f;
     }
 
     #region Tank Rotations
@@ -54,7 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         if (moveDir.x != 0)
         {
-            zRotation += moveDir.x * tankData.hullRotateSpeed * Time.deltaTime;
+            zRotation += moveDir.x * hullRotateSpeed * Time.deltaTime;
             rb.rotation = -zRotation;
         }
     }
@@ -67,7 +90,7 @@ public class PlayerController : MonoBehaviour
         float targetPoint = Mathf.Atan2(towerRot.y, towerRot.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion towerRotation = Quaternion.Euler(0, 0, targetPoint);
-        tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, tankData.towerRotateSpeed);
+        tankTower.transform.rotation = Quaternion.Slerp(tankTower.transform.rotation, towerRotation, towerRotateSpeed);
     }
     #endregion
 }
