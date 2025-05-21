@@ -63,6 +63,8 @@ public class ProjectileHandler : MonoBehaviour
             /// INSTANTIATES THE OBJECT FROM THE POOL
             GameObject projectileSpawn = ObjectPoolManager.spawnObject(projectilePrefab, projectileSpawnPositions[0].position, Quaternion.identity);
 
+            // PLAY SFX (and VFX?) HERE
+
             if (projectilePrefab.GetComponent<Rigidbody2D>() != null)
             {
                 float projectileRotation = Mathf.Atan2(projectileFireDirection.y, projectileFireDirection.x) * Mathf.Rad2Deg;
@@ -83,7 +85,7 @@ public class ProjectileHandler : MonoBehaviour
             //                            (INTENSITY, FOR TIME)
             CinemachineShake.Instance.CameraShake(1.5f, .25f);
 
-            ammoCount--; //MAKE UI WORK WITH THIS FOR DEPLETING AMMO
+            ammoCount--;
 
             if (ammoCount != minAmmo)
             {

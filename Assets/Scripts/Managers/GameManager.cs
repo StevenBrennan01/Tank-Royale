@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     public int enemyCount;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
+    [SerializeField] private int playerScore = 0;
+    private int playerScorePerKill;
 
     public int waveCount;
     private int maxWave = 4; //then final boss wave or something / gradually increase enemies per wave
@@ -32,8 +35,8 @@ public class GameManager : MonoBehaviour
 
     #region Game UI
     [SerializeField] private TMP_Text enemiesRemainingText;
-
     [SerializeField] private TMP_Text waveNumberText;
+    [SerializeField] private TMP_Text playerScoreText;
     #endregion
 
     private Coroutine entityDeath_CR;
@@ -64,13 +67,25 @@ public class GameManager : MonoBehaviour
 
         waveCount = 1;
 
+        // Resetting the game
+
+        currentLife = maxLives;
+        playerScore = 0;
+
         SpawnEnemies();
 
         CurrentWaveNumber();
         CurrentEnemyCountUI();
+        CurrentPlayerScore();
+
+        //play music, etc.
+    }
+
+    private void ResetLevel()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 
         currentLife = maxLives;
-        //play music, etc.
     }
 
     private void SpawnEnemies()
@@ -93,7 +108,6 @@ public class GameManager : MonoBehaviour
                 enemyCount = Random.Range(0,0);
                 break;
         }
-
         CurrentEnemyCountUI();
 
         // Randomly shuffles through the spawnPositions Array
@@ -119,9 +133,19 @@ public class GameManager : MonoBehaviour
         waveNumberText.text = waveCount.ToString();
     }
 
+    public void CurrentPlayerScore()
+    {
+        playerScorePerKill = Random.Range(2, 4); 
+
+        playerScore += playerScorePerKill;
+        playerScoreText.text = playerScore.ToString();
+    }
+
     public void EnemyDeath()
     {
         enemyCount--;
+
+        CurrentPlayerScore();
 
         if (enemyCount <= 0)
         {
@@ -138,6 +162,7 @@ public class GameManager : MonoBehaviour
                 // Updating the UI
                 CurrentWaveNumber();
                 // Generating new Enemies
+                ResetLevel();
                 SpawnEnemies();
             }
             else
