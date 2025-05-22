@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float hullRotateSpeed { get; private set; }
     public float towerRotateSpeed { get; private set; }
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Camera mainCam;
 
     private Vector3 mousePos;

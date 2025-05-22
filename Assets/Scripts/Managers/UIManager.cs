@@ -34,8 +34,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null) { Destroy(this.gameObject); }
-        else { Instance = this; }
+        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
+        else { Destroy(this.gameObject); }
 
         //healthManager_SCR = FindObjectOfType<HealthManager>();
         projectileHandler_SCR = FindObjectOfType<ProjectileHandler>();

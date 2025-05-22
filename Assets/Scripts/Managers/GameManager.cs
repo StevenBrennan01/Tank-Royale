@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -53,6 +52,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //// Singleton pattern
+        //if(instance == null) { instance = this; DontDestroyOnLoad(gameObject); }
+        //else { Destroy(this.gameObject); }
+
         if (tankEnemies.Length <= 0) Debug.LogError("No enemies assigned, please assign some enemies to the level");
         if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
 
@@ -76,16 +79,9 @@ public class GameManager : MonoBehaviour
 
         CurrentWaveNumber();
         CurrentEnemyCountUI();
-        CurrentPlayerScore();
+        CurrentPlayerScore(0);
 
         //play music, etc.
-    }
-
-    private void ResetLevel()
-    {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-
-        currentLife = maxLives;
     }
 
     private void SpawnEnemies()
@@ -133,11 +129,9 @@ public class GameManager : MonoBehaviour
         waveNumberText.text = waveCount.ToString();
     }
 
-    public void CurrentPlayerScore()
+    public void CurrentPlayerScore(int killScore)
     {
-        playerScorePerKill = Random.Range(2, 4); 
-
-        playerScore += playerScorePerKill;
+        playerScore += killScore;
         playerScoreText.text = playerScore.ToString();
     }
 
@@ -145,7 +139,7 @@ public class GameManager : MonoBehaviour
     {
         enemyCount--;
 
-        CurrentPlayerScore();
+        CurrentPlayerScore(Random.Range(2,4));
 
         if (enemyCount <= 0)
         {
@@ -154,27 +148,84 @@ public class GameManager : MonoBehaviour
 
             Debug.Log("All enemies are dead");
 
-            // START NEXT WAVE OF ENEMY TANKS
-            if(waveCount < maxWave)
-            {
-                waveCount++;
+            // Freeze the player for 3 seconds
 
-                // Updating the UI
-                CurrentWaveNumber();
-                // Generating new Enemies
-                ResetLevel();
-                SpawnEnemies();
-            }
-            else
-            {
-                Debug.Log("Final Boss Wave");
-                // Spawn final boss or something
-            }
+            StartCoroutine(EndOfRound(healthManager_SCR.gameObject, 3f));
+
+            //////// START NEXT WAVE OF ENEMY TANKS
+            //if (waveCount < maxWave)
+            //{
+            //    Debug.Log("Next Wave Starting");
+            //    waveCount++;
+
+            //    // Updating the UI
+            //    CurrentWaveNumber();
+            //    // Generating new Enemies
+            //    SpawnEnemies();
+            //}
+            //else
+            //{
+            //    Debug.Log("Final Boss Wave");
+            //    // Spawn final boss or something
+            //}
         }
         else
         {
             CurrentEnemyCountUI();
         }
+    }
+
+    private void WaveChecker()
+    {
+        if (waveCount < maxWave)
+        {
+            Debug.Log("Next Wave Starting");
+            waveCount++;
+
+            // Updating the UI
+            CurrentWaveNumber();
+            // Generating new Enemies
+            SpawnEnemies();
+        }
+        else
+        {
+            Debug.Log("Final Boss Wave");
+            // Spawn final boss or something
+        }
+    }
+
+    private IEnumerator EndOfRound(GameObject Agent, float freezeTime)
+    {
+        Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
+        Agent.GetComponent<PlayerController>().rb.isKinematic = true;
+
+        //Show the end of round UI here, countdown etc.
+
+        yield return new WaitForSeconds(freezeTime);
+        AgentReset(healthManager_SCR.gameObject, healthManager_SCR.respawnPosition);
+    }
+
+    public void AgentReset(GameObject Agent, Transform respawnPosition)
+    {
+        Agent.transform.position = respawnPosition.position;
+
+        uiManager_SCR.ReloadAmmoUI();
+
+        // Wave starting ui here
+
+        //Coroutine to freeze player for 3 seconds
+        StartCoroutine(StartOfRound(Agent, 3f));
+    }
+
+    private IEnumerator StartOfRound(GameObject Agent, float freezeTime)
+    {
+        WaveChecker();
+        Debug.Log("Player is frozen for " + freezeTime + " seconds");
+
+        yield return new WaitForSeconds(freezeTime);
+
+        Agent.GetComponent<PlayerController>().rb.isKinematic = false;
+        Debug.Log("Player is unfrozen");
     }
 
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
