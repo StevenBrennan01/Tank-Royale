@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,10 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject reloadUI;
 
+    public GameObject NextWaveText;
+    public GameObject NextWaveValue;
+    private int countdownStartValue = 3;
+
     [SerializeField] private GameObject[] bulletsUI;
     [SerializeField] private GameObject[] livesUI;
 
@@ -31,6 +36,42 @@ public class UIManager : MonoBehaviour
     private float reloadRoundUIDelay = .5f;
 
     private Coroutine smoothHealthBar_CR;
+
+    [SerializeField] private Animator levelLoadAnim;
+
+    private void OnEnable()
+    {
+        levelLoadAnim.SetTrigger("LevelLoad");
+
+        NextWaveText.SetActive(false);
+        NextWaveValue.SetActive(false);
+    }
+
+    public void StartCountdownTimer()
+    {
+        NextWaveText.SetActive(true);
+        NextWaveValue.SetActive(true);
+
+        StartCoroutine(CountdownTimer_CR());
+    }
+
+    private IEnumerator CountdownTimer_CR()
+    {
+        int currentCountdown = countdownStartValue;
+        string waveStartText = "Go!";
+
+        while(currentCountdown > 0)
+        {
+            NextWaveValue.GetComponent<TextMeshProUGUI>().text = currentCountdown.ToString();
+            yield return new WaitForSeconds(1f);
+            currentCountdown--;
+        }
+        NextWaveText.SetActive(false);
+
+        NextWaveValue.GetComponent<TextMeshProUGUI>().text = waveStartText;
+        yield return new WaitForSeconds(1f);
+        NextWaveValue.SetActive(false);
+    }
 
     private void Awake()
     {
@@ -93,20 +134,25 @@ public class UIManager : MonoBehaviour
         yield return null;
     }
 
-    //public IEnumerator IncreaseLives_CR()
-    //{
-    //    int currentIndex = livesIndex;
+    public void IncreaseLives()
+    {
+        StartCoroutine(IncreaseLives_CR());
+    }
 
-    //    for (int i = 0; i < currentIndex; i++)
-    //    {
-    //        if (livesIndex > 0)
-    //        {
-    //            livesIndex--;
-    //            livesUI[livesIndex].SetActive(true);
-    //            yield return null;
-    //        }
-    //    }
-    //}
+    public IEnumerator IncreaseLives_CR()
+    {
+        int currentIndex = livesIndex;
+
+        for (int i = 0; i < currentIndex; i++)
+        {
+            if (livesIndex > 0)
+            {
+                livesIndex--;
+                livesUI[livesIndex].SetActive(true);
+                yield return new WaitForSeconds(reloadRoundUIDelay);
+            }
+        }
+    }
 
     public void UpdateHealthUI(HealthManager target, Image healthBarImage)
     {

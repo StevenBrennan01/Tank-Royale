@@ -152,22 +152,6 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(EndOfRound(healthManager_SCR.gameObject, 3f));
 
-            //////// START NEXT WAVE OF ENEMY TANKS
-            //if (waveCount < maxWave)
-            //{
-            //    Debug.Log("Next Wave Starting");
-            //    waveCount++;
-
-            //    // Updating the UI
-            //    CurrentWaveNumber();
-            //    // Generating new Enemies
-            //    SpawnEnemies();
-            //}
-            //else
-            //{
-            //    Debug.Log("Final Boss Wave");
-            //    // Spawn final boss or something
-            //}
         }
         else
         {
@@ -207,8 +191,13 @@ public class GameManager : MonoBehaviour
 
     public void AgentReset(GameObject Agent, Transform respawnPosition)
     {
+        Agent.SetActive(false);
         Agent.transform.position = respawnPosition.position;
+        Agent.SetActive(true);
 
+        uiManager_SCR.StartCountdownTimer();
+
+        uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
         uiManager_SCR.ReloadAmmoUI();
 
         // Wave starting ui here
@@ -220,6 +209,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator StartOfRound(GameObject Agent, float freezeTime)
     {
         WaveChecker();
+
+        currentLife = maxLives;
+        uiManager_SCR.IncreaseLives();
+
+
         Debug.Log("Player is frozen for " + freezeTime + " seconds");
 
         yield return new WaitForSeconds(freezeTime);
