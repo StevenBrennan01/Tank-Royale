@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -18,11 +16,6 @@ public class AudioManager : MonoBehaviour
         else { instance = this; }
 
         m_audioSource = GetComponent<AudioSource>();
-    }
-
-    private void Start()
-    {
-        DontDestroyOnLoad(this);
     }
 
     public void StopMusic()

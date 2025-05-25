@@ -275,7 +275,6 @@ MonoBehaviour:
   optionsUI: {fileID: 4084735503142443847}
   creditsUI: {fileID: 1624956880376496555}
   audioMixer: {fileID: 24100000, guid: 30d6795f2d6734e408c552f51550e3a0, type: 2}
-  menuMusic: {fileID: 0}
   masterVolumeSlider: {fileID: 0}
   masterVolValueToText: {fileID: 887087630}
   musicVolumeSlider: {fileID: 0}

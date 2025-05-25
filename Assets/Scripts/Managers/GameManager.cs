@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     #region Enemy Manager
     [SerializeField] private GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
+    [SerializeField] private GameObject tankBoss;
 
     public int enemyCount;
     [SerializeField] private int minEnemiesToSpawn;
@@ -82,6 +83,48 @@ public class GameManager : MonoBehaviour
         CurrentPlayerScore(0);
 
         //play music, etc.
+    }
+
+    private void WaveChecker()
+    {
+        if (waveCount < maxWave)
+        {
+            waveCount++;
+
+            // Updating the UI
+            CurrentWaveNumber();
+
+            // Generating new Enemies
+            SpawnEnemies();
+
+            //Next Wave UI
+            uiManager_SCR.StartCountdownTimer();
+        }
+        else
+        {
+            SpawnBoss();
+            FinalWaveUI();
+
+            //uiManager_SCR.StartBossCountdown();
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        if (tankBoss != null)
+        {
+            Instantiate(tankBoss, enemySpawnPositions[5].position, Quaternion.identity);
+            Debug.Log("Final Boss Spawned");
+        }
+        else
+        {
+            Debug.LogError("No tank boss assigned, please assign a tank boss to the level");
+        }
+    }
+
+    private void FinalWaveUI()
+    {
+
     }
 
     private void SpawnEnemies()
@@ -159,25 +202,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void WaveChecker()
-    {
-        if (waveCount < maxWave)
-        {
-            Debug.Log("Next Wave Starting");
-            waveCount++;
-
-            // Updating the UI
-            CurrentWaveNumber();
-            // Generating new Enemies
-            SpawnEnemies();
-        }
-        else
-        {
-            Debug.Log("Final Boss Wave");
-            // Spawn final boss or something
-        }
-    }
-
     private IEnumerator EndOfRound(GameObject Agent, float freezeTime)
     {
         Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
@@ -194,8 +218,6 @@ public class GameManager : MonoBehaviour
         Agent.SetActive(false);
         Agent.transform.position = respawnPosition.position;
         Agent.SetActive(true);
-
-        uiManager_SCR.StartCountdownTimer();
 
         uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
         uiManager_SCR.ReloadAmmoUI();

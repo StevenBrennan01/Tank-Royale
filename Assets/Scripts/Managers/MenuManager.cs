@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
     [Header("== Volume Settings ==")]
     [Space(10)]
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private AudioClip menuMusic;
+    //[SerializeField] private AudioClip menuMusic;
 
     [Space(10)]
     [SerializeField] private Slider masterVolumeSlider;
@@ -34,7 +34,6 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         ActivateMenuUI();
-
         levelLoader_SCR = FindObjectOfType<LevelLoader>();
     }
 

@@ -23,8 +23,10 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject reloadUI;
 
+    public GameObject bossIsSpawningUI;
+
     public GameObject NextWaveText;
-    public GameObject NextWaveValue;
+    public GameObject NextWaveCountdown;
     private int countdownStartValue = 3;
 
     [SerializeField] private GameObject[] bulletsUI;
@@ -44,13 +46,40 @@ public class UIManager : MonoBehaviour
         levelLoadAnim.SetTrigger("LevelLoad");
 
         NextWaveText.SetActive(false);
-        NextWaveValue.SetActive(false);
+        NextWaveCountdown.SetActive(false);
     }
+
+    public void StartBossCountdown()
+    {
+        bossIsSpawningUI.SetActive(true);
+        NextWaveCountdown.SetActive(true);
+
+        StartCoroutine(CountdownTimer_CR());
+        //StartCoroutine(BossCountdown_CR());
+    }
+
+    //private IEnumerator BossCountdown_CR()
+    //{
+    //    int currentCountdown = countdownStartValue;
+    //    string waveStartText = "Go!";
+
+    //    while (currentCountdown > 0)
+    //    {
+    //        NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = currentCountdown.ToString();
+    //        yield return new WaitForSeconds(1f);
+    //        currentCountdown--;
+    //    }
+    //    bossIsSpawningUI.SetActive(false);
+
+    //    NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = waveStartText;
+    //    yield return new WaitForSeconds(1f);
+    //    NextWaveCountdown.SetActive(false);
+    //}
 
     public void StartCountdownTimer()
     {
         NextWaveText.SetActive(true);
-        NextWaveValue.SetActive(true);
+        NextWaveCountdown.SetActive(true);
 
         StartCoroutine(CountdownTimer_CR());
     }
@@ -62,15 +91,15 @@ public class UIManager : MonoBehaviour
 
         while(currentCountdown > 0)
         {
-            NextWaveValue.GetComponent<TextMeshProUGUI>().text = currentCountdown.ToString();
+            NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = currentCountdown.ToString();
             yield return new WaitForSeconds(1f);
             currentCountdown--;
         }
         NextWaveText.SetActive(false);
 
-        NextWaveValue.GetComponent<TextMeshProUGUI>().text = waveStartText;
+        NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = waveStartText;
         yield return new WaitForSeconds(1f);
-        NextWaveValue.SetActive(false);
+        NextWaveCountdown.SetActive(false);
     }
 
     private void Awake()
