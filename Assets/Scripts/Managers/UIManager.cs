@@ -19,18 +19,24 @@ public class UIManager : MonoBehaviour
     [Space(15)]
     #endregion
 
-    public GameObject healthUI;
     public GameObject pauseMenuUI;
+
+    public GameObject healthUI;
+    public GameObject waveNumUI;
+    public GameObject enemiesRemainingUI;
+    public GameObject speedUI;
+    public GameObject startOfLevelUI;
     public GameObject reloadUI;
+    public GameObject emptyBulletsUI;
+    public GameObject scoreUI;
+    [SerializeField] private GameObject[] bulletsUI;
+    [SerializeField] private GameObject[] livesUI;
 
     public GameObject bossIsSpawningUI;
 
     public GameObject NextWaveText;
     public GameObject NextWaveCountdown;
     private int countdownStartValue = 3;
-
-    [SerializeField] private GameObject[] bulletsUI;
-    [SerializeField] private GameObject[] livesUI;
 
     public int ammoIndex = 0;
     public int livesIndex = 0;
@@ -47,6 +53,62 @@ public class UIManager : MonoBehaviour
 
         NextWaveText.SetActive(false);
         NextWaveCountdown.SetActive(false);
+
+        healthUI.SetActive(false);
+        waveNumUI.SetActive(false);
+        enemiesRemainingUI.SetActive(false);
+        speedUI.SetActive(false);
+        startOfLevelUI.SetActive(false);
+        reloadUI.SetActive(false);
+        emptyBulletsUI.SetActive(false);
+        scoreUI.SetActive(false);
+
+        for (int i = 0; i < bulletsUI.Length; i++)
+        {
+            bulletsUI[i].SetActive(false);
+        }
+
+        for (int i = 0; i < livesUI.Length; i++)
+        {
+            livesUI[i].SetActive(false);
+        }
+    }
+
+    public void StartLevelUI()
+    {
+        StartCoroutine(StartLevelUI_CR());
+    }
+
+    private IEnumerator StartLevelUI_CR()
+    {
+        startOfLevelUI.SetActive(true);
+
+        yield return new WaitForSeconds(6f);
+
+        SetAllUIActive();
+    }
+
+    private void SetAllUIActive()
+    {
+        healthUI.SetActive(true);
+        waveNumUI.SetActive(true);
+        enemiesRemainingUI.SetActive(true);
+        speedUI.SetActive(true);
+        scoreUI.SetActive(true);
+        reloadUI.SetActive(true);
+        emptyBulletsUI.SetActive(true);
+
+        for (int i = 0; i < bulletsUI.Length; i++)
+        {
+            bulletsUI[i].SetActive(true);
+        }
+
+        for (int i = 0; i < livesUI.Length; i++)
+        {
+            livesUI[i].SetActive(true);
+        }
+
+        startOfLevelUI.SetActive(false);
     }
 
     public void StartBossCountdown()

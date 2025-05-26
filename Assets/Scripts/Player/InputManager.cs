@@ -18,9 +18,10 @@ public class InputManager : MonoBehaviour
 
     private Animator TankAnimator;
 
-    private bool isMoving;
-    private bool tankCanLook;
-    private bool gamePaused = false;
+    public bool isMoving;
+    public bool tankCanLook;
+    public bool tankCanShoot;
+    public bool gamePaused = false;
 
     private void Awake()
     {
@@ -147,7 +148,10 @@ public class InputManager : MonoBehaviour
     {
         if (shootingCR == null)
         {
-            shootingCR = StartCoroutine(tankShootingCR());
+            if (tankCanShoot)
+            {
+                shootingCR = StartCoroutine(tankShootingCR());
+            }
         }
     }
 

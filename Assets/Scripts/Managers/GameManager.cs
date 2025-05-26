@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     private HealthManager healthManager_SCR;
     private UIManager uiManager_SCR;
+    private PlayerController playerController_SCR;
+    private InputManager inputManager_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                     -= Enemy Manager =-")]
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
 
         healthManager_SCR = FindObjectOfType<HealthManager>();
         uiManager_SCR = FindObjectOfType<UIManager>();
+        playerController_SCR = FindObjectOfType<PlayerController>();
+        inputManager_SCR = FindObjectOfType<InputManager>();
     }
 
     private void Start()
@@ -82,7 +86,7 @@ public class GameManager : MonoBehaviour
         CurrentEnemyCountUI();
         CurrentPlayerScore(0);
 
-        //play music, etc.
+        StartCoroutine(StartOfGame(playerController_SCR.gameObject, 6f));
     }
 
     private void WaveChecker()
@@ -193,24 +197,13 @@ public class GameManager : MonoBehaviour
 
             // Freeze the player for 3 seconds
 
-            StartCoroutine(EndOfRound(healthManager_SCR.gameObject, 3f));
+            StartCoroutine(EndOfRound(playerController_SCR.gameObject, 3f));
 
         }
         else
         {
             CurrentEnemyCountUI();
         }
-    }
-
-    private IEnumerator EndOfRound(GameObject Agent, float freezeTime)
-    {
-        Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
-        Agent.GetComponent<PlayerController>().rb.isKinematic = true;
-
-        //Show the end of round UI here, countdown etc.
-
-        yield return new WaitForSeconds(freezeTime);
-        AgentReset(healthManager_SCR.gameObject, healthManager_SCR.respawnPosition);
     }
 
     public void AgentReset(GameObject Agent, Transform respawnPosition)
@@ -226,22 +219,6 @@ public class GameManager : MonoBehaviour
 
         //Coroutine to freeze player for 3 seconds
         StartCoroutine(StartOfRound(Agent, 3f));
-    }
-
-    private IEnumerator StartOfRound(GameObject Agent, float freezeTime)
-    {
-        WaveChecker();
-
-        currentLife = maxLives;
-        uiManager_SCR.IncreaseLives();
-
-
-        Debug.Log("Player is frozen for " + freezeTime + " seconds");
-
-        yield return new WaitForSeconds(freezeTime);
-
-        Agent.GetComponent<PlayerController>().rb.isKinematic = false;
-        Debug.Log("Player is unfrozen");
     }
 
     public void AgentDeath(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager target, Image healthBarImage)
@@ -266,6 +243,28 @@ public class GameManager : MonoBehaviour
 
     // ==== COROUTINES ====
 
+    private IEnumerator StartOfGame(GameObject Agent, float freezeTime)
+    {
+        //Display Start of Game UI
+        Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
+        Agent.GetComponent<PlayerController>().rb.isKinematic = true;
+
+        inputManager_SCR.tankCanShoot = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        uiManager_SCR.StartLevelUI();
+
+        yield return new WaitForSeconds(freezeTime);
+        Agent.GetComponent<PlayerController>().rb.isKinematic = false;
+
+        inputManager_SCR.tankCanShoot = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager healthScript, Image healthBarImage)
     {
         uiManager_SCR.UpdateHealthUI(healthScript, healthBarImage);
@@ -285,5 +284,32 @@ public class GameManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+    }
+
+    private IEnumerator EndOfRound(GameObject Agent, float freezeTime)
+    {
+        Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
+        Agent.GetComponent<PlayerController>().rb.isKinematic = true;
+
+        //Show the end of round UI here, countdown etc.
+
+        yield return new WaitForSeconds(freezeTime);
+        AgentReset(playerController_SCR.gameObject, healthManager_SCR.respawnPosition);
+    }
+
+    private IEnumerator StartOfRound(GameObject Agent, float freezeTime)
+    {
+        WaveChecker();
+
+        currentLife = maxLives;
+        uiManager_SCR.IncreaseLives();
+
+
+        Debug.Log("Player is frozen for " + freezeTime + " seconds");
+
+        yield return new WaitForSeconds(freezeTime);
+
+        Agent.GetComponent<PlayerController>().rb.isKinematic = false;
+        Debug.Log("Player is unfrozen");
     }
 }
