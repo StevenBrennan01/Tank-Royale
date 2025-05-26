@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     private Coroutine entityDeath_CR;
     private Coroutine reinstateHealthPickup; // not implemented yet 
 
+    [SerializeField] private Transform resetPos;
+
     #region Inspector Header and Spacing
     [Space(15)]
     [Header("                                                     -= Respawn Manager =-")]
@@ -194,7 +196,6 @@ public class GameManager : MonoBehaviour
             // Freeze the player for 3 seconds
 
             StartCoroutine(EndOfRound(playerController_SCR.gameObject, 3f));
-
         }
         else
         {
@@ -202,11 +203,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AgentReset(GameObject Agent, Transform respawnPosition)
+    public void AgentReset(GameObject Agent)
     {
-        Agent.SetActive(false);
-        Agent.transform.position = respawnPosition.position;
-        Agent.SetActive(true);
+        //Agent.SetActive(false);
+        Agent.transform.position = resetPos.position;
+        //Agent.SetActive(true);
 
         uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
         uiManager_SCR.ReloadAmmoUI();
@@ -290,7 +291,7 @@ public class GameManager : MonoBehaviour
         //Show the end of round UI here, countdown etc.
 
         yield return new WaitForSeconds(freezeTime);
-        AgentReset(playerController_SCR.gameObject, healthManager_SCR.respawnPosition);
+        AgentReset(playerController_SCR.gameObject);
     }
 
     private IEnumerator StartOfRound(GameObject Agent, float freezeTime)

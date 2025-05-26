@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,7 +47,7 @@ public class HealthManager : MonoBehaviour
 
         currentHealth = maxHealth;
 
-        if (GetComponent<PlayerController>() != null) // ALWYAYS TRUE FOR THE PLAYER
+        if (GetComponent<PlayerController>() != null) // ALWAYS TRUE FOR THE PLAYER
         {
             agentCanRespawn = true;
         }
@@ -55,6 +56,11 @@ public class HealthManager : MonoBehaviour
         isActive = true;
 
         uiManager_SCR.UpdateHealthUI(this, healthBarImage);
+
+        if (respawnPosition is null)
+        {
+            Debug.LogError("Player has no respawn position, please set one in the inspector");
+        }
     }
 
     public void DealDamage(float damageDealt)
@@ -64,7 +70,7 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0) // If the player or enemy is dead
         {
             Mathf.Clamp01(currentHealth);
-            isActive = false;
+            isActive = false; 
 
             if (respawnPosition != null && agentCanRespawn) // aka is the player
             {

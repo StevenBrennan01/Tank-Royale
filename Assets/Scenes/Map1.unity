@@ -435,7 +435,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1688353031}
-  m_Father: {fileID: 255274939}
+  m_Father: {fileID: 2099880839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -92285,6 +92285,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3265368094631314806, guid: 61fc362bda6ecb049800da04ae2db8dd, type: 3}
   m_PrefabInstance: {fileID: 1864630746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1896918470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896918471}
+  m_Layer: 0
+  m_Name: ResetPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896918471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896918470}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 966252378}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1913378417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92573,6 +92604,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 255274939}
+  - {fileID: 464968327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101715166
@@ -92849,7 +92881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: maxAmmo
-      value: 5
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 3962251045148137221, guid: ff39beeca0876454bb543820300480eb, type: 3}
       propertyPath: ammoCount
@@ -92873,10 +92905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1731580536834850097, guid: ff39beeca0876454bb543820300480eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 464968327}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff39beeca0876454bb543820300480eb, type: 3}
 --- !u!1001 &6866162278671562539
@@ -93216,6 +93245,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1687364359}
     m_Modifications:
     - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      propertyPath: resetPos
+      value: 
+      objectReference: {fileID: 1896918471}
+    - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: HealthPickup
       value: 
       objectReference: {fileID: 7378754287456647613, guid: 5a6c56025fd182947ad44b58c8757add, type: 3}
@@ -93227,6 +93260,10 @@ PrefabInstance:
       propertyPath: playerScoreText
       value: 
       objectReference: {fileID: 502762917}
+    - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      propertyPath: respawnPosition
+      value: 
+      objectReference: {fileID: 1786224702}
     - target: {fileID: 733618485929756971, guid: 96362114907cb51419a9b4badb32504d, type: 3}
       propertyPath: maxEnemiesToSpawn
       value: 0
@@ -93317,7 +93354,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4863328625703034665, guid: 96362114907cb51419a9b4badb32504d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1896918471}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96362114907cb51419a9b4badb32504d, type: 3}
 --- !u!1001 &8605700097298253551

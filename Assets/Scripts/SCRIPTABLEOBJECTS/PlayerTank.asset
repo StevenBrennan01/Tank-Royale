@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da1b01f0ae8e3a4ba26cc0419ae7318, type: 3}
   m_Name: PlayerTank
   m_EditorClassIdentifier: 
-  tankMoveSpeed: 2500
+  tankMoveSpeed: 4298
   tankCurrentHealth: 0
   tankMaxHealth: 100
   hullRotateSpeed: 250
