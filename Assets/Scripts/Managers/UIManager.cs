@@ -59,7 +59,6 @@ public class UIManager : MonoBehaviour
         enemiesRemainingUI.SetActive(false);
         speedUI.SetActive(false);
         startOfLevelUI.SetActive(false);
-        reloadUI.SetActive(false);
         emptyBulletsUI.SetActive(false);
         scoreUI.SetActive(false);
 
@@ -95,7 +94,6 @@ public class UIManager : MonoBehaviour
         enemiesRemainingUI.SetActive(true);
         speedUI.SetActive(true);
         scoreUI.SetActive(true);
-        reloadUI.SetActive(true);
         emptyBulletsUI.SetActive(true);
 
         for (int i = 0; i < bulletsUI.Length; i++)

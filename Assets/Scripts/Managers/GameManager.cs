@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager_SCR;
     private PlayerController playerController_SCR;
     private InputManager inputManager_SCR;
+    private ProjectileHandler projectileHandler_SCR;
 
     #region Inspector Header and Spacing
     [Header("                                                     -= Enemy Manager =-")]
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
         uiManager_SCR = FindObjectOfType<UIManager>();
         playerController_SCR = FindObjectOfType<PlayerController>();
         inputManager_SCR = FindObjectOfType<InputManager>();
+        projectileHandler_SCR = FindObjectOfType<ProjectileHandler>();
     }
 
     private void Start()
@@ -107,7 +109,6 @@ public class GameManager : MonoBehaviour
         else
         {
             SpawnBoss();
-            FinalWaveUI();
 
             //uiManager_SCR.StartBossCountdown();
         }
@@ -124,11 +125,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("No tank boss assigned, please assign a tank boss to the level");
         }
-    }
-
-    private void FinalWaveUI()
-    {
-
     }
 
     private void SpawnEnemies()
@@ -249,7 +245,7 @@ public class GameManager : MonoBehaviour
         Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
         Agent.GetComponent<PlayerController>().rb.isKinematic = true;
 
-        inputManager_SCR.tankCanShoot = false;
+        projectileHandler_SCR.canFire = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -259,7 +255,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(freezeTime);
         Agent.GetComponent<PlayerController>().rb.isKinematic = false;
 
-        inputManager_SCR.tankCanShoot = true;
+        projectileHandler_SCR.canFire = true;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
