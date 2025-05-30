@@ -21,13 +21,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Enemy Manager
-    [SerializeField] private GameObject[] tankEnemies;
+    [SerializeField] public GameObject[] tankEnemies;
     [SerializeField] private Transform[] enemySpawnPositions;
     [SerializeField] private GameObject tankBoss;
 
+    //Populate this list with the enemies as soon as they spawn in
+    [HideInInspector] public List<GameObject> activeEnemies = new List<GameObject> ();
+
     public int enemyCount;
-    [SerializeField] private int minEnemiesToSpawn;
-    [SerializeField] private int maxEnemiesToSpawn;
+    //[SerializeField] private int minEnemiesToSpawn;
+    //[SerializeField] private int maxEnemiesToSpawn;
     [SerializeField] private int playerScore = 0;
     private int playerScorePerKill;
 
@@ -160,7 +163,10 @@ public class GameManager : MonoBehaviour
 
             Transform spawnPosition = shufflePositions[i];
             GameObject tankEnemy = tankEnemies[Random.Range(0, tankEnemies.Length)];
-            Instantiate(tankEnemy, spawnPosition.position, Quaternion.identity);
+            GameObject newlySpawnedEnemy = Instantiate(tankEnemy, spawnPosition.position, Quaternion.identity);
+
+            // Add the spawned enemy to the active enemies list
+            activeEnemies.Add(newlySpawnedEnemy);
         }
     }
 
@@ -287,6 +293,8 @@ public class GameManager : MonoBehaviour
     {
         Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
         Agent.GetComponent<PlayerController>().rb.isKinematic = true;
+
+        activeEnemies.Clear();
 
         //Show the end of round UI here, countdown etc.
 
