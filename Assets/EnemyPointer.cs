@@ -64,9 +64,9 @@ public class EnemyPointer : MonoBehaviour
 
         while (pointerSprites.Count > enemyCount)
         {
-            GameObject pointerToRemove = pointerSprites[pointerSprites.Count - 1];
-            pointerSprites.Remove(pointerToRemove);
-            //Destroy(pointerToRemove);
+            GameObject lastPointer = pointerSprites[pointerSprites.Count - 1];
+            pointerSprites.RemoveAt(pointerSprites.Count - 1);
+            Destroy(lastPointer);
         }
     }
 }
