@@ -306,6 +306,11 @@ public class GameManager : MonoBehaviour
     {
         WaveChecker();
 
+        if (uiManager_SCR.reloadUI.activeSelf)
+        {
+            uiManager_SCR.reloadUI.SetActive(false);
+        }
+
         currentLife = maxLives; 
         uiManager_SCR.IncreaseLives();
 

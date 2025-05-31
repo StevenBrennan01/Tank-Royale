@@ -39,7 +39,7 @@ public class EnemyPointer : MonoBehaviour
             {
                 Vector3 pointerDir = (enemy.transform.position - anchorPoint.position).normalized;
 
-                // Calculate the angle between the pointer direction and the x-axis
+                // the trigonometry to calculate the angle
                 float angle = Mathf.Atan2(pointerDir.y, pointerDir.x) * Mathf.Rad2Deg;
 
                 pointer.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
