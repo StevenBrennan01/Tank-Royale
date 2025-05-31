@@ -306,9 +306,14 @@ public class GameManager : MonoBehaviour
     {
         WaveChecker();
 
-        currentLife = maxLives;
+        currentLife = maxLives; 
         uiManager_SCR.IncreaseLives();
 
+        healthManager_SCR.currentHealth = healthManager_SCR.maxHealth;
+        uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
+
+        projectileHandler_SCR.ammoCount = projectileHandler_SCR.maxAmmo;
+        uiManager_SCR.ReloadAmmoUI();
 
         Debug.Log("Player is frozen for " + freezeTime + " seconds");
 

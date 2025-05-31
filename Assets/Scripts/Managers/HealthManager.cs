@@ -21,8 +21,8 @@ public class HealthManager : MonoBehaviour
     private float respawnDelay = 3f;
     public Transform respawnPosition;
 
-    public float currentHealth {  get; private set; }
-    public float maxHealth { get; private set; }
+    public float currentHealth {  get; set; }
+    public float maxHealth { get; set; }
 
     public float uiDelay = .1f;
 

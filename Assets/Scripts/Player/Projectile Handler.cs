@@ -32,9 +32,9 @@ public class ProjectileHandler : MonoBehaviour
     [HideInInspector] public bool canFire;
     [HideInInspector] public bool isReloading = false;
 
-    [SerializeField] private int ammoCount;
+    [SerializeField] public int ammoCount;
 
-    [SerializeField] private int maxAmmo;
+    [SerializeField] public int maxAmmo;
     [SerializeField] private int minAmmo;
 
     private Coroutine fireDelay_CR;
