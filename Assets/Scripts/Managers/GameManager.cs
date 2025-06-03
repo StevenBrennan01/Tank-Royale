@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
         inputManager_SCR.tankReloadingCR();
 
         // uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
-        //uiManager_SCR.ReloadAmmoUI();
+        // uiManager_SCR.ReloadAmmoUI();
 
         // Wave starting ui here
 
