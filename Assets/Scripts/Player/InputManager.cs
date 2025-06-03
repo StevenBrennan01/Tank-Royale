@@ -223,7 +223,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private IEnumerator tankReloadingCR()
+    public IEnumerator tankReloadingCR()
     {
         StartCoroutine(projectileHandler_SCR.ReloadDelay());
         yield return null;

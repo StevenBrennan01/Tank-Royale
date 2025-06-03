@@ -52,6 +52,7 @@ public class ProjectileHandler : MonoBehaviour
     private void OnEnable()
     {
         ammoCount = maxAmmo;
+        uiManager_SCR.ReloadAmmoUI();
     }
 
     public void TankFired()

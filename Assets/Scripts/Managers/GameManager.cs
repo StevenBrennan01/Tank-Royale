@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject tankBoss;
 
     //Populate this list with the enemies as soon as they spawn in
-    [HideInInspector] public List<GameObject> activeEnemies = new List<GameObject> ();
+    public List<GameObject> activeEnemies = new List<GameObject> ();
 
     public int enemyCount;
     //[SerializeField] private int minEnemiesToSpawn;
@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
     public void EnemyDeath()
     {
         enemyCount--;
+        activeEnemies.Remove(activeEnemies.LastOrDefault());
 
         CurrentPlayerScore(Random.Range(2,4));
 
@@ -211,12 +212,14 @@ public class GameManager : MonoBehaviour
 
     public void AgentReset(GameObject Agent)
     {
-        //Agent.SetActive(false);
+        Agent.SetActive(false);
         Agent.transform.position = resetPos.position;
-        //Agent.SetActive(true);
+        Agent.SetActive(true);
 
-        uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
-        uiManager_SCR.ReloadAmmoUI();
+        inputManager_SCR.tankReloadingCR();
+
+        // uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
+        //uiManager_SCR.ReloadAmmoUI();
 
         // Wave starting ui here
 
@@ -313,12 +316,6 @@ public class GameManager : MonoBehaviour
 
         currentLife = maxLives; 
         uiManager_SCR.IncreaseLives();
-
-        healthManager_SCR.currentHealth = healthManager_SCR.maxHealth;
-        uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
-
-        projectileHandler_SCR.ammoCount = projectileHandler_SCR.maxAmmo;
-        uiManager_SCR.ReloadAmmoUI();
 
         Debug.Log("Player is frozen for " + freezeTime + " seconds");
 
