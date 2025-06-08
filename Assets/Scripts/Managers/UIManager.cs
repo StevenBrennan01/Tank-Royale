@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -92,7 +93,6 @@ public class UIManager : MonoBehaviour
         healthUI.SetActive(true);
         waveNumUI.SetActive(true);
         enemiesRemainingUI.SetActive(true);
-        speedUI.SetActive(true);
         scoreUI.SetActive(true);
         emptyBulletsUI.SetActive(true);
 
@@ -263,5 +263,32 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         healthBarImage.fillAmount = targetFillAmount;
+    }
+
+    public void SpeedBarDepletion()
+    {
+        speedUI.SetActive(true);
+        StartCoroutine(SpeedBarDepletion_CR());
+    }
+
+    private IEnumerator SpeedBarDepletion_CR()
+    {
+        // Assuming you have a speed bar Image component
+        Image speedBarImage = speedUI.GetComponentInChildren<Image>();
+        float currentFillAmount = speedBarImage.fillAmount;
+        float targetFillAmount = 0f; // Deplete to empty
+        float elapsedTime = 0f;
+        float depletionDuration = 3f; // Duration to deplete the speed bar
+
+        while (elapsedTime < depletionDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            speedBarImage.fillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, elapsedTime / depletionDuration);
+            yield return null;
+        }
+        speedBarImage.fillAmount = targetFillAmount;
+
+        speedUI.SetActive(false); // Hide the speed bar after depletion
+        speedBarImage.fillAmount = 1f; // Reset the speed bar fill amount for next use
     }
 }

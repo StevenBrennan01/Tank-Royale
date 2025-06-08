@@ -55,9 +55,19 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = true;
-
             EnemyEngage();
-            enemyProjectileHandler_SCR.EnemyTankFired();
+
+            float rayDistance = 5f;
+            RaycastHit2D wallHit = Physics2D.Raycast(enemyTower.transform.position, enemyTarget.position - enemyTower.transform.position, rayDistance, LayerMask.GetMask("Wall"));
+
+            if (wallHit)
+            {
+                return;
+            }
+            else
+            {
+                enemyProjectileHandler_SCR.EnemyTankFired();
+            }
         }
     }
 

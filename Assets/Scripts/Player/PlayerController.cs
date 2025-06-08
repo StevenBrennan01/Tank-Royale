@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D rb;
     private Camera mainCam;
+    public bool isBoosting;
 
     private Vector3 mousePos;
     [HideInInspector] public Vector2 moveDir;
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
     public void IncreaseSpeed()
     {
         StartCoroutine(IncreaseTankSpeed(GetComponent<Collider2D>()));
+        isBoosting = true;
     }
 
     private IEnumerator IncreaseTankSpeed(Collider2D collision)
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         tankMoveSpeed /= 2f;
+        isBoosting = false;
     }
 
     #region Tank Rotations
