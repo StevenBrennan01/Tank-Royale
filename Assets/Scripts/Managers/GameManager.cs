@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
     public void EnemyDeath()
     {
         enemyCount--;
-        activeEnemies.Remove(activeEnemies.LastOrDefault());
+        //activeEnemies.Remove(activeEnemies.LastOrDefault());
 
         CurrentPlayerScore(Random.Range(2,4));
 

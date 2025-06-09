@@ -78,7 +78,7 @@ public class HealthManager : MonoBehaviour
             else // aka is not the player
             {
                 gameManager_SCR.EnemyDeath();
-
+                gameManager_SCR.activeEnemies.Remove(this.gameObject);
                 Destroy(this.gameObject); 
             }
         }

@@ -26,7 +26,7 @@ public class EnemyPointer : MonoBehaviour
         UpdateEnemyPointers();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateEnemyPointers();
 
