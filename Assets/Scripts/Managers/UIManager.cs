@@ -193,7 +193,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(ReloadAmmoUI_CR());
     }
 
-    public IEnumerator ReloadAmmoUI_CR()
+    private IEnumerator ReloadAmmoUI_CR()
     {
         int currentIndex = ammoIndex;
 

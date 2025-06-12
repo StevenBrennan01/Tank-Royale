@@ -31,6 +31,7 @@ public class ProjectileHandler : MonoBehaviour
 
     [HideInInspector] public bool canFire;
     [HideInInspector] public bool isReloading = false;
+    [HideInInspector] public bool canReload = true;
 
     [SerializeField] public int ammoCount;
 
@@ -51,7 +52,10 @@ public class ProjectileHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        ammoCount = maxAmmo;
+        //canReload = true;
+
+        //ammoCount = maxAmmo;
+        reloadDelay_CR = StartCoroutine(ReloadDelay());
         uiManager_SCR.ReloadAmmoUI();
     }
 
@@ -110,19 +114,22 @@ public class ProjectileHandler : MonoBehaviour
 
     public IEnumerator ReloadDelay()
     {
-        isReloading = true;
-
-        UIManager.Instance.reloadUI.SetActive(false);
-        uiManager_SCR.ReloadAmmoUI();
-
-        for (int i = ammoCount; i < maxAmmo; i++)
+        if (canReload)
         {
-            ammoCount++;
-            yield return new WaitForSeconds(reloadRoundDelay);
-            // ADD SFX HERE TO AUDIOLISE RELOADING
-        }
+            isReloading = true;
 
-        canFire = true;
-        isReloading = false;
+            UIManager.Instance.reloadUI.SetActive(false);
+            uiManager_SCR.ReloadAmmoUI();
+
+            for (int i = ammoCount; i < maxAmmo; i++)
+            {
+                ammoCount++;
+                yield return new WaitForSeconds(reloadRoundDelay);
+                // ADD SFX HERE TO AUDIOLISE RELOADING
+            }
+
+            canFire = true;
+            isReloading = false;
+        }
     }
 }

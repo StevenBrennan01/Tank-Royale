@@ -107,9 +107,6 @@ public class GameManager : MonoBehaviour
 
             // Generating new Enemies
             SpawnEnemies();
-
-            //Next Wave UI
-            uiManager_SCR.StartCountdownTimer();
         }
         else
         {
@@ -218,10 +215,8 @@ public class GameManager : MonoBehaviour
 
         inputManager_SCR.tankReloadingCR();
 
-        // uiManager_SCR.UpdateHealthUI(healthManager_SCR, healthManager_SCR.healthBarImage);
-        // uiManager_SCR.ReloadAmmoUI();
-
-        // Wave starting ui here
+        //Next Wave UI
+        uiManager_SCR.StartCountdownTimer();
 
         //Coroutine to freeze player for 3 seconds
         StartCoroutine(StartOfRound(Agent, 3f));
@@ -294,14 +289,16 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EndOfRound(GameObject Agent, float freezeTime)
     {
+        projectileHandler_SCR.canReload = false;
+
         Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
         Agent.GetComponent<PlayerController>().rb.isKinematic = true;
 
         activeEnemies.Clear();
 
-        //Show the end of round UI here, countdown etc.
-
         yield return new WaitForSeconds(freezeTime);
+
+        projectileHandler_SCR.canReload = true;
         AgentReset(playerController_SCR.gameObject);
     }
 
