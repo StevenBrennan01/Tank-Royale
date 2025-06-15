@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnBoss();
 
-            //uiManager_SCR.StartBossCountdown();
+            uiManager_SCR.StartBossCountdown();
         }
     }
 

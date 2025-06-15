@@ -115,26 +115,7 @@ public class UIManager : MonoBehaviour
         NextWaveCountdown.SetActive(true);
 
         StartCoroutine(CountdownTimer_CR());
-        //StartCoroutine(BossCountdown_CR());
     }
-
-    //private IEnumerator BossCountdown_CR()
-    //{
-    //    int currentCountdown = countdownStartValue;
-    //    string waveStartText = "Go!";
-
-    //    while (currentCountdown > 0)
-    //    {
-    //        NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = currentCountdown.ToString();
-    //        yield return new WaitForSeconds(1f);
-    //        currentCountdown--;
-    //    }
-    //    bossIsSpawningUI.SetActive(false);
-
-    //    NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = waveStartText;
-    //    yield return new WaitForSeconds(1f);
-    //    NextWaveCountdown.SetActive(false);
-    //}
 
     public void StartCountdownTimer()
     {
