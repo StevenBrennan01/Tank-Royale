@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class EnemyPointer : MonoBehaviour
 {
+    private GameManager gameManager_SCR => FindObjectOfType<GameManager>();
+
     [Header("Enemy Pointer Settings")]
     [SerializeField] private GameObject pointerSprite;
     [SerializeField] private Transform anchorPoint;
-    private GameManager gameManager_SCR => FindObjectOfType<GameManager>();
 
     private List<GameObject> pointerSprites = new List<GameObject>();
     private List<GameObject> activeEnemies => gameManager_SCR.activeEnemies;
@@ -26,7 +27,7 @@ public class EnemyPointer : MonoBehaviour
         UpdateEnemyPointers();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         UpdateEnemyPointers();
 
@@ -58,7 +59,7 @@ public class EnemyPointer : MonoBehaviour
 
         while (pointerSprites.Count < enemyCount)
         {
-            GameObject newPointer = Instantiate(pointerSprite, anchorPoint.position, Quaternion.identity/*, transform*/);
+            GameObject newPointer = Instantiate(pointerSprite, anchorPoint.position, Quaternion.identity);
             pointerSprites.Add(newPointer);
         }
 
