@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,6 +25,12 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private GameObject enemyTower;
     [SerializeField] private GameObject enemyHull;
+
+
+    //[SerializeField] private GameObject track1;
+    //[SerializeField] private GameObject track2;
+
+    [SerializeField] private List<GameObject> tankTracks = new List<GameObject>();
 
     //[SerializeField] private float hullRotateSpeed;
     //[SerializeField] private float towerRotateSpeed;
@@ -101,6 +108,10 @@ public class EnemyController : MonoBehaviour
 
             Quaternion hullRotation = Quaternion.Euler(0, 0, targetPointForHull);
             enemyHull.transform.rotation = Quaternion.Slerp(enemyTower.transform.rotation, hullRotation, tankData.hullRotateSpeed);
+
+            // Create a Vector3 that rotates all tracks within the list to the enemy position
+            Vector3 trackRot = (enemyTarget.transform.position - tankTracks[0].transform.position);
+            float targetPointForTrack = Mathf.Atan2(trackRot.y, trackRot.x) * Mathf.Rad2Deg - 90f;
         }
     }
 

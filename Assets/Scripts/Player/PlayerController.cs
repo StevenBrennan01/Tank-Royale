@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D rb;
     private Camera mainCam;
-    public bool isBoosting;
+    [HideInInspector] public bool isBoosting;
 
     private Vector3 mousePos;
     [HideInInspector] public Vector2 moveDir;

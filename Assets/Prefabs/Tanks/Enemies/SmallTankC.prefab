@@ -517,6 +517,9 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   enemyTower: {fileID: 784012590219245449}
   enemyHull: {fileID: 3821221792470247078}
+  tankTracks:
+  - {fileID: 528671784607228930}
+  - {fileID: 6654538911520975553}
 --- !u!114 &3763622312165666213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +553,6 @@ MonoBehaviour:
   tankData: {fileID: 11400000, guid: 03959f74e46d2734e8fac41ff241a52b, type: 2}
   healthBarImage: {fileID: 1599830925552396312}
   respawnPosition: {fileID: 0}
-  maxHealth: 100
   uiDelay: 0.1
 --- !u!195 &2546049170046479855
 NavMeshAgent:
@@ -691,7 +693,7 @@ Animator:
   m_GameObject: {fileID: 4527953417801519968}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b5dd810372637042bc2cd582176fff0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -775,7 +777,7 @@ GameObject:
   - component: {fileID: 7275238052281316778}
   - component: {fileID: 7185034418571108073}
   m_Layer: 9
-  m_Name: Track
+  m_Name: Track2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -93,6 +93,8 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   enemyTower: {fileID: 7895949236149067030}
   enemyHull: {fileID: 1352351684768467308}
+  track1: {fileID: 6277410540136159765}
+  track2: {fileID: 5833923998565597509}
 --- !u!114 &892059391246326886
 MonoBehaviour:
   m_ObjectHideFlags: 0

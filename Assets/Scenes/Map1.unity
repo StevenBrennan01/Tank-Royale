@@ -1163,6 +1163,14 @@ PrefabInstance:
       value: HeavyTankB
       objectReference: {fileID: 0}
     - target: {fileID: 2934412739772207989, guid: 82295e416fa410c478f073332e2aa67f, type: 3}
+      propertyPath: track1
+      value: 
+      objectReference: {fileID: 2053963148}
+    - target: {fileID: 2934412739772207989, guid: 82295e416fa410c478f073332e2aa67f, type: 3}
+      propertyPath: track2
+      value: 
+      objectReference: {fileID: 928262479}
+    - target: {fileID: 2934412739772207989, guid: 82295e416fa410c478f073332e2aa67f, type: 3}
       propertyPath: tankData
       value: 
       objectReference: {fileID: 11400000, guid: ba9919cfac6f0df4ca0ae55d7dc42326, type: 2}
@@ -58913,6 +58921,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1182277470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &928262479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5833923998565597509, guid: 82295e416fa410c478f073332e2aa67f, type: 3}
+  m_PrefabInstance: {fileID: 749834270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &928777321
 GameObject:
   m_ObjectHideFlags: 0
@@ -92556,6 +92569,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039754147}
   m_CullTransparentMesh: 1
+--- !u!1 &2053963148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6277410540136159765, guid: 82295e416fa410c478f073332e2aa67f, type: 3}
+  m_PrefabInstance: {fileID: 749834270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2054033430
 PrefabInstance:
   m_ObjectHideFlags: 0
