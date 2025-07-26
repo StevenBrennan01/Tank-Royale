@@ -61,12 +61,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //// Singleton pattern
-        //if(instance == null) { instance = this; DontDestroyOnLoad(gameObject); }
-        //else { Destroy(this.gameObject); }
-
         if (tankEnemies.Length <= 0) Debug.LogError("No enemies assigned, please assign some enemies to the level");
         if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
+        if (tankBoss == null) Debug.LogError("No tank boss assigned, please assign a tank boss in the inspector");
 
         healthManager_SCR = FindObjectOfType<HealthManager>();
         uiManager_SCR = FindObjectOfType<UIManager>();
@@ -90,7 +87,7 @@ public class GameManager : MonoBehaviour
         SpawnEnemies();
 
         CurrentWaveNumber();
-        CurrentEnemyCountUI();
+        UpdateEnemyCountUI();
         CurrentPlayerScore(0);
 
         StartCoroutine(StartOfGame(playerController_SCR.gameObject, 6f));
@@ -118,15 +115,8 @@ public class GameManager : MonoBehaviour
 
     private void SpawnBoss()
     {
-        if (tankBoss != null)
-        {
-            Instantiate(tankBoss, enemySpawnPositions[5].position, Quaternion.identity);
-            Debug.Log("Final Boss Spawned");
-        }
-        else
-        {
-            Debug.LogError("No tank boss assigned, please assign a tank boss to the level");
-        }
+        Instantiate(tankBoss, enemySpawnPositions[5].position, Quaternion.identity);
+        Debug.Log("Final Boss Spawned");
     }
 
     private void SpawnEnemies()
@@ -146,10 +136,10 @@ public class GameManager : MonoBehaviour
                 enemyCount = Random.Range(7, 10);
                 break;
             default:
-                enemyCount = Random.Range(0,0);
+                SpawnBoss();
                 break;
         }
-        CurrentEnemyCountUI();
+        UpdateEnemyCountUI();
 
         // Randomly shuffles through the spawnPositions Array
         List<Transform> shufflePositions = enemySpawnPositions.OrderBy(x => Random.value).ToList();
@@ -167,7 +157,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CurrentEnemyCountUI()
+    private void UpdateEnemyCountUI()
     {
         enemiesRemainingText.text = enemyCount.ToString();
     }
@@ -192,18 +182,13 @@ public class GameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            CurrentEnemyCountUI();
-            // do something, display ui ...
-
-            Debug.Log("All enemies are dead");
-
-            // Freeze the player for 3 seconds
+            UpdateEnemyCountUI();
 
             StartCoroutine(EndOfRound(playerController_SCR.gameObject, 3f));
         }
         else
         {
-            CurrentEnemyCountUI();
+            UpdateEnemyCountUI();
         }
     }
 
@@ -249,8 +234,6 @@ public class GameManager : MonoBehaviour
         //Display Start of Game UI
         Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
         Agent.GetComponent<PlayerController>().rb.isKinematic = true;
-
-        projectileHandler_SCR.canFire = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

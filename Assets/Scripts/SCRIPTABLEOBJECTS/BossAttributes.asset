@@ -15,5 +15,5 @@ MonoBehaviour:
   tankMoveSpeed: 4
   tankCurrentHealth: 0
   tankMaxHealth: 500
-  hullRotateSpeed: 2
+  hullRotateSpeed: 1.8
   towerRotateSpeed: 0.09

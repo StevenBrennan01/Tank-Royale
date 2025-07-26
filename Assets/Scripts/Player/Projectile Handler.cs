@@ -29,7 +29,7 @@ public class ProjectileHandler : MonoBehaviour
 
     [SerializeField] private float projectileSpeed;
 
-    [HideInInspector] public bool canFire;
+    [HideInInspector] public bool canFire = false;
     [HideInInspector] public bool isReloading = false;
     [HideInInspector] public bool canReload = true;
 
@@ -52,9 +52,6 @@ public class ProjectileHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        //canReload = true;
-
-        //ammoCount = maxAmmo;
         reloadDelay_CR = StartCoroutine(ReloadDelay());
         uiManager_SCR.ReloadAmmoUI();
     }
