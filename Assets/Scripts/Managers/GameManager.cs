@@ -4,12 +4,12 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    private HealthManager healthManager_SCR;
     private UIManager uiManager_SCR;
     private PlayerController playerController_SCR;
     private InputManager inputManager_SCR;
@@ -32,10 +32,9 @@ public class GameManager : MonoBehaviour
     //[SerializeField] private int minEnemiesToSpawn;
     //[SerializeField] private int maxEnemiesToSpawn;
     [SerializeField] private int playerScore = 0;
-    private int playerScorePerKill;
 
     public int waveCount;
-    private int maxWave = 4; //then final boss wave or something / gradually increase enemies per wave
+    private int maxWave = 5; //then final boss wave or something / gradually increase enemies per wave
 
     #endregion
 
@@ -59,13 +58,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxLives = 3;
     [SerializeField] private int currentLife;
 
+    private bool isOnFinalRound = false;
+
     private void Awake()
     {
         if (tankEnemies.Length <= 0) Debug.LogError("No enemies assigned, please assign some enemies to the level");
         if (enemySpawnPositions.Length <= 0) Debug.LogError("Please assign some locations for enemies to spawn");
         if (tankBoss == null) Debug.LogError("No tank boss assigned, please assign a tank boss in the inspector");
 
-        healthManager_SCR = FindObjectOfType<HealthManager>();
         uiManager_SCR = FindObjectOfType<UIManager>();
         playerController_SCR = FindObjectOfType<PlayerController>();
         inputManager_SCR = FindObjectOfType<InputManager>();
@@ -117,9 +117,13 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(tankBoss, enemySpawnPositions[5].position, Quaternion.identity);
         Debug.Log("Final Boss Spawned");
+
+        uiManager_SCR.waveNumUI.SetActive(false);
+
+        isOnFinalRound = true;
     }
 
-    private void SpawnEnemies()
+    private void SpawnEnemies() // SceneManager.LoadScene(2);
     {
         switch(waveCount)
         {
@@ -136,7 +140,8 @@ public class GameManager : MonoBehaviour
                 enemyCount = Random.Range(7, 10);
                 break;
             default:
-                SpawnBoss();
+                SceneManager.LoadScene(2);
+                //SpawnBoss();
                 break;
         }
         UpdateEnemyCountUI();
@@ -243,10 +248,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(freezeTime);
         Agent.GetComponent<PlayerController>().rb.isKinematic = false;
 
-        projectileHandler_SCR.canFire = true;
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        projectileHandler_SCR.canFire = true;
     }
 
     private IEnumerator AgentDeath_CR(GameObject Agent, Transform respawnPosition, float respawnDelay, HealthManager healthScript, Image healthBarImage)
@@ -273,6 +278,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator EndOfRound(GameObject Agent, float freezeTime)
     {
         projectileHandler_SCR.canReload = false;
+        projectileHandler_SCR.canFire = false;
 
         Agent.GetComponent<PlayerController>().rb.velocity = Vector2.zero;
         Agent.GetComponent<PlayerController>().rb.isKinematic = true;
@@ -294,7 +300,7 @@ public class GameManager : MonoBehaviour
             uiManager_SCR.reloadUI.SetActive(false);
         }
 
-        currentLife = maxLives; 
+        currentLife = maxLives;
         uiManager_SCR.IncreaseLives();
 
         Debug.Log("Player is frozen for " + freezeTime + " seconds");
@@ -302,6 +308,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(freezeTime);
 
         Agent.GetComponent<PlayerController>().rb.isKinematic = false;
-        Debug.Log("Player is unfrozen");
+        
+        projectileHandler_SCR.canFire = true;
     }
 }

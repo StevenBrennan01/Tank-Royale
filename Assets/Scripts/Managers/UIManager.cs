@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -112,7 +111,7 @@ public class UIManager : MonoBehaviour
     public void StartBossCountdown()
     {
         bossIsSpawningUI.SetActive(true);
-        NextWaveCountdown.SetActive(true);
+        //NextWaveCountdown.SetActive(true);
 
         StartCoroutine(CountdownTimer_CR());
     }
@@ -130,7 +129,7 @@ public class UIManager : MonoBehaviour
         int currentCountdown = countdownStartValue;
         string waveStartText = "Go!";
 
-        while(currentCountdown > 0)
+        while (currentCountdown > 0)
         {
             NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = currentCountdown.ToString();
             yield return new WaitForSeconds(1f);
@@ -141,6 +140,11 @@ public class UIManager : MonoBehaviour
         NextWaveCountdown.GetComponent<TextMeshProUGUI>().text = waveStartText;
         yield return new WaitForSeconds(1f);
         NextWaveCountdown.SetActive(false);
+
+        if (bossIsSpawningUI != null)
+        {
+            bossIsSpawningUI.SetActive(false);
+        }
     }
 
     private void Awake()

@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb8d457ffedaf499f2f24a48debf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankData: {fileID: 0}
+  tankData: {fileID: 11400000, guid: ba9919cfac6f0df4ca0ae55d7dc42326, type: 2}
   enemyTarget: {fileID: 0}
   enemyTower: {fileID: 7895949236149067030}
   enemyHull: {fileID: 1352351684768467308}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602b441d72af33243a52c0671ffb0f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 6069812804996178849, guid: eb029bd6eda8f654491c8b3e57e5de80, type: 3}
   projectileSpawnPositions:
   - {fileID: 8128323004010671348}
   - {fileID: 1122197157002380244}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18495c04d94f04947902a16f21e25141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankData: {fileID: 0}
+  tankData: {fileID: 11400000, guid: ba9919cfac6f0df4ca0ae55d7dc42326, type: 2}
   healthBarImage: {fileID: 7515411604810417444}
   respawnPosition: {fileID: 0}
   uiDelay: 0.1
